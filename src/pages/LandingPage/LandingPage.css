@@ -1,0 +1,279 @@
+.loginTriangle:before,
+.loginTriangle:after {
+	content: '';
+	position: absolute;
+	background-color: inherit;
+}
+.loginTriangle,
+.loginTriangle:before,
+.loginTriangle:after {
+	width:  65em;
+	height: 55em;
+	border-top-right-radius: 20%;
+}
+
+.loginTriangle {
+	transform: rotate(-90deg) skewX(-30deg) scale(1,.866);
+	text-align: left;
+    margin: 0;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    transform: rotate(45deg);
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	background: rgba(38, 40, 43, 1);
+	backdrop-filter: blur(9.1px);
+	-webkit-backdrop-filter: blur(9.1px);
+	box-shadow: rgba(0, 0, 0, 0.2) 30px 2px 29px 0px;
+}
+.loginTriangle:before {
+	transform: rotate(-135deg) skewX(-45deg) scale(1.414,.707) translate(0,-50%);
+}
+.loginTriangle:after {
+	transform: rotate(135deg) skewY(-45deg) scale(.707,1.414) translate(50%);
+}
+
+.removeLoginTri {
+    transform: translateX(-100%);
+    transition: all 2s ease;
+}
+
+ .loginRegContainer {
+	height: 100%;
+ }
+
+ .landingHeader {
+	width: 100%;
+    height: 75px;
+    background: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+	font-family: "Fira Sans", serif;
+    font-weight: 500;
+    font-style: normal;
+	color: white;
+ }
+
+ .headerLinks {
+	width: 800px;
+    display: flex;
+    flex-direction: row;
+	align-items: center;
+	justify-content: center;
+ }
+
+ .headerList {
+	display: inline-flex;
+    width: 50%;
+    list-style: none;
+	justify-content: space-between;
+ }
+
+ .landingHeader ul li {
+	cursor: pointer;
+ }
+
+ .headerOptions {
+	cursor: pointer;
+ }
+
+ .headerOptions button {
+	padding: 13px;
+    border: none;
+    border-radius: 15px;
+    background: #90B8F8;
+    color: white;
+	cursor: pointer;
+ }
+
+ @keyframes astroidFalling {
+	from {
+        transform: translatex(80px) translatey(-100px);
+    }
+    to {
+        transform: translatex(-200px) translatey(470px);
+		opacity: 0%;
+    }
+ }
+ @keyframes astroidFalling1 {
+	from {
+        transform: translatex(80px) translatey(-100px);
+    }
+    to {
+        transform: translatex(-400px) translatey(820px);
+		opacity: 0%;
+    }
+ }
+ @keyframes astroidFalling2 {
+	from {
+        transform: translatex(80px) translatey(-100px);
+    }
+    to {
+        transform: translatex(-300px) translatey(800px);
+		opacity: 0%;
+    }
+ }
+ @keyframes astroidFalling3 {
+	from {
+        transform: translatex(80px) translatey(-100px);
+    }
+    to {
+        transform: translatex(-70px) translatey(200px);
+		opacity: 0%;
+    }
+ }
+ /* @keyframes astroidFalling4 {
+	from {
+        transform: translatex(80px) translatey(-100px);
+    }
+    to {
+        transform: translatex(-70px) translatey(200px);
+		opacity: 0%;
+    }
+ } */
+ @keyframes astroidFalling5 {
+	from {
+        transform: translatex(80px) translatey(-100px);
+    }
+    to {
+        transform: translatex(-250px) translatey(650px);
+		opacity: 0%;
+    }
+ }
+ /* @keyframes astroidFalling6 {
+	from {
+        transform: translatex(80px) translatey(-100px);
+    }
+    to {
+        transform: translatex(-70px) translatey(200px);
+		opacity: 0%;
+    }
+ } */
+ @keyframes astroidFalling7 {
+	from {
+        transform: translatex(80px) translatey(-100px);
+    }
+    to {
+        transform: translatex(-70px) translatey(200px);
+		opacity: 0%;
+    }
+ }
+
+ .asteroidImage {
+	width: 30px;
+	position: absolute;
+	margin-left: 5vw;
+	animation-name: astroidFalling;
+	animation-duration: 2s;
+	animation-timing-function: ease-in;
+	animation-iteration-count: infinite;
+	animation-delay: 0s;
+ }
+
+ .asteroidImage1 {
+	width: 30px;
+	position: absolute;
+	margin-left: 90vw;
+	animation-name: astroidFalling1;
+	animation-duration: 2.5s;
+	animation-timing-function: ease-in;
+	animation-iteration-count: infinite;
+	animation-delay: 0s;
+ }
+
+ .asteroidImage2 {
+	width: 30px;
+	position: absolute;
+	margin-left: 37vw;
+	animation-name: astroidFalling2;
+	animation-duration: 3s;
+	animation-timing-function: ease-in;
+	animation-iteration-count: infinite;
+	animation-delay: 0s;
+ }
+
+ .asteroidImage3 {
+	width: 30px;
+	position: absolute;
+	margin-left: 54vw;
+	animation-name: astroidFalling3;
+	animation-duration: 2s;
+	animation-timing-function: ease-in;
+	animation-iteration-count: infinite;
+	animation-delay: 0s;
+ }
+
+ /* .asteroidImage4 {
+	width: 30px;
+	position: absolute;
+	margin-left: 700px;
+	animation-name: astroidFalling4;
+	animation-duration: 1s;
+	animation-timing-function: ease-in;
+	animation-iteration-count: infinite;
+	animation-delay: 0s;
+ } */
+
+ .asteroidImage5 {
+	width: 30px;
+	position: absolute;
+	margin-left: 77vw;
+	animation-name: astroidFalling5;
+	animation-duration: 1.3s;
+	animation-timing-function: ease-in;
+	animation-iteration-count: infinite;
+	animation-delay: 0s;
+ }
+
+ /* .asteroidImage6 {
+	width: 30px;
+	position: absolute;
+	margin-left: 890px;
+	animation-name: astroidFalling6;
+	animation-duration: 1s;
+	animation-timing-function: ease-in;
+	animation-iteration-count: infinite;
+	animation-delay: 0s;
+ } */
+
+ .asteroidImage7 {
+	width: 30px;
+	position: absolute;
+	margin-left: 20vw;
+	animation-name: astroidFalling7;
+	animation-duration: 1.7s;
+	animation-timing-function: ease-in;
+	animation-iteration-count: infinite;
+	animation-delay: 0s;
+ }
+
+ .landingSection1 {
+	width: 100%;
+	height: fit-content;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	margin-top: 150px;
+ }
+
+ .contentBox1 {
+	height: 500px;
+    width: 400px;
+	background: rgba(255, 255, 255, 0.15);
+	border-radius: 16px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(2.4px);
+	-webkit-backdrop-filter: blur(2.4px);
+ }
+
+/*
+	Color Palette (darker at top)
+	#353941
+	#26282B
+	#5F85DB
+	#90B8F8
+*/

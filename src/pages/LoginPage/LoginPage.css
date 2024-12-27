@@ -1,0 +1,274 @@
+.loginContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 999;
+    height: 800px;
+    flex-direction: row;
+    width: 800px;
+    background: rgba(53, 57, 65, 0.87);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(14.6px);
+    -webkit-backdrop-filter: blur(14.6px);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem 3rem 1rem 3rem;
+}
+
+.loginSide {
+    position: absolute;
+    display: flex;
+    opacity: 0%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 300px;
+    transition: all .4s;
+}
+
+.loginActive {
+    transform: translate(-100%);
+    opacity: 100%;
+    transition: all 1s;
+    left: 420px;
+    transition-delay: .3s;
+    z-index: 999;
+}
+
+.registerSide {
+    position: absolute;
+    display: flex;
+    opacity: 0%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 300px;
+    transition: all .4s;
+}
+
+.registerActive {
+    transform: translate(100%);
+    opacity: 100%;
+    transition: all 1s;
+    right: 420px;
+    transition-delay: .3s;
+    z-index: 999;
+}
+
+.registerSide {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.panelImage {
+    /* background: url('loginImage.jpeg'); */
+    background-color: #5f85db;
+    background-image: linear-gradient(19deg, #5f85db 0%, #90b8f8 100%);
+    height: 100%;
+    width: 350px;
+    position: absolute;
+    float: left;
+    right: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 1s;
+    z-index: 10001;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.panelImage h1 {
+    padding: 20px;
+    color: #353941;
+    font-family: "Fira Sans", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.panelRegister {
+    transition: all 1s;
+    transform: translate(-156%);
+}
+
+.loginContainer h3 {
+    font-family: "Poppins", serif;
+    font-weight: 500;
+    font-style: normal;
+    color: #90B8F8;
+    font-size: x-large;
+}
+
+.loginInputs {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content;
+    align-items: center;
+}
+
+.loginInputs div {
+    padding: 1rem;
+}
+
+.loginLinks {
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginLinks div {
+    padding: .6rem;
+}
+
+.loginBtn {
+    font-size: larger;
+    padding: 6px;
+    width: 7vw;
+    border-radius: 125px;
+    background-color: transparent;
+    border: .5px solid #90B8F8;
+    color: #90B8F8;
+}
+
+.registerBtn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: medium;
+}
+
+
+.input-group {
+    position: relative;
+    margin: 4px 0 20px;
+  }
+  
+  input {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 300px;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid #757575;
+    color: #90B8F8;
+  }
+  
+  input:focus {
+    outline: none;
+  }
+  
+  label {
+    color: #90B8F8;
+    font-size: 15px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 25px;
+    top: 27px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+  }
+  
+  input:focus ~ label,
+  input:valid ~ label {
+    top: -20px;
+    font-size: 14px;
+    color: #4285f4;
+  }
+  
+  .bar {
+    position: relative;
+    display:block;
+    width:315px;
+  }
+  
+  .bar:before,
+  .bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #4285f4;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+  }
+  
+  .bar:before {
+    left: 50%;
+  }
+  
+  .bar:after {
+    right: 50%;
+  }
+  
+  input:focus ~ .bar:before,
+  input:focus ~ .bar:after {
+    width: 50%;
+  }
+  
+  .highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  
+  input:focus ~ .highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+  }
+  
+  /* animations */
+  @-webkit-keyframes inputHighlighter {
+    from { background: #4285f4; }
+    to   { width: 0; background: transparent; }
+  }
+  @-moz-keyframes inputHighlighter {
+    from { background: #4285f4; }
+    to   { width: 0; background: transparent; }
+  }
+  @keyframes inputHighlighter {
+    from { background: #4285f4; }
+    to   { width: 0; background: transparent; }
+  }
+
+  .relatedInputs {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .forgotPswd {
+    font-size: small;
+    color: #90B8F8;
+    cursor:  pointer;
+  }
+
+  .panelHeader {
+    font-family: "Fira Sans", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
