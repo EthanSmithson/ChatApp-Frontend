@@ -8,31 +8,40 @@ const LandingPage = () => {
 
   return (
     <div>
-        {/* <LoginComponent />   */}
-        <header className='landingHeader'>
-          <div className='headerLogo'>
-            <img alt='myLogo'></img>
-          </div>
-          <div className='headerLinks'>
-            <ul className='headerList'>
-              <li>Home</li>
-              <li>About</li>
-              <li>More Info</li>
-            </ul>
-          </div>
-          <div className='headerOptions'>
-            <NavLink to="/login"><button>Login</button></NavLink>
-          </div>
-        </header>
-        <img className='asteroidImage' alt='ateroid' src={asteroid}></img>
-          <img className='asteroidImage1' alt='ateroid' src={asteroid}></img>
-          <img className='asteroidImage2' alt='ateroid' src={asteroid}></img>
-          <img className='asteroidImage3' alt='ateroid' src={asteroid}></img>
-          {/* <img className='asteroidImage4' alt='ateroid' src={asteroid}></img> */}
-          <img className='asteroidImage5' alt='ateroid' src={asteroid}></img>
-          {/* <img className='asteroidImage6' alt='ateroid' src={asteroid}></img> */}
-          <img className='asteroidImage7' alt='ateroid' src={asteroid}></img>
+      {/* <LoginComponent />   */}
+      <header className='landingHeader'>
+        <div className='headerLogo'>
+          <img alt='myLogo'></img>
+        </div>
+        <div className='headerLinks'>
+          <ul className='headerList'>
+            <li>Home</li>
+            <li>About</li>
+            <li>More Info</li>
+          </ul>
+        </div>
+        <div className='headerOptions'>
+          <NavLink to="/login"><button>Login</button></NavLink>
+        </div>
+      </header>
+      <img className='asteroidImage' alt='ateroid' src={asteroid}></img>
+        <img className='asteroidImage1' alt='ateroid' src={asteroid}></img>
+        <img className='asteroidImage2' alt='ateroid' src={asteroid}></img>
+        <img className='asteroidImage3' alt='ateroid' src={asteroid}></img>
+        {/* <img className='asteroidImage4' alt='ateroid' src={asteroid}></img> */}
+        <img className='asteroidImage5' alt='ateroid' src={asteroid}></img>
+        {/* <img className='asteroidImage6' alt='ateroid' src={asteroid}></img> */}
+        <img className='asteroidImage7' alt='ateroid' src={asteroid}></img>
         <section className='landingSection1'>
+          <div className='section1Text'>
+            <h1 className='mainHeading'>Chat App is the best platform for connecting with friends and family.</h1>
+            <h3 className='mainSub'>Find were you fit in with communities with Chat App.</h3>
+          </div>
+          <div className='heroImage'>
+            <h1>TEST</h1>
+          </div>
+        </section>
+        <section className='landingSection2'>
           <div className='contentBox1'>
             <h1>Chat App</h1>
           </div>

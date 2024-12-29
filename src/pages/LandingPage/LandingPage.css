@@ -270,6 +270,32 @@
 	-webkit-backdrop-filter: blur(2.4px);
  }
 
+ .mainHeading {
+	font-family: "Fira Sans", serif;
+	font-weight: 800;
+	font-style: normal;
+	font-size: 45px;
+ }
+
+ .section1Text {
+	display: flex;
+	flex-direction: column;
+	width: 600px;
+	align-items: flex-start;
+ }
+
+ .mainSub {
+	font-size: 27px;
+ }
+
+ .heroImage {
+	width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+ }
+
 /*
 	Color Palette (darker at top)
 	#353941
