@@ -3,6 +3,7 @@ import LoginComponent from '../LoginPage/LoginPage';
 import './LandingPage.css'
 import asteroid from './asteroid.png'
 import { NavLink } from 'react-router-dom';
+import personOnComputer from './personOnComputer.png'
 
 const LandingPage = () => {
 
@@ -37,13 +38,18 @@ const LandingPage = () => {
             <h1 className='mainHeading'>Chat App is the best platform for connecting with friends and family.</h1>
             <h3 className='mainSub'>Find were you fit in with communities with Chat App.</h3>
           </div>
-          <div className='heroImage'>
-            <h1>TEST</h1>
+          <div className='floatMessage'>
+          <div class="floatBox">
+            Start Chatting Now!
+          </div>
           </div>
         </section>
         <section className='landingSection2'>
           <div className='contentBox1'>
             <h1>Chat App</h1>
+            <div>
+              <img alt='person on Computer' src={personOnComputer}></img>
+            </div>
           </div>
         </section>
     </div>
