@@ -257,7 +257,8 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	margin-top: 150px;
+	margin-top: 200px;
+	color: rgb(233, 233, 233);
  }
 
  .contentBox1 {
@@ -268,6 +269,7 @@
 	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 	backdrop-filter: blur(2.4px);
 	-webkit-backdrop-filter: blur(2.4px);
+	color: white;
  }
 
  .mainHeading {
@@ -296,6 +298,18 @@
     justify-content: center;
  }
 
+ @keyframes floatBoxFloat {
+	0% {
+		transform: translate(0%);
+	}
+	50% {
+		transform: translateY(5%);
+	}
+	100% {
+		transform: translate(0%);
+	}
+ }
+
  .floatBox {
     max-width: 1200px;
     padding: 80px;
@@ -314,6 +328,50 @@
     font-weight: 400;
     font-size: 45px;
     font-style: normal;
+    border-bottom: 15px black solid;
+    border-right: 15px black solid;
+	animation-name: floatBoxFloat;
+	animation-duration: 4s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-delay: 0s;
+}
+
+.floatMessage {
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    width: 669px;
+}
+
+@keyframes bottomShadow {
+	0% {
+		transform: scale(100%);
+	}
+	50% {
+		transform: scale(75%);
+	}
+	100% {
+		transform: scale(100%);
+	}
+}
+
+.floatMessage::before {
+	content: "";
+    position: absolute;
+    height: 30px;
+    top: 66%;
+    width: 50%;
+    border-radius: 45%;
+    background: radial-gradient(rgba(0, 0, 0, 0.3), transparent, transparent);
+    transition: 0.5s;
+	animation-name: bottomShadow;
+	animation-duration: 4s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-delay: 0s;
 }
 
 .floatBox::after {
