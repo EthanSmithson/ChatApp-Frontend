@@ -8,7 +8,7 @@ body {
   background-color: #353941;
   background-image: linear-gradient(135deg, #353941 0%, #26282b 100%);
   /* overflow-y: hidden; */
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 code {

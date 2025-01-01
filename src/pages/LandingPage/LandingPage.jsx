@@ -41,6 +41,9 @@ const LandingPage = () => {
           <div className='floatMessage'>
           <div class="floatBox">
             Start Chatting Now!
+            <div className='cursorBlock'>
+              <div className='cursor'></div>
+            </div>
           </div>
           </div>
         </section>

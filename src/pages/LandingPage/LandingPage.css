@@ -274,20 +274,21 @@
 
  .mainHeading {
 	font-family: "Fira Sans", serif;
-	font-weight: 800;
-	font-style: normal;
-	font-size: 45px;
+    font-weight: 850;
+    font-style: normal;
+    font-size: 55px;
  }
 
  .section1Text {
 	display: flex;
 	flex-direction: column;
-	width: 600px;
+	width: 500px;
 	align-items: flex-start;
  }
 
  .mainSub {
-	font-size: 27px;
+	font-size: 30px;
+    font-weight: 100;
  }
 
  .heroImage {
@@ -335,6 +336,7 @@
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 	animation-delay: 0s;
+	overflow: hidden;
 }
 
 .floatMessage {
@@ -348,13 +350,13 @@
 
 @keyframes bottomShadow {
 	0% {
-		transform: scale(100%);
-	}
-	50% {
 		transform: scale(75%);
 	}
-	100% {
+	50% {
 		transform: scale(100%);
+	}
+	100% {
+		transform: scale(75%);
 	}
 }
 
@@ -362,7 +364,7 @@
 	content: "";
     position: absolute;
     height: 30px;
-    top: 66%;
+    top: 75%;
     width: 50%;
     border-radius: 45%;
     background: radial-gradient(rgba(0, 0, 0, 0.3), transparent, transparent);
@@ -398,6 +400,50 @@
 	align-items: center;
 	justify-content: center;
 	margin-top: 150px;
+ }
+
+ @keyframes cursorBlink {
+	0% {
+		opacity: 100%;
+	}
+	50% {
+		opacity: 0%;
+	}
+	100% {
+		opacity: 100%;
+	}
+ }
+
+ @keyframes cursorTraverse {
+	0% {
+		transform: translateX(0%);
+	}
+	100% {
+		transform: translateX(400px);
+	}
+ }
+
+ .cursorBlock {
+	height: 10vh;
+    position: absolute;
+    width: 400px;
+    background: #5F85DB;
+	animation-name: cursorTraverse;
+	animation-duration: 3.2s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-delay: 0s;
+ }
+
+ .cursor {
+	height: 100%;
+    width: 3px;
+    background: black;
+	animation-name: cursorBlink;
+	animation-duration: 1.5s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-delay: 0s;
  }
 
 /*
