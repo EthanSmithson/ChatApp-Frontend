@@ -55,14 +55,63 @@
     font-weight: 500;
     font-style: normal;
 	color: white;
+	position: fixed;
+	top: 0%;
+ }
+
+ @keyframes headerAlter {
+	0% {
+		overflow: hidden;
+		transform: translateY(0%);
+	}
+	50% {
+		color: #5F85DB;
+		overflow: hidden;
+		transform: translateY(-200%);
+	}
+	100% {
+		transform: translateY(0%);
+		background-color: #5F85DB;
+	}
+ }
+
+ @keyframes headerOG {
+	0% {
+		transform: translateY(0%);
+	}
+	50% {
+		transform: translateY(-200%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
  }
 
  .headerLinks {
-	width: 800px;
+	width: 600px;
     display: flex;
     flex-direction: row;
 	align-items: center;
 	justify-content: center;
+	animation-name: headerOG;
+	animation-duration: .7s;
+	animation-timing-function: linear;
+	animation-iteration-count: 1;
+	animation-play-state: paused;
+	animation-delay: calc(var(--scroll) * -2s);
+	animation-fill-mode: both;
+ }
+
+ .headerLinksAltered {
+	border-radius: 50px;
+	animation-name: headerAlter;
+	animation-duration: .7s;
+	animation-timing-function: linear;
+	animation-iteration-count: 1;
+	animation-play-state: paused;
+	animation-delay: calc(var(--scroll) * -2s);
+	animation-fill-mode: both;
+	height: 4.5vh;
  }
 
  .headerList {
@@ -337,7 +386,7 @@
 	animation-iteration-count: infinite;
 	animation-delay: 0s;
 	overflow: hidden;
-	font-weight: 200;
+	font-weight: 400;
 }
 
 .floatMessage {
@@ -365,7 +414,7 @@
 	content: "";
     position: absolute;
     height: 30px;
-    top: 75%;
+    top: 68%;
     width: 50%;
     border-radius: 45%;
     background: radial-gradient(rgba(0, 0, 0, 0.3), transparent, transparent);
@@ -400,7 +449,8 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	margin-top: 150px;
+	margin-top: 5000px;
+	color: white;
  }
 
  @keyframes cursorBlink {
