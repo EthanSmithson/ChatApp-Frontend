@@ -4,6 +4,7 @@ import './LandingPage.css'
 import asteroid from './asteroid.png'
 import { NavLink } from 'react-router-dom';
 import personOnComputer from './personOnComputer.png'
+import textCell from './phoneArt.jpg'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -28,7 +29,7 @@ const LandingPage = (props) => {
   }
 
   let scrollY = 0;
-
+  gsap.registerPlugin(ScrollTrigger)
   document.addEventListener("scroll", (event) => {
     scrollY = window.scrollY;
     if (scrollY < 850) {
@@ -49,6 +50,42 @@ const LandingPage = (props) => {
     },
     false
   );
+
+  const info1Meta = document.getElementById('info1Meta');
+  const info1Media = document.getElementById('info1Media');
+  gsap.set(info1Meta, {
+    xPercent: -100,
+    opacity: 0
+  })
+
+  gsap.set(info1Media, {
+    xPercent: 100,
+    opacity: 1
+  })
+
+  gsap.to(info1Meta, {
+    scrollTrigger: {
+      trigger: info1Meta,
+      start: "top bottom",
+      end: "bottom 90%",
+      // markers: true,
+      scrub: true
+    },
+    xPercent: 0,
+    opacity: 1
+  })
+
+  gsap.to(info1Media, {
+    scrollTrigger: {
+      trigger: info1Media,
+      start: "top center",
+      end: "bottom 85%",
+      // markers: true,
+      scrub: true
+    },
+    xPercent: 0,
+    opacity: 1
+  })
   
   return (
     <div>
@@ -60,6 +97,7 @@ const LandingPage = (props) => {
         <div id='headerLinks' className={headerLinksAlter ? 'headerLinks headerLinksAltered' : 'headerLinks'}>
           <ul className='headerList'>
             <li>Home</li>
+            <li>About</li>
             <li>My Work</li>
             <li>Contact Me</li>
           </ul>
@@ -88,6 +126,24 @@ const LandingPage = (props) => {
               <div className='cursor'></div>
             </div>
           </div>
+          </div>
+        </section>
+        <section className='infoSection'>
+          <div className='info1'>
+            <div id='info1Meta' className='info1Meta'>
+              <p>Lorem ipsum dolor sit amet. Vel eligendi officia et sunt consequatur aut dolorem libero 33 commodi modi. Est placeat nostrum aut perspiciatis modi sed veritatis vero a alias numquam vel eligendi consequatur et eius animi ea quae velit! Et atque ipsam eum molestiae temporibus sit facilis culpa. Et maiores vitae est dicta quam hic illo corrupti rem mollitia necessitatibus et provident omnis cum tenetur quos non libero rerum! Sed quibusdam excepturi ab harum ipsam ut blanditiis repellendus! Et incidunt aliquam ut quidem culpa est tempore obcaecati. Rem harum doloremque aut aspernatur earum et porro internos rem accusamus inventore. In doloribus consequuntur eum dolorum libero sit numquam voluptatibus. Cum magni assumenda non possimus quibusdam qui impedit placeat hic incidunt facere? </p>
+            </div>
+            <div id='info1Media' className='info1Media'>
+              <img alt='Texting on Cell' src={textCell}></img>
+            </div>
+          </div>
+          <div className='info2'>
+            <div id='info2Meta' className='info2Meta'>
+              <p>Lorem ipsum dolor sit amet. Vel eligendi officia et sunt consequatur aut dolorem libero 33 commodi modi. Est placeat nostrum aut perspiciatis modi sed veritatis vero a alias numquam vel eligendi consequatur et eius animi ea quae velit! Et atque ipsam eum molestiae temporibus sit facilis culpa. Et maiores vitae est dicta quam hic illo corrupti rem mollitia necessitatibus et provident omnis cum tenetur quos non libero rerum! Sed quibusdam excepturi ab harum ipsam ut blanditiis repellendus! Et incidunt aliquam ut quidem culpa est tempore obcaecati. Rem harum doloremque aut aspernatur earum et porro internos rem accusamus inventore. In doloribus consequuntur eum dolorum libero sit numquam voluptatibus. Cum magni assumenda non possimus quibusdam qui impedit placeat hic incidunt facere? </p>
+            </div>
+            <div id='info2Media' className='info2Media'>
+              <img alt='Texting on Cell' src={textCell}></img>
+            </div>
           </div>
         </section>
         <section className='landingSection2'>

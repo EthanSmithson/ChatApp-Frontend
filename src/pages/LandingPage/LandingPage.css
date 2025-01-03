@@ -62,7 +62,7 @@
  @keyframes headerAlter {
 	0% {
 		overflow: hidden;
-		transform: translateY(0%);
+		transform: translateY(-100%);
 	}
 	50% {
 		color: #5F85DB;
@@ -105,7 +105,7 @@
  .headerLinksAltered {
 	border-radius: 50px;
 	animation-name: headerAlter;
-	animation-duration: .7s;
+	animation-duration: .6s;
 	animation-timing-function: linear;
 	animation-iteration-count: 1;
 	animation-play-state: paused;
@@ -116,7 +116,7 @@
 
  .headerList {
 	display: inline-flex;
-    width: 50%;
+    width: 70%;
     list-style: none;
 	justify-content: space-between;
  }
@@ -517,6 +517,20 @@
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 	animation-delay: 0s;
+ }
+
+ .infoSection {
+	height: 80vh;
+    width: 100%;
+	margin-top: 225vh;
+	color: white;
+ }
+
+ .info1 {
+	height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
  }
 
 /*
