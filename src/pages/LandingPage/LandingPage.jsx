@@ -1,11 +1,45 @@
-import React from 'react';
-import LoginComponent from '../LoginPage/LoginPage';
+import React, { useState } from 'react';
+// import LoginComponent from '../LoginPage/LoginPage';
 import './LandingPage.css'
 import asteroid from './asteroid.png'
 import { NavLink } from 'react-router-dom';
 import personOnComputer from './personOnComputer.png'
+import { data } from 'jquery';
 
-const LandingPage = () => {
+const LandingPage = (props) => {
+  var cursorBlock;
+  var [cursorStationary, setCursorStationary] = useState(false);
+
+  setTimeout(() => {
+    cursorBlock = document.getElementById("cursorBlock");    
+    console.log(cursorBlock)
+    cursorBlock.addEventListener('animationend', cursorEnd);
+  }, 1000);
+
+  function cursorEnd() {
+    setCursorStationary(true);
+    console.log(cursorBlock);
+    setTimeout(function() {
+      setCursorStationary(false);
+    }, 6000);
+    setTimeout(function() {
+      setCursorStationary(true);
+    }, 4000);
+  }
+
+  // setTimeout(function() {
+  //   cursorAnimationEnd()
+  // }, 3200);
+
+  // function cursorAnimationEnd() {
+  //   setCursorStationary(true);
+  //   setTimeout(cursorAnimationStart, 6000);
+  // }
+
+  // function cursorAnimationStart() {
+  //   setCursorStationary(false);
+  //   setTimeout(cursorAnimationEnd, 4000);
+  // }
 
   return (
     <div>
@@ -39,9 +73,9 @@ const LandingPage = () => {
             <h3 className='mainSub'>Find were you fit in with communities with Chat App.</h3>
           </div>
           <div className='floatMessage'>
-          <div class="floatBox">
+          <div className="floatBox">
             Start Chatting Now!
-            <div className='cursorBlock'>
+            <div id='cursorBlock' className={`${!cursorStationary ? 'cursorBlock' : 'cursorBlockStationary'}`}>
               <div className='cursor'></div>
             </div>
           </div>

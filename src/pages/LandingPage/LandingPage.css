@@ -337,6 +337,7 @@
 	animation-iteration-count: infinite;
 	animation-delay: 0s;
 	overflow: hidden;
+	font-weight: 200;
 }
 
 .floatMessage {
@@ -419,7 +420,16 @@
 		transform: translateX(0%);
 	}
 	100% {
-		transform: translateX(400px);
+		transform: translateX(420px);
+	}
+ }
+
+ @keyframes cursorTraverseBackwards {
+	0% {
+		transform: translateX(0%);
+	}
+	100% {
+		transform: translateX(-415px);
 	}
  }
 
@@ -429,10 +439,23 @@
     width: 400px;
     background: #5F85DB;
 	animation-name: cursorTraverse;
-	animation-duration: 3.2s;
+	animation-duration: 3s;
 	animation-timing-function: linear;
-	animation-iteration-count: infinite;
-	animation-delay: 0s;
+	animation-iteration-count: 1;
+	animation-delay: 1s;
+ }
+
+ .cursorBlockStationary {
+	height: 10vh;
+    position: absolute;
+    width: 400px;
+    background: #5F85DB;
+	margin-left: 820px;
+	animation-name: cursorTraverseBackwards;
+	animation-duration: 2s;
+	animation-timing-function: ease-out;
+	animation-iteration-count: 1;
+	animation-delay: 4s;
  }
 
  .cursor {
@@ -440,7 +463,7 @@
     width: 3px;
     background: black;
 	animation-name: cursorBlink;
-	animation-duration: 1.5s;
+	animation-duration: .7s;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 	animation-delay: 0s;
