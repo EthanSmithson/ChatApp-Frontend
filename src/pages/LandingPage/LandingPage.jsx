@@ -98,7 +98,7 @@ const LandingPage = (props) => {
       trigger: circle1,
       start: "top center",
       end: "bottom 75%",
-      markers: true,
+      // markers: true,
       scrub: true
     },
     yPercent: -75,
@@ -151,7 +151,62 @@ const LandingPage = (props) => {
       inline: 'start'
     });
   }
-  
+
+  const animatedSection = document.getElementById("animatedSection");
+  const ball1 = document.getElementById("ball1");
+  gsap.set(ball1, {
+    yPercent: 0,
+    opacity: 1
+  });
+
+  gsap.to(ball1, {
+    scrollTrigger: {
+      trigger: ball1,
+      start: "top 90%",
+      end: "bottom 55%",
+      // markers: true,
+      scrub: true
+    },
+    yPercent: -100,
+    opacity: 0
+  })
+
+  const ball2 = document.getElementById("ball2");
+  gsap.set(ball2, {
+    yPercent: 0,
+    opacity: 1
+  });
+
+  gsap.to(ball2, {
+    scrollTrigger: {
+      trigger: ball2,
+      start: "top 75%",
+      end: "bottom 30%",
+      // markers: true,
+      scrub: true
+    },
+    yPercent: -100,
+    opacity: 0
+  })
+
+  const ball3 = document.getElementById("ball3");
+  gsap.set(ball3, {
+    yPercent: 0,
+    opacity: 1
+  });
+
+  gsap.to(ball3, {
+    scrollTrigger: {
+      trigger: ball3,
+      start: "top 50%",
+      end: "bottom 5%",
+      markers: true,
+      scrub: true
+    },
+    yPercent: -100,
+    opacity: 0
+  })
+
   return (
     <div>
       {/* <LoginComponent />   */}
@@ -193,10 +248,15 @@ const LandingPage = (props) => {
           </div>
           </div>
         </section>
-        <section className='animatedSection'>
-          <figure class="ball"><span class="shadow"></span></figure>
-          <figure class="ball"><span class="shadow"></span></figure>
-          <figure class="ball"><span class="shadow"></span></figure>
+        <section id='animatedSection' className='animatedSection'>
+          <div className='balls'>
+            <figure id='ball1' class="ball"><span class="shadow"></span></figure>
+            <figure id='ball2' class="ball"><span class="shadow"></span></figure>
+            <figure id='ball3' class="ball"><span class="shadow"></span></figure>
+          </div>
+          <div className='messagesAnimated'>
+          <figure id='messageBox' class="messageBox"><span class="shadow"></span></figure>
+          </div>
         </section>
         <section className='infoSection'>
           <div id='info1' className='info1'>
