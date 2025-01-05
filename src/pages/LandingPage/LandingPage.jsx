@@ -59,8 +59,8 @@ const LandingPage = (props) => {
   })
 
   gsap.set(info1Media, {
-    xPercent: 100,
-    opacity: 1
+    xPercent: 115,
+    opacity: 0
   })
 
   gsap.to(info1Meta, {
@@ -78,14 +78,79 @@ const LandingPage = (props) => {
   gsap.to(info1Media, {
     scrollTrigger: {
       trigger: info1Media,
-      start: "top center",
-      end: "bottom 85%",
+      start: "top 80%",
+      end: "bottom 75%",
       // markers: true,
       scrub: true
     },
-    xPercent: 0,
+    xPercent: 30,
     opacity: 1
   })
+
+  const circle1 = document.getElementById("circle1");
+
+  gsap.set(circle1, {
+    opacity: 1
+  })
+
+  gsap.to(circle1, {
+    scrollTrigger: {
+      trigger: circle1,
+      start: "top center",
+      end: "bottom 75%",
+      markers: true,
+      scrub: true
+    },
+    yPercent: -75,
+    opacity: 1
+  })
+
+  const circle2 = document.getElementById("circle2");
+
+  gsap.set(circle2, {
+    opacity: 1
+  })
+
+  const circle3 = document.getElementById("circle3");
+
+  gsap.set(circle3, {
+    opacity: 1
+  })
+
+
+  const scrollToHome = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+      block: 'nearest',
+      inline: 'start'
+    });
+  }
+
+  const scrollToAbout = () => {
+    document.getElementById("info1").scrollIntoView({
+      behavior: "smooth",
+      block: 'nearest',
+      inline: 'start'
+    });
+  }
+
+  const scrollToWork = () => {
+    document.getElementById("info1").scrollIntoView({
+      behavior: "smooth",
+      block: 'nearest',
+      inline: 'start'
+    });
+  }
+
+  const scrollToContact = () => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: "smooth",
+      block: 'nearest',
+      inline: 'start'
+    });
+  }
   
   return (
     <div>
@@ -96,10 +161,10 @@ const LandingPage = (props) => {
         </div>
         <div id='headerLinks' className={headerLinksAlter ? 'headerLinks headerLinksAltered' : 'headerLinks'}>
           <ul className='headerList'>
-            <li>Home</li>
-            <li>About</li>
-            <li>My Work</li>
-            <li>Contact Me</li>
+            <li onClick={() => scrollToHome()}>Home</li>
+            <li onClick={() => scrollToAbout()} id='aboutBtn'>About</li>
+            <li onClick={() => scrollToWork()}>My Work</li>
+            <li onClick={() => scrollToContact()}>Contact Me</li>
           </ul>
         </div>
         <div className='headerOptions'>
@@ -115,7 +180,7 @@ const LandingPage = (props) => {
         {/* <img className='asteroidImage6' alt='ateroid' src={asteroid}></img> */}
         <img className='asteroidImage7' alt='ateroid' src={asteroid}></img>
         <section id='landingSection1' className='landingSection1'>
-          <div className='section1Text'>
+          <div id='section1Text' className='section1Text'>
             <h1 className='mainHeading'>Chat App is the best platform for connecting with friends and family.</h1>
             <h3 className='mainSub'>Find were you fit in with communities with Chat App.</h3>
           </div>
@@ -128,34 +193,74 @@ const LandingPage = (props) => {
           </div>
           </div>
         </section>
+        <section className='animatedSection'>
+          <figure class="ball"><span class="shadow"></span></figure>
+          <figure class="ball"><span class="shadow"></span></figure>
+          <figure class="ball"><span class="shadow"></span></figure>
+        </section>
         <section className='infoSection'>
-          <div className='info1'>
+          <div id='info1' className='info1'>
             <div id='info1Meta' className='info1Meta'>
               <p>Lorem ipsum dolor sit amet. Vel eligendi officia et sunt consequatur aut dolorem libero 33 commodi modi. Est placeat nostrum aut perspiciatis modi sed veritatis vero a alias numquam vel eligendi consequatur et eius animi ea quae velit! Et atque ipsam eum molestiae temporibus sit facilis culpa. Et maiores vitae est dicta quam hic illo corrupti rem mollitia necessitatibus et provident omnis cum tenetur quos non libero rerum! Sed quibusdam excepturi ab harum ipsam ut blanditiis repellendus! Et incidunt aliquam ut quidem culpa est tempore obcaecati. Rem harum doloremque aut aspernatur earum et porro internos rem accusamus inventore. In doloribus consequuntur eum dolorum libero sit numquam voluptatibus. Cum magni assumenda non possimus quibusdam qui impedit placeat hic incidunt facere? </p>
             </div>
             <div id='info1Media' className='info1Media'>
-              <img alt='Texting on Cell' src={textCell}></img>
+              {/* <img alt='Texting on Cell' src={textCell}></img> */}
+              <svg id='handCell' className='handCell' width="677" height="876" viewBox="0 0 677 876" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.4295 97.2377C24.7879 83.3191 45.6604 93.758 49 93.758V124.379C44.3246 122.709 39.2595 127.395 37.3114 129.946V155C34.5284 153.608 25.9567 147.902 13.9342 136.21C-1.09404 121.595 -1.92894 111.156 11.4295 97.2377Z" fill="#8F5C27"/>
+<path d="M38 471.412V36.1774C38 15.7607 59.5682 4.21885 70.3523 1H254.829C279.61 2.65541 289.935 25.1414 292 36.1774V464.514C290.899 490.449 267.678 500.611 256.206 502.451H78.6125C58.2374 506.865 43.0479 483.597 38 471.412Z" fill="#192F33" stroke="#262431"/>
+<path d="M279 91H50V38.4333C54.4145 19.6199 69.3133 14.9166 76.2108 14.9166C129.782 14.2249 240.649 13.2566 255.548 14.9166C270.447 16.5766 277.391 31.286 279 38.4333V91Z" fill="#4B5F9E" stroke="#262431"/>
+<circle cx="165" cy="52" r="27" fill="#6A78A9"/>
+<path d="M72.8091 490.085C57.3266 488.428 51.152 472.824 50 465.229V91H279.473C280.625 208.838 282.238 448.658 279.473 465.229C276.709 481.8 263.576 488.704 257.356 490.085C202.291 490.775 88.2917 491.742 72.8091 490.085Z" fill="white" stroke="#262431"/>
+<rect x="151" y="202" width="114" height="36" rx="12" fill="#47AC62"/>
+<rect x="205" y="352" width="61" height="36" rx="12" fill="#47AC62"/>
+<path d="M363.072 325.874C368.596 334.848 348.571 425.278 326.474 476.36C309.121 516.475 338.699 565.191 356.557 585.687L194.581 680L91 499.831L252.586 501.211C276.34 504.525 291.026 480.502 295.399 468.077V314.139L277.445 268.579C266.949 218.877 292.867 204.151 307.138 203C323.942 240.967 358.653 318.695 363.072 325.874Z" fill="#8F5C27"/>
+<circle cx="26" cy="26" r="25.5" transform="matrix(-1 0 0 1 55 351)" fill="#8F5C27" stroke="#8F5C27"/>
+<rect x="67" y="428" width="197" height="30" rx="15" stroke="#E4ECEF" stroke-width="2"/>
+<circle className='messagePulse1' cx="222" cy="370" r="4" fill="#D9D9D9"/>
+<circle className='messagePulse2' cx="236" cy="370" r="4" fill="#D9D9D9"/>
+<circle className='messagePulse3' cx="248" cy="370" r="4" fill="#D9D9D9"/>
+<path d="M250.86 388.122L250.86 395.892L243.269 388.122L250.86 388.122Z" fill="#47AC62"/>
+<path d="M78.568 340.225L78.0447 348.766L86.7971 339.714L78.568 340.225Z" fill="#D7D9E8"/>
+<rect x="66" y="294" width="152" height="47" rx="12" fill="#D7D9E8"/>
+<path d="M251.55 237.488L251.55 245.258L243.959 237.488L251.55 237.488Z" fill="#47AC62"/>
+<rect x="165" y="217" width="86" height="7" rx="1" fill="#D9D9D9"/>
+<rect x="80" y="307" width="124" height="7" rx="1" fill="#919DC3"/>
+<path d="M78.568 280.876L78.0447 289.417L86.7971 280.365L78.568 280.876Z" fill="#D7D9E8"/>
+<rect x="66" y="248" width="109" height="34" rx="12" fill="#D7D9E8"/>
+<rect x="81" y="259" width="77" height="6" rx="1" fill="#919DC3"/>
+<rect x="80" y="318" width="71" height="7" rx="1" fill="#919DC3"/>
+<path d="M78.568 185.641L78.0447 194.183L86.7971 185.13L78.568 185.641Z" fill="#D7D9E8"/>
+<rect x="66" y="140" width="152" height="47" rx="12" fill="#D7D9E8"/>
+<rect x="80" y="152" width="124" height="7" rx="1" fill="#919DC3"/>
+<rect x="80" y="163" width="71" height="7" rx="1" fill="#919DC3"/>
+<path d="M180 66H149V60.4186C151.818 57.0698 158.629 55.3023 161.682 54.8372V51.3488C155.341 45.7674 158.159 36 165.205 36C172.25 36 172.955 47.8605 170.136 49.2558C167.882 50.3721 168.258 53.4419 168.727 54.8372C173.236 54.2791 178.121 58.3256 180 60.4186V66Z" fill="#243F86"/>
+<rect width="50.4031" height="81.7395" rx="25.2015" transform="matrix(-0.685091 0.728457 0.728457 0.685091 24.7253 244.344)" fill="#8F5C27"/>
+<circle cx="17" cy="17" r="17" transform="matrix(-1 0 0 1 63 282)" fill="#C68447"/>
+<rect width="50.4031" height="81.7395" rx="25.2015" transform="matrix(-0.685091 0.728457 0.728457 0.685091 24.5307 178.094)" fill="#8F5C27"/>
+<ellipse cx="17" cy="17.5" rx="17" ry="17.5" transform="matrix(-1 0 0 1 63 215)" fill="#C68447"/>
+<path d="M292.75 196L292 128.195C296.2 127.088 299.75 130.963 301 133.038V192.541C298 192.541 294.25 194.847 292.75 196Z" fill="#374D62"/>
+<path d="M29 183.088V148.529C30.7455 144.659 35.0606 143.23 37 143V190C33.5091 188.894 30.2121 184.931 29 183.088Z" fill="#3B4A5F"/>
+<path d="M30 123.088V88.5294C31.7455 84.6588 36.0606 83.2304 38 83V130C34.5091 128.894 31.2121 124.931 30 123.088Z" fill="#3B4A5F"/>
+<path d="M161.5 697.5L194.5 680L355.5 585.5C377.5 609.333 434.9 652.1 488.5 632.5C542.1 612.9 636.167 617.667 676.5 622.5V872C645.667 875.667 546.6 879.6 397 866C247.4 852.4 177.667 748 161.5 697.5Z" fill="white"/>
+</svg>
             </div>
           </div>
           <div className='info2'>
-            <div id='info2Meta' className='info2Meta'>
-              <p>Lorem ipsum dolor sit amet. Vel eligendi officia et sunt consequatur aut dolorem libero 33 commodi modi. Est placeat nostrum aut perspiciatis modi sed veritatis vero a alias numquam vel eligendi consequatur et eius animi ea quae velit! Et atque ipsam eum molestiae temporibus sit facilis culpa. Et maiores vitae est dicta quam hic illo corrupti rem mollitia necessitatibus et provident omnis cum tenetur quos non libero rerum! Sed quibusdam excepturi ab harum ipsam ut blanditiis repellendus! Et incidunt aliquam ut quidem culpa est tempore obcaecati. Rem harum doloremque aut aspernatur earum et porro internos rem accusamus inventore. In doloribus consequuntur eum dolorum libero sit numquam voluptatibus. Cum magni assumenda non possimus quibusdam qui impedit placeat hic incidunt facere? </p>
-            </div>
             <div id='info2Media' className='info2Media'>
               <img alt='Texting on Cell' src={textCell}></img>
             </div>
+            <div id='info2Meta' className='info2Meta'>
+              <p>Lorem ipsum dolor sit amet. Vel eligendi officia et sunt consequatur aut dolorem libero 33 commodi modi. Est placeat nostrum aut perspiciatis modi sed veritatis vero a alias numquam vel eligendi consequatur et eius animi ea quae velit! Et atque ipsam eum molestiae temporibus sit facilis culpa. Et maiores vitae est dicta quam hic illo corrupti rem mollitia necessitatibus et provident omnis cum tenetur quos non libero rerum! Sed quibusdam excepturi ab harum ipsam ut blanditiis repellendus! Et incidunt aliquam ut quidem culpa est tempore obcaecati. Rem harum doloremque aut aspernatur earum et porro internos rem accusamus inventore. In doloribus consequuntur eum dolorum libero sit numquam voluptatibus. Cum magni assumenda non possimus quibusdam qui impedit placeat hic incidunt facere? </p>
+            </div>
           </div>
         </section>
-        <section className='landingSection2'>
+        <section className='contactSection'>
           <div>
-          <p>Lorem ipsum dolor sit amet. Eos dignissimos minima cum voluptas exercitationem in tempore galisum ex deserunt quaerat et iure quidem. Et voluptates rerum est quos sapiente aut ipsa impedit non numquam dolorem ut quibusdam cupiditate est impedit consequatur. Qui harum velit qui quaerat velit et error error. Ea ullam optio et impedit aliquam est delectus voluptas. </p><p>Hic dolor voluptatem est voluptatem itaque vel autem quam in amet neque in minima exercitationem quo dolorem harum non magnam ullam. Qui nostrum officiis eum quia ratione est neque blanditiis qui aperiam possimus nam quibusdam veniam non voluptatem expedita ea pariatur voluptas? Aut mollitia natus et dignissimos laborum hic numquam voluptatem sed sint doloremque ut adipisci inventore vel quibusdam dolore. Est nemo magnam 33 consequatur illo et quas omnis et sint magni et eligendi laboriosam et ratione minus. Qui deserunt dolorem est enim voluptas in commodi harum sed quae tempore aut magni dolore et iure omnis est minus dolorum. Et suscipit tempore et inventore delectus aut iure minima quo velit tenetur. Et dolor velit ut nihil error ad velit quae eum aliquam dolorem! </p>
+            <p>Lorem ipsum dolor sit amet. Eos dignissimos minima cum voluptas exercitationem in tempore galisum ex deserunt quaerat et iure quidem. Et voluptates rerum est quos sapiente aut ipsa impedit non numquam dolorem ut quibusdam cupiditate est impedit consequatur. Qui harum velit qui quaerat velit et error error. Ea ullam optio et impedit aliquam est delectus voluptas. </p><p>Hic dolor voluptatem est voluptatem itaque vel autem quam in amet neque in minima exercitationem quo dolorem harum non magnam ullam. Qui nostrum officiis eum quia ratione est neque blanditiis qui aperiam possimus nam quibusdam veniam non voluptatem expedita ea pariatur voluptas? Aut mollitia natus et dignissimos laborum hic numquam voluptatem sed sint doloremque ut adipisci inventore vel quibusdam dolore. Est nemo magnam 33 consequatur illo et quas omnis et sint magni et eligendi laboriosam et ratione minus. Qui deserunt dolorem est enim voluptas in commodi harum sed quae tempore aut magni dolore et iure omnis est minus dolorum. Et suscipit tempore et inventore delectus aut iure minima quo velit tenetur. Et dolor velit ut nihil error ad velit quae eum aliquam dolorem! </p>
           </div>
           <div>
             <img alt='person on Computer' src={personOnComputer}></img>
           </div>
-          {/* <div className='contentBox1'>
-            <h1>Chat App</h1>
-          </div> */}
         </section>
     </div>
   );
