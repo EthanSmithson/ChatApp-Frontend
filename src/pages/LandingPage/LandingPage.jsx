@@ -215,12 +215,14 @@ const LandingPage = (props) => {
           <img alt='myLogo'></img>
         </div>
         <div id='headerLinks' className={headerLinksAlter ? 'headerLinks headerLinksAltered' : 'headerLinks'}>
-          <ul className='headerList'>
-            <li onClick={() => scrollToHome()}>Home</li>
-            <li onClick={() => scrollToAbout()} id='aboutBtn'>About</li>
-            <li onClick={() => scrollToWork()}>My Work</li>
-            <li onClick={() => scrollToContact()}>Contact Me</li>
-          </ul>
+          <div>
+            <ul className='headerList'>
+              <li onClick={() => scrollToHome()}>Home</li>
+              <li onClick={() => scrollToAbout()} id='aboutBtn'>About</li>
+              <li onClick={() => scrollToWork()}>My Work</li>
+              <li onClick={() => scrollToContact()}>Contact Me</li>
+            </ul>
+          </div>
         </div>
         <div className='headerOptions'>
           <NavLink to="/login"><button>Login</button></NavLink>
@@ -255,7 +257,9 @@ const LandingPage = (props) => {
             <figure id='ball3' class="ball"><span class="shadow"></span></figure>
           </div>
           <div className='messagesAnimated'>
-          <figure id='messageBox' class="messageBox"><span class="shadow"></span></figure>
+            <figure id='messageBox' class="messageBox">
+              This is a test
+            </figure>
           </div>
         </section>
         <section className='infoSection'>
