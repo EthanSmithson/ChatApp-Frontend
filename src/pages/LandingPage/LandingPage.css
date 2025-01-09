@@ -173,6 +173,7 @@
 
  .headerOptions {
 	cursor: pointer;
+	text-decoration: none;
  }
 
  .headerOptions button {
@@ -186,6 +187,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	text-decoration: none;
  }
 
  .headerOptions button::after {
@@ -197,6 +199,7 @@
 	background-color: #326bec;
 	background-image: linear-gradient(129deg, #326bec 0%, #90b8f8 100%);
 	z-index: -1;
+	text-decoration: none;
  }
 
  @keyframes astroidFalling {
@@ -705,17 +708,6 @@
   z-index: -1;
   }
 
-  .messageBox {
-	display: block;
-    background: black;
-    margin: 0;
-    border-radius: 23px;
-    height: 60px;
-    width: 375px;
-    background-image: linear-gradient(to left top, #90b8f8, #86aef3, #7ca5ee, #739be8, #6a92e3, #5899e9, #419fee, #1ba6f2, #00bdfa, #00d3fb, #11e8f8, #5ffbf1);
-    margin: 0 .5vw;
-  }
-
   .stage {
 	width: 300px;
 	height: 300px;
@@ -740,12 +732,75 @@
   }
 
   .messagesAnimated {
-	height: 200vh;
+	height: 85vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  @keyframes messageBubbleLeft {
+	0%{
+		transform: scale(15%) translateY(0);
+	}
+	100% {
+		transform: scale(100%) translateY(-100);
+	}
+  }
+
+.messageBox1 {
+	display: block;
+    background: black;
+    margin: 0;
+    border-radius: 23px;
+    height: 100px;
+    width: 500px;
+    background-image: linear-gradient(to left top, #90b8f8, #86aef3, #7ca5ee, #739be8, #6a92e3, #5899e9, #419fee, #1ba6f2, #00bdfa, #00d3fb, #11e8f8, #5ffbf1);
+	margin-right: 300px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
+
+  .messageBubbleLeftAnimate {
+	/* animation-name: messageBubbleLeft;
+	animation-duration: 3s;
+	animation-timing-function: linear;
+	animation-iteration-count: 1;
+	animation-delay: 1s; */
+
+	animation-name: messageBubbleLeft;
+	animation-duration: .7s;
+	animation-timing-function: linear;
+	animation-iteration-count: 1;
+	animation-play-state: paused;
+	animation-delay: calc(var(--scroll) * -2s);
+	animation-fill-mode: both;
+  }
+
+  .messageBox1::after {
+	content: "";
+	position: absolute;
+	width: 100.6%;
+	height: 103%;
+	background-color: white;
+	border-radius: 23px;
+	z-index: -1;
+  }
+
+  .messageTri {
+	width: 0;
+    height: 0;
+    border-left: 27px solid transparent;
+    border-right: 37px solid transparent;
+    border-bottom: 35px solid white;
+    transform: rotate(325deg);
+    margin-right: 87%;
+    margin-top: 20%;
+    position: absolute;
+    z-index: -1;
   }
 
 /*

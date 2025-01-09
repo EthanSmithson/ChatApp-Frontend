@@ -200,7 +200,7 @@ const LandingPage = (props) => {
       trigger: ball3,
       start: "top 50%",
       end: "bottom 5%",
-      markers: true,
+      // markers: true,
       scrub: true
     },
     yPercent: -100,
@@ -257,9 +257,12 @@ const LandingPage = (props) => {
             <figure id='ball3' class="ball"><span class="shadow"></span></figure>
           </div>
           <div className='messagesAnimated'>
-            <figure id='messageBox' class="messageBox">
+            <div className='messageBubbleLeftAnimate'>
+            <figure id='messageBox1' class="messageBox1">
               This is a test
+              <div className='messageTri'></div>
             </figure>
+            </div>
           </div>
         </section>
         <section className='infoSection'>
