@@ -15,18 +15,18 @@ const LandingPage = (props) => {
 
   setTimeout(() => {
     cursorBlock = document.getElementById("cursorBlock");    
-    // cursorBlock.addEventListener('animationend', cursorEnd);
+    cursorBlock.addEventListener('animationend', cursorEnd);
   }, 1000);
 
-  // function cursorEnd() {
-  //   setCursorStationary(true);
-  //   setTimeout(function() {
-  //     setCursorStationary(false);
-  //   }, 6000);
-  //   setTimeout(function() {
-  //     setCursorStationary(true);
-  //   }, 4000);
-  // }
+  function cursorEnd() {
+    setCursorStationary(true);
+    setTimeout(function() {
+      setCursorStationary(false);
+    }, 6000);
+    setTimeout(function() {
+      setCursorStationary(true);
+    }, 4000);
+  }
 
   let scrollY = 0;
   gsap.registerPlugin(ScrollTrigger)
