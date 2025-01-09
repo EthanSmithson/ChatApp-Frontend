@@ -15,18 +15,18 @@ const LandingPage = (props) => {
 
   setTimeout(() => {
     cursorBlock = document.getElementById("cursorBlock");    
-    cursorBlock.addEventListener('animationend', cursorEnd);
+    // cursorBlock.addEventListener('animationend', cursorEnd);
   }, 1000);
 
-  function cursorEnd() {
-    setCursorStationary(true);
-    setTimeout(function() {
-      setCursorStationary(false);
-    }, 6000);
-    setTimeout(function() {
-      setCursorStationary(true);
-    }, 4000);
-  }
+  // function cursorEnd() {
+  //   setCursorStationary(true);
+  //   setTimeout(function() {
+  //     setCursorStationary(false);
+  //   }, 6000);
+  //   setTimeout(function() {
+  //     setCursorStationary(true);
+  //   }, 4000);
+  // }
 
   let scrollY = 0;
   gsap.registerPlugin(ScrollTrigger)
@@ -152,7 +152,6 @@ const LandingPage = (props) => {
     });
   }
 
-  const animatedSection = document.getElementById("animatedSection");
   const ball1 = document.getElementById("ball1");
   gsap.set(ball1, {
     yPercent: 0,
@@ -207,6 +206,78 @@ const LandingPage = (props) => {
     opacity: 0
   })
 
+  const messageBubbleLeftAnimate = document.getElementById("messageBubbleLeftAnimate");
+  gsap.set(messageBubbleLeftAnimate, {
+    yPercent: 0,
+    opacity: 0
+  });
+
+  gsap.to(messageBubbleLeftAnimate, {
+    scrollTrigger: {
+      trigger: messageBubbleLeftAnimate,
+      start: "top 80%",
+      end: "bottom 5%",
+      // markers: true,
+      scrub: true
+    },
+    yPercent: -200,
+    opacity: 1
+  })
+
+  const messageBubbleRightAnimate2 = document.getElementById("messageBubbleRightAnimate2");
+  gsap.set(messageBubbleRightAnimate2, {
+    yPercent: 0,
+    opacity: 0
+  });
+
+  gsap.to(messageBubbleRightAnimate2, {
+    scrollTrigger: {
+      trigger: messageBubbleRightAnimate2,
+      start: "top 80%",
+      end: "bottom 5%",
+      // markers: true,
+      scrub: true
+    },
+    yPercent: -100,
+    opacity: 1
+  })
+
+  const messageBubbleLeftAnimate3 = document.getElementById("messageBubbleLeftAnimate3");
+  gsap.set(messageBubbleLeftAnimate3, {
+    yPercent: 0,
+    opacity: 0
+  });
+
+  gsap.to(messageBubbleLeftAnimate3, {
+    scrollTrigger: {
+      trigger: messageBubbleLeftAnimate3,
+      start: "top 80%",
+      end: "bottom 5%",
+      // markers: true,
+      scrub: true
+    },
+    yPercent: -200,
+    opacity: 1
+  })
+
+  const animatedHeart = document.getElementById("animatedHeart")
+  gsap.set(animatedHeart, {
+    yPercent: 0,
+    opacity: 0
+  });
+
+  gsap.to(animatedHeart, {
+    scrollTrigger: {
+      trigger: animatedHeart,
+      start: "top 80%",
+      end: "bottom 5%",
+      // markers: true,s
+      scrub: true
+    },
+    yPercent: -200,
+    opacity: 1
+  })
+
   return (
     <div>
       {/* <LoginComponent />   */}
@@ -257,11 +328,72 @@ const LandingPage = (props) => {
             <figure id='ball3' class="ball"><span class="shadow"></span></figure>
           </div>
           <div className='messagesAnimated'>
-            <div className='messageBubbleLeftAnimate'>
-            <figure id='messageBox1' class="messageBox1">
-              This is a test
-              <div className='messageTri'></div>
-            </figure>
+            <div id='messageBubbleLeftAnimate' className='messageBubbleLeftAnimate'>
+              <figure id='messageBox1' class="messageBox1">
+                Sign Up For Free!
+                <div className='messageTri'></div>
+              </figure>
+            </div>
+            <div id='messageBubbleRightAnimate2' className='messageBubbleRightAnimate2'>
+              <figure id='messageBox2' class="messageBox2">
+                😱
+                <div className='messageTri2'></div>
+              </figure>
+            </div>
+            <div id='messageBubbleLeftAnimate3' className='messageBubbleLeftAnimate'>
+              <figure id='messageBox3' class="messageBox3">
+                Connect with Friends and Family!
+                <div className='messageTri3'></div>
+              </figure>
+            </div>
+            <div id='beatingHeart' className='beatingHeart'>
+            <svg id='animatedHeart' className='animatedHeart' width="268" height="119" viewBox="0 0 718 669" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M45 266V132H90V88H135V44H268V88H313V132H402V88H447V44H582V88H627V132H673V310H628V403H583V447H538V491H493V535H448V579H403V623H313V578H269V533H225V488H181V443H137V398V311H89V266H45Z" fill="#ED2124"/>
+<rect x="313" y="623" width="90" height="46" fill="black"/>
+<rect x="269" y="578" width="44" height="45" fill="black"/>
+<rect x="314" y="578" width="44" height="45" fill="#5F0B0B"/>
+<rect x="270" y="533" width="44" height="45" fill="#5F0B0B"/>
+<rect x="226" y="490" width="44" height="45" fill="#5F0B0B"/>
+<rect x="181" y="443" width="44" height="45" fill="#5F0B0B"/>
+<rect x="137" y="398" width="44" height="45" fill="#5F0B0B"/>
+<rect x="93" y="354" width="44" height="45" fill="#5F0B0B"/>
+<rect x="45" y="266" width="44" height="45" fill="#5F0B0B"/>
+<rect x="93" y="311" width="44" height="45" fill="#B44443"/>
+<rect x="182" y="398" width="44" height="45" fill="#B44443"/>
+<rect x="225" y="443" width="44" height="45" fill="#B44443"/>
+<rect x="269" y="488" width="44" height="45" fill="#B44443"/>
+<rect x="314" y="533" width="44" height="45" fill="#B44443"/>
+<rect x="181" y="488" width="44" height="45" fill="black"/>
+<rect x="93" y="398" width="44" height="45" fill="black"/>
+<rect x="45" y="311" width="48" height="87" fill="black"/>
+<rect x="137" y="443" width="44" height="45" fill="black"/>
+<rect x="225" y="533" width="44" height="45" fill="black"/>
+<rect x="448" y="579" width="44" height="45" transform="rotate(90 448 579)" fill="black"/>
+<rect x="538" y="491" width="44" height="45" transform="rotate(90 538 491)" fill="black"/>
+<rect x="628" y="403" width="44" height="45" transform="rotate(90 628 403)" fill="black"/>
+<rect x="672" y="88" width="44" height="45" transform="rotate(90 672 88)" fill="black"/>
+<rect x="627" y="44" width="44" height="45" transform="rotate(90 627 44)" fill="black"/>
+<rect x="447" y="44" width="44" height="45" transform="rotate(90 447 44)" fill="black"/>
+<rect x="313" y="44" width="44" height="45" transform="rotate(90 313 44)" fill="black"/>
+<rect x="135" y="44" width="44" height="45" transform="rotate(90 135 44)" fill="black"/>
+<rect x="90" y="88" width="44" height="45" transform="rotate(90 90 88)" fill="black"/>
+<rect x="45" y="132" width="179" height="45" transform="rotate(90 45 132)" fill="black"/>
+<rect x="268" width="44" height="133" transform="rotate(90 268 0)" fill="black"/>
+<rect x="402" y="88" width="44" height="89" transform="rotate(90 402 88)" fill="black"/>
+<rect x="582" width="44" height="135" transform="rotate(90 582 0)" fill="black"/>
+<rect x="673" y="310" width="93" height="45" transform="rotate(90 673 310)" fill="black"/>
+<rect x="627" y="176" width="93" height="46" transform="rotate(90 627 176)" fill="white"/>
+<rect x="581" y="132" width="46" height="46" transform="rotate(90 581 132)" fill="white"/>
+<rect x="535" y="87" width="46" height="46" transform="rotate(90 535 87)" fill="white"/>
+<rect x="489" y="87" width="46" height="42" transform="rotate(90 489 87)" fill="#F38284"/>
+<rect x="581" y="87" width="46" height="44" transform="rotate(90 581 87)" fill="#F38284"/>
+<rect x="625" y="130" width="46" height="44" transform="rotate(90 625 130)" fill="#F38284"/>
+<rect x="669" y="176" width="46" height="44" transform="rotate(90 669 176)" fill="#F38284"/>
+<rect x="625" y="269" width="43" height="44" transform="rotate(90 625 269)" fill="#F38284"/>
+<rect x="718" y="132" width="178" height="45" transform="rotate(90 718 132)" fill="black"/>
+<rect x="583" y="447" width="44" height="45" transform="rotate(90 583 447)" fill="black"/>
+<rect x="493" y="535" width="44" height="45" transform="rotate(90 493 535)" fill="black"/>
+</svg>
             </div>
           </div>
         </section>
@@ -322,8 +454,13 @@ const LandingPage = (props) => {
           </div>
         </section>
         <section className='contactSection'>
-          <div>
-            <p>Lorem ipsum dolor sit amet. Eos dignissimos minima cum voluptas exercitationem in tempore galisum ex deserunt quaerat et iure quidem. Et voluptates rerum est quos sapiente aut ipsa impedit non numquam dolorem ut quibusdam cupiditate est impedit consequatur. Qui harum velit qui quaerat velit et error error. Ea ullam optio et impedit aliquam est delectus voluptas. </p><p>Hic dolor voluptatem est voluptatem itaque vel autem quam in amet neque in minima exercitationem quo dolorem harum non magnam ullam. Qui nostrum officiis eum quia ratione est neque blanditiis qui aperiam possimus nam quibusdam veniam non voluptatem expedita ea pariatur voluptas? Aut mollitia natus et dignissimos laborum hic numquam voluptatem sed sint doloremque ut adipisci inventore vel quibusdam dolore. Est nemo magnam 33 consequatur illo et quas omnis et sint magni et eligendi laboriosam et ratione minus. Qui deserunt dolorem est enim voluptas in commodi harum sed quae tempore aut magni dolore et iure omnis est minus dolorum. Et suscipit tempore et inventore delectus aut iure minima quo velit tenetur. Et dolor velit ut nihil error ad velit quae eum aliquam dolorem! </p>
+          <div className='contactMeForm'>
+            <form>
+              <div>Contact Me Here!</div>
+              <input type='text' placeholder='Name' />
+              <input type='text' placeholder='Email' />
+              <input type='text' placeholder='Message' />
+            </form>
           </div>
           <div>
             <img alt='person on Computer' src={personOnComputer}></img>
