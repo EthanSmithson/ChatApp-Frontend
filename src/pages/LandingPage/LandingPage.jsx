@@ -12,6 +12,7 @@ const LandingPage = (props) => {
   var cursorBlock;
   var [cursorStationary, setCursorStationary] = useState(false);
   var [headerLinksAlter, setHeaderLinksAlter] = useState(false);
+  var [contactFlip, setContactFlip] = useState(false);
 
   setTimeout(() => {
     cursorBlock = document.getElementById("cursorBlock");    
@@ -50,6 +51,14 @@ const LandingPage = (props) => {
     },
     false
   );
+
+  const flipContactForm = (event) => {
+    event.preventDefault();
+    setContactFlip(true);
+    setTimeout(() => {
+      setContactFlip(false);
+    }, 4000);
+  };
 
   const info1Meta = document.getElementById('info1Meta');
   const info1Media = document.getElementById('info1Media');
@@ -278,6 +287,24 @@ const LandingPage = (props) => {
     opacity: 1
   })
 
+  const contactMeForm = document.getElementById("contactMeForm")
+  gsap.set(contactMeForm, {
+    yPercent: 20,
+    // opacity: 0
+  });
+
+  gsap.to(contactMeForm, {
+    scrollTrigger: {
+      trigger: contactMeForm,
+      start: "top 90%",
+      end: "bottom 5%",
+      // markers: true,
+      scrub: true
+    },
+    yPercent: 0,
+    opacity: 1
+  })
+
   return (
     <div>
       {/* <LoginComponent />   */}
@@ -400,7 +427,9 @@ const LandingPage = (props) => {
         <section className='infoSection'>
           <div id='info1' className='info1'>
             <div id='info1Meta' className='info1Meta'>
-              <p>Lorem ipsum dolor sit amet. Vel eligendi officia et sunt consequatur aut dolorem libero 33 commodi modi. Est placeat nostrum aut perspiciatis modi sed veritatis vero a alias numquam vel eligendi consequatur et eius animi ea quae velit! Et atque ipsam eum molestiae temporibus sit facilis culpa. Et maiores vitae est dicta quam hic illo corrupti rem mollitia necessitatibus et provident omnis cum tenetur quos non libero rerum! Sed quibusdam excepturi ab harum ipsam ut blanditiis repellendus! Et incidunt aliquam ut quidem culpa est tempore obcaecati. Rem harum doloremque aut aspernatur earum et porro internos rem accusamus inventore. In doloribus consequuntur eum dolorum libero sit numquam voluptatibus. Cum magni assumenda non possimus quibusdam qui impedit placeat hic incidunt facere? </p>
+              <h3>
+                Download to your mobile device to message whenever and wherever! Or use the web with our responsive design! 
+              </h3>
             </div>
             <div id='info1Media' className='info1Media'>
               {/* <img alt='Texting on Cell' src={textCell}></img> */}
@@ -449,21 +478,32 @@ const LandingPage = (props) => {
               <img alt='Texting on Cell' src={textCell}></img>
             </div>
             <div id='info2Meta' className='info2Meta'>
-              <p>Lorem ipsum dolor sit amet. Vel eligendi officia et sunt consequatur aut dolorem libero 33 commodi modi. Est placeat nostrum aut perspiciatis modi sed veritatis vero a alias numquam vel eligendi consequatur et eius animi ea quae velit! Et atque ipsam eum molestiae temporibus sit facilis culpa. Et maiores vitae est dicta quam hic illo corrupti rem mollitia necessitatibus et provident omnis cum tenetur quos non libero rerum! Sed quibusdam excepturi ab harum ipsam ut blanditiis repellendus! Et incidunt aliquam ut quidem culpa est tempore obcaecati. Rem harum doloremque aut aspernatur earum et porro internos rem accusamus inventore. In doloribus consequuntur eum dolorum libero sit numquam voluptatibus. Cum magni assumenda non possimus quibusdam qui impedit placeat hic incidunt facere? </p>
+              <h3>Lorem ipsum dolor sit amet. Vel eligendi officia et sunt consequatur aut dolorem libero 33 commodi modi. Est placeat nostrum aut perspiciatis modi sed veritatis vero a alias numquam vel eligendi consequatur et eius animi ea quae velit! Et atque ipsam eum molestiae temporibus sit facilis culpa. Et maiores vitae est dicta quam hic illo corrupti rem mollitia necessitatibus et provident omnis cum tenetur quos non libero rerum! Sed quibusdam excepturi ab harum ipsam ut blanditiis repellendus! Et incidunt aliquam ut quidem culpa est tempore obcaecati. Rem harum doloremque aut aspernatur earum et porro internos rem accusamus inventore. In doloribus consequuntur eum dolorum libero sit numquam voluptatibus. Cum magni assumenda non possimus quibusdam qui impedit placeat hic incidunt facere? </h3>
             </div>
           </div>
         </section>
         <section className='contactSection'>
-          <div className='contactMeForm'>
-            <form>
-              <div>Contact Me Here!</div>
-              <input type='text' placeholder='Name' />
-              <input type='text' placeholder='Email' />
-              <input type='text' placeholder='Message' />
-            </form>
+          <div id='contactMeForm' className='contactContainer'>
+            <div className={'contactMeForm'}>
+              <div className={contactFlip ? 'flipper contactFormFlip' : 'flipper notContactFormFlip'}>
+                  <form className='contactForm'>
+                    <div className='contactMeHeader'>Contact Me Here!</div>
+                    <input className='contactFormName' type='text' placeholder='Name' />
+                    <input className='contactFormEmail' type='text' placeholder='Email' />
+                    <textarea className='contactFormBody' type='text' placeholder='Hey There!' />
+                    <button onClick={flipContactForm} id='submitContactForm' className='contactFormButton'>Send!</button>
+                  </form>
+                </div>
+                <div className={contactFlip ? 'contactBack checkShow' : 'contactBack'}>
+                    <svg className='contactEmailSent' width="166" height="154" viewBox="0 0 166 154" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="77" cy="77" r="74" stroke="#107C10" stroke-width="6"/>
+                    <path d="M39 81L70.6938 104.353C74.0561 106.831 78.8214 105.845 81.0476 102.311C94.971 80.2087 125.019 40.187 161 15" stroke="#107C10" stroke-width="15"/>
+                    </svg>
+                </div>
+            </div>
           </div>
           <div>
-            <img alt='person on Computer' src={personOnComputer}></img>
+            <img className='personOnComputer' id='personOnComputer' alt='person on Computer' src={personOnComputer}></img>
           </div>
         </section>
     </div>

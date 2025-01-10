@@ -160,7 +160,18 @@
   }
   
   input {
-    font-size: 18px;
+    font-size: 14px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 300px;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid #757575;
+    color: #90B8F8;
+  }
+
+  textarea {
+    font-size: 14px;
     padding: 10px 10px 10px 5px;
     display: block;
     width: 300px;
