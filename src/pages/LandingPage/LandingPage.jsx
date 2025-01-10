@@ -7,12 +7,17 @@ import personOnComputer from './personOnComputer.png'
 import textCell from './phoneArt.jpg'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { event } from 'jquery';
 
 const LandingPage = (props) => {
   var cursorBlock;
   var [cursorStationary, setCursorStationary] = useState(false);
   var [headerLinksAlter, setHeaderLinksAlter] = useState(false);
   var [contactFlip, setContactFlip] = useState(false);
+  var [contactNameError, setContactNameError] = useState(false);
+  var [contactEmailError, setContactEmailError] = useState(false);
+  var [contactBodyError, setContactBodyError] = useState(false);
+
 
   setTimeout(() => {
     cursorBlock = document.getElementById("cursorBlock");    
@@ -53,7 +58,6 @@ const LandingPage = (props) => {
   );
 
   const flipContactForm = (event) => {
-    event.preventDefault();
     setContactFlip(true);
     setTimeout(() => {
       setContactFlip(false);
@@ -137,7 +141,7 @@ const LandingPage = (props) => {
   }
 
   const scrollToAbout = () => {
-    document.getElementById("info1").scrollIntoView({
+    document.getElementById("info1Meta").scrollIntoView({
       behavior: "smooth",
       block: 'nearest',
       inline: 'start'
@@ -289,21 +293,58 @@ const LandingPage = (props) => {
 
   const contactMeForm = document.getElementById("contactMeForm")
   gsap.set(contactMeForm, {
-    yPercent: 20,
+    yPercent: 40,
     // opacity: 0
   });
 
   gsap.to(contactMeForm, {
     scrollTrigger: {
       trigger: contactMeForm,
-      start: "top 90%",
-      end: "bottom 5%",
+      start: "top 100%",
+      end: "bottom 0%",
       // markers: true,
       scrub: true
     },
     yPercent: 0,
     opacity: 1
   })
+
+  function submitContactForm(formData) {
+
+    let data = {}
+    data.name = formData.get("name");
+    data.email = formData.get("email");
+    data.body = formData.get("body");
+
+
+
+    fetch('http://localhost:8080/contactMe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(data => contactValidate(data))
+      .catch(error => console.error('Error:', error));
+
+    // flipContactForm()
+  }
+
+  function contactValidate(data) {
+    console.log(data)
+    if (data.name === false) {
+      setContactNameError(true);
+    }
+    if (data.email === false) {
+      setContactEmailError(true);
+    }
+    if (data.body === false) {
+      setContactBodyError(true);
+    }
+
+  }
 
   return (
     <div>
@@ -350,25 +391,25 @@ const LandingPage = (props) => {
         </section>
         <section id='animatedSection' className='animatedSection'>
           <div className='balls'>
-            <figure id='ball1' class="ball"><span class="shadow"></span></figure>
-            <figure id='ball2' class="ball"><span class="shadow"></span></figure>
-            <figure id='ball3' class="ball"><span class="shadow"></span></figure>
+            <figure id='ball1' className="ball"><span className="shadow"></span></figure>
+            <figure id='ball2' className="ball"><span className="shadow"></span></figure>
+            <figure id='ball3' className="ball"><span className="shadow"></span></figure>
           </div>
           <div className='messagesAnimated'>
             <div id='messageBubbleLeftAnimate' className='messageBubbleLeftAnimate'>
-              <figure id='messageBox1' class="messageBox1">
+              <figure id='messageBox1' className="messageBox1">
                 Sign Up For Free!
                 <div className='messageTri'></div>
               </figure>
             </div>
             <div id='messageBubbleRightAnimate2' className='messageBubbleRightAnimate2'>
-              <figure id='messageBox2' class="messageBox2">
+              <figure id='messageBox2' className="messageBox2">
                 😱
                 <div className='messageTri2'></div>
               </figure>
             </div>
             <div id='messageBubbleLeftAnimate3' className='messageBubbleLeftAnimate'>
-              <figure id='messageBox3' class="messageBox3">
+              <figure id='messageBox3' className="messageBox3">
                 Connect with Friends and Family!
                 <div className='messageTri3'></div>
               </figure>
@@ -486,12 +527,15 @@ const LandingPage = (props) => {
           <div id='contactMeForm' className='contactContainer'>
             <div className={'contactMeForm'}>
               <div className={contactFlip ? 'flipper contactFormFlip' : 'flipper notContactFormFlip'}>
-                  <form className='contactForm'>
+                  <form action={submitContactForm} className='contactForm'>
                     <div className='contactMeHeader'>Contact Me Here!</div>
-                    <input className='contactFormName' type='text' placeholder='Name' />
-                    <input className='contactFormEmail' type='text' placeholder='Email' />
-                    <textarea className='contactFormBody' type='text' placeholder='Hey There!' />
-                    <button onClick={flipContactForm} id='submitContactForm' className='contactFormButton'>Send!</button>
+                    <input min={1} required className='contactFormName' type='text' name='name' placeholder='Name' />
+                    <input min={1} required className='contactFormEmail' type='text' name='email' placeholder='Email' />
+                    <textarea minLength={1} required className='contactFormBody' type='text' name='body' placeholder='Hey There!' />
+                    <button type='submit' 
+                    // onClick={flipContactForm}
+                     id='submitContactForm' 
+                     className='contactFormButton'>Send!</button>
                   </form>
                 </div>
                 <div className={contactFlip ? 'contactBack checkShow' : 'contactBack'}>

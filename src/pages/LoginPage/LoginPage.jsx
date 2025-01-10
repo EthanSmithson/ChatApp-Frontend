@@ -26,16 +26,16 @@ const LoginPage = () => {
       <div id='loginSide' className='loginSide loginActive'>
         <h3>Login</h3>
         <div className='loginInputs'>
-        <div class="input-group">
+        <div className="input-group">
           <input type="text" required></input>
-          <span class="highlight"></span>
-          <span class="bar"></span>
+          <span className="highlight"></span>
+          <span className="bar"></span>
           <label>Username or Email</label>
         </div>
-        <div class="input-group">
+        <div className="input-group">
           <input type="text" required></input>
-          <span class="highlight"></span>
-          <span class="bar"></span>
+          <span className="highlight"></span>
+          <span className="bar"></span>
           <label>Password</label>
         </div>
         <span className='forgotPswd'>Forgot you password?</span>
@@ -51,40 +51,40 @@ const LoginPage = () => {
       <div id='registerSide' className='registerSide'>
         <h3>Register</h3>
           <div className='loginInputs'>
-            <div class="input-group">
+            <div className="input-group">
               <input type="text" required></input>
-              <span class="highlight"></span>
-              <span class="bar"></span>
+              <span className="highlight"></span>
+              <span className="bar"></span>
               <label>First Name</label>
             </div>
-            <div class="input-group">
+            <div className="input-group">
               <input type="text" required></input>
-              <span class="highlight"></span>
-              <span class="bar"></span>
+              <span className="highlight"></span>
+              <span className="bar"></span>
               <label>Last Name</label>
             </div>
-            <div class="input-group">
+            <div className="input-group">
               <input type="text" required></input>
-              <span class="highlight"></span>
-              <span class="bar"></span>
+              <span className="highlight"></span>
+              <span className="bar"></span>
               <label>Email</label>
             </div>
-            <div class="input-group">
+            <div className="input-group">
               <input type="text" required></input>
-              <span class="highlight"></span>
-              <span class="bar"></span>
+              <span className="highlight"></span>
+              <span className="bar"></span>
               <label>Username</label>
             </div>
-            <div class="input-group">
+            <div className="input-group">
               <input type="text" required></input>
-              <span class="highlight"></span>
-              <span class="bar"></span>
+              <span className="highlight"></span>
+              <span className="bar"></span>
               <label>Password</label>
             </div>
-            <div class="input-group">
+            <div className="input-group">
               <input type="text" required></input>
-              <span class="highlight"></span>
-              <span class="bar"></span>
+              <span className="highlight"></span>
+              <span className="bar"></span>
               <label>Confirm Password</label>
             </div>
           </div>
