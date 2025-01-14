@@ -138,8 +138,8 @@
   .headerLinksAltered div {
     border: none;
     border-radius: 10000px;
-    background: #26282B;
-    color: white;
+    /* background: #26282B; */
+    color: #639efc;
 	cursor: pointer;
 	position: relative;
 	display: flex;
@@ -156,8 +156,8 @@
 	height: 103%;
 	width: 100.3%;
 	border-radius: 10000px;
-	background-color: #326bec;
-	background-image: linear-gradient(129deg, #326bec 0%, #90b8f8 100%);
+	/* background-color: #326bec; */
+	/* background-image: linear-gradient(129deg, #326bec 0%, #90b8f8 100%); */
  }
 
  .headerList {
@@ -612,6 +612,11 @@
 
  .info2Meta {
 	padding: 200px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
  }
 
  .info2 h3 {
@@ -1132,6 +1137,24 @@
 	box-shadow: rgb(50, 50, 50) 3px 3px 6px 0px inset, rgba(50, 50, 50, 0.5) -3px -3px 6px 1px inset;
 	padding: 18px 20px;
 	box-sizing: border-box;
+}
+
+.contactFormEmailError {
+	width: 100%;
+	height: 20px;
+	background: rgba(69, 71, 73, 0.58);
+	border-radius: 16px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(11.4px);
+	-webkit-backdrop-filter: blur(11.4px);
+	border: 1px solid rgba(69, 71, 73, 1);
+	box-shadow: rgb(50, 50, 50) 3px 3px 6px 0px inset, rgba(50, 50, 50, 0.5) -3px -3px 6px 1px inset;
+	padding: 18px 20px;
+	box-sizing: border-box;
+}
+
+.contactFormEmailError::placeholder {
+	color: rgb(167, 55, 55);
 }
 
 .contactFormBody {

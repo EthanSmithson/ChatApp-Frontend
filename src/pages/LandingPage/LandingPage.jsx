@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import LoginComponent from '../LoginPage/LoginPage';
 import './LandingPage.css'
 import asteroid from './asteroid.png'
@@ -7,7 +7,6 @@ import personOnComputer from './personOnComputer.png'
 import textCell from './phoneArt.jpg'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { event } from 'jquery';
 
 const LandingPage = (props) => {
   var cursorBlock;
@@ -20,8 +19,10 @@ const LandingPage = (props) => {
 
 
   setTimeout(() => {
-    cursorBlock = document.getElementById("cursorBlock");    
-    cursorBlock.addEventListener('animationend', cursorEnd);
+    cursorBlock = document.getElementById("cursorBlock");
+    if (cursorBlock) {
+      cursorBlock.addEventListener('animationend', cursorEnd);
+    }    
   }, 1000);
 
   function cursorEnd() {
@@ -334,16 +335,9 @@ const LandingPage = (props) => {
 
   function contactValidate(data) {
     console.log(data)
-    if (data.name === false) {
-      setContactNameError(true);
-    }
-    if (data.email === false) {
+    if (data.emailValid === false) {
       setContactEmailError(true);
     }
-    if (data.body === false) {
-      setContactBodyError(true);
-    }
-
   }
 
   return (
@@ -466,6 +460,7 @@ const LandingPage = (props) => {
           </div>
         </section>
         <section className='infoSection'>
+          <div className='infoSectionLine'></div>
           <div id='info1' className='info1'>
             <div id='info1Meta' className='info1Meta'>
               <h3>
@@ -515,11 +510,11 @@ const LandingPage = (props) => {
             </div>
           </div>
           <div className='info2'>
-            <div id='info2Media' className='info2Media'>
+            {/* <div id='info2Media' className='info2Media'>
               <img alt='Texting on Cell' src={textCell}></img>
-            </div>
+            </div> */}
             <div id='info2Meta' className='info2Meta'>
-              <h3>Lorem ipsum dolor sit amet. Vel eligendi officia et sunt consequatur aut dolorem libero 33 commodi modi. Est placeat nostrum aut perspiciatis modi sed veritatis vero a alias numquam vel eligendi consequatur et eius animi ea quae velit! Et atque ipsam eum molestiae temporibus sit facilis culpa. Et maiores vitae est dicta quam hic illo corrupti rem mollitia necessitatibus et provident omnis cum tenetur quos non libero rerum! Sed quibusdam excepturi ab harum ipsam ut blanditiis repellendus! Et incidunt aliquam ut quidem culpa est tempore obcaecati. Rem harum doloremque aut aspernatur earum et porro internos rem accusamus inventore. In doloribus consequuntur eum dolorum libero sit numquam voluptatibus. Cum magni assumenda non possimus quibusdam qui impedit placeat hic incidunt facere? </h3>
+              <h3>Create communities with Chat App, video calls, play games and more with our platform. Chat app combines work and play all in one place!</h3>
             </div>
           </div>
         </section>
@@ -530,7 +525,7 @@ const LandingPage = (props) => {
                   <form action={submitContactForm} className='contactForm'>
                     <div className='contactMeHeader'>Contact Me Here!</div>
                     <input min={1} required className='contactFormName' type='text' name='name' placeholder='Name' />
-                    <input min={1} required className='contactFormEmail' type='text' name='email' placeholder='Email' />
+                    <input min={1} required className={`${contactEmailError ? 'contactFormEmailError' : 'contactFormEmail'}`} type='text' name='email' placeholder={`${contactEmailError ? 'Please Enter a Valid Email!' : 'Email'}`}/>
                     <textarea minLength={1} required className='contactFormBody' type='text' name='body' placeholder='Hey There!' />
                     <button type='submit' 
                     // onClick={flipContactForm}
