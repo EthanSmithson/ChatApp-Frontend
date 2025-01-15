@@ -349,7 +349,7 @@ const LandingPage = (props) => {
         </div>
         <div id='headerLinks' className={headerLinksAlter ? 'headerLinks headerLinksAltered' : 'headerLinks'}>
           <div>
-            <ul className='headerList'>
+            <ul className={headerLinksAlter ? 'hideLinks' : 'headerList'}>
               <li onClick={() => scrollToHome()}>Home</li>
               <li onClick={() => scrollToAbout()} id='aboutBtn'>About</li>
               <li onClick={() => scrollToWork()}>My Work</li>
@@ -358,6 +358,17 @@ const LandingPage = (props) => {
           </div>
         </div>
         <div className='headerOptions'>
+          <div className={headerLinksAlter ? 'hamMenu showHamMenu' : 'hamMenu'}>
+            <div className='hamMenuLine'></div>
+            <div className='hamMenuLine'></div>
+            <div className='hamMenuLine'></div>
+            <ul className={headerLinksAlter ? 'hideLinks' : 'headerList'}>
+              <li onClick={() => scrollToHome()}>Home</li>
+              <li onClick={() => scrollToAbout()} id='aboutBtn'>About</li>
+              <li onClick={() => scrollToWork()}>My Work</li>
+              <li onClick={() => scrollToContact()}>Contact Me</li>
+            </ul>
+          </div>
           <NavLink to="/login"><button>Login</button></NavLink>
         </div>
       </header>
@@ -507,6 +518,32 @@ const LandingPage = (props) => {
 <path d="M30 123.088V88.5294C31.7455 84.6588 36.0606 83.2304 38 83V130C34.5091 128.894 31.2121 124.931 30 123.088Z" fill="#3B4A5F"/>
 <path d="M161.5 697.5L194.5 680L355.5 585.5C377.5 609.333 434.9 652.1 488.5 632.5C542.1 612.9 636.167 617.667 676.5 622.5V872C645.667 875.667 546.6 879.6 397 866C247.4 852.4 177.667 748 161.5 697.5Z" fill="white"/>
 </svg>
+            </div>
+          </div>
+          <div className='screenshotCards'>
+            <div className='card'>
+              <div className='cardImage'>
+                this is an image
+              </div>
+              <div className='cardDescription'>
+                Chat Instantly with Anyone
+              </div>
+            </div>
+            <div className='card'>
+              <div className='cardImage'>
+                this is an image
+              </div>
+              <div className='cardDescription'>
+                Find where you fit in
+              </div>
+            </div>
+            <div className='card'>
+              <div className='cardImage'>
+                this is an image
+              </div>
+              <div className='cardDescription'>
+                Network like never before
+              </div>
             </div>
           </div>
           <div className='info2'>
