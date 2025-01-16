@@ -16,6 +16,7 @@ const LandingPage = (props) => {
   var [contactNameError, setContactNameError] = useState(false);
   var [contactEmailError, setContactEmailError] = useState(false);
   var [contactBodyError, setContactBodyError] = useState(false);
+  var [showHamOptions, setShowHamOptions] = useState(false);
 
 
   setTimeout(() => {
@@ -340,6 +341,14 @@ const LandingPage = (props) => {
     }
   }
 
+  const openHam = () => {
+    if (showHamOptions === true) {
+      setShowHamOptions(false);
+    } else {
+      setShowHamOptions(true);
+    }
+  }
+
   return (
     <div>
       {/* <LoginComponent />   */}
@@ -358,17 +367,19 @@ const LandingPage = (props) => {
           </div>
         </div>
         <div className='headerOptions'>
-          <div className={headerLinksAlter ? 'hamMenu showHamMenu' : 'hamMenu'}>
+          <div id='hamBtn' onClick={openHam} className={headerLinksAlter ? 'hamMenu showHamMenu' : 'hamMenu'}>
             <div className='hamMenuLine'></div>
             <div className='hamMenuLine'></div>
             <div className='hamMenuLine'></div>
-            <ul className={headerLinksAlter ? 'hideLinks' : 'headerList'}>
-              <li onClick={() => scrollToHome()}>Home</li>
-              <li onClick={() => scrollToAbout()} id='aboutBtn'>About</li>
-              <li onClick={() => scrollToWork()}>My Work</li>
-              <li onClick={() => scrollToContact()}>Contact Me</li>
-            </ul>
           </div>
+          <div className={showHamOptions ? 'hamburgerOptions showHamburgerOptions' : 'hamburgerOptions'}>
+              <ul className={headerLinksAlter ? 'hamburgerOptionsHide' : ''}>
+                <li onClick={() => scrollToHome()}>Home</li>
+                <li onClick={() => scrollToAbout()} id='aboutBtn'>About</li>
+                <li onClick={() => scrollToWork()}>My Work</li>
+                <li onClick={() => scrollToContact()}>Contact Me</li>
+              </ul>
+            </div>
           <NavLink to="/login"><button>Login</button></NavLink>
         </div>
       </header>
