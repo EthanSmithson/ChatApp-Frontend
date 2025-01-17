@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-// import LoginComponent from '../LoginPage/LoginPage';
 import './LandingPage.css'
 import asteroid from './asteroid.png'
 import { NavLink } from 'react-router-dom';
 import personOnComputer from './personOnComputer.png'
-import textCell from './phoneArt.jpg'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -42,6 +40,7 @@ const LandingPage = (props) => {
     scrollY = window.scrollY;
     if (scrollY < 850) {
       setHeaderLinksAlter(false);
+      setShowHamOptions(false);
     }
     if (scrollY >= 850) {
       setHeaderLinksAlter(true);
@@ -143,7 +142,7 @@ const LandingPage = (props) => {
   }
 
   const scrollToAbout = () => {
-    document.getElementById("info1Meta").scrollIntoView({
+    document.getElementById("info1").scrollIntoView({
       behavior: "smooth",
       block: 'nearest',
       inline: 'start'
@@ -372,8 +371,8 @@ const LandingPage = (props) => {
             <div className='hamMenuLine'></div>
             <div className='hamMenuLine'></div>
           </div>
-          <div className={showHamOptions ? 'hamburgerOptions showHamburgerOptions' : 'hamburgerOptions'}>
-              <ul className={headerLinksAlter ? 'hamburgerOptionsHide' : ''}>
+          <div className={showHamOptions ? 'hamburgerOptions' : 'hamburgerOptions'}>
+              <ul className={showHamOptions ? 'hamburgerOptionsHide hamburgerOptionsSlide' : 'hamburgerOptionsHide'}>
                 <li onClick={() => scrollToHome()}>Home</li>
                 <li onClick={() => scrollToAbout()} id='aboutBtn'>About</li>
                 <li onClick={() => scrollToWork()}>My Work</li>
@@ -482,7 +481,6 @@ const LandingPage = (props) => {
           </div>
         </section>
         <section className='infoSection'>
-          <div className='infoSectionLine'></div>
           <div id='info1' className='info1'>
             <div id='info1Meta' className='info1Meta'>
               <h3>
@@ -491,7 +489,7 @@ const LandingPage = (props) => {
             </div>
             <div id='info1Media' className='info1Media'>
               {/* <img alt='Texting on Cell' src={textCell}></img> */}
-              <svg id='handCell' className='handCell' width="677" height="876" viewBox="0 0 677 876" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg id='handCell' className='handCell' width="577" height="776" viewBox="0 0 677 876" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M11.4295 97.2377C24.7879 83.3191 45.6604 93.758 49 93.758V124.379C44.3246 122.709 39.2595 127.395 37.3114 129.946V155C34.5284 153.608 25.9567 147.902 13.9342 136.21C-1.09404 121.595 -1.92894 111.156 11.4295 97.2377Z" fill="#8F5C27"/>
 <path d="M38 471.412V36.1774C38 15.7607 59.5682 4.21885 70.3523 1H254.829C279.61 2.65541 289.935 25.1414 292 36.1774V464.514C290.899 490.449 267.678 500.611 256.206 502.451H78.6125C58.2374 506.865 43.0479 483.597 38 471.412Z" fill="#192F33" stroke="#262431"/>
 <path d="M279 91H50V38.4333C54.4145 19.6199 69.3133 14.9166 76.2108 14.9166C129.782 14.2249 240.649 13.2566 255.548 14.9166C270.447 16.5766 277.391 31.286 279 38.4333V91Z" fill="#4B5F9E" stroke="#262431"/>
@@ -558,9 +556,7 @@ const LandingPage = (props) => {
             </div>
           </div>
           <div className='info2'>
-            {/* <div id='info2Media' className='info2Media'>
-              <img alt='Texting on Cell' src={textCell}></img>
-            </div> */}
+          <div className='infoSectionLine'></div>
             <div id='info2Meta' className='info2Meta'>
               <h3>Create communities with Chat App, video calls, play games and more with our platform. Chat app combines work and play all in one place!</h3>
             </div>
@@ -576,7 +572,7 @@ const LandingPage = (props) => {
                     <input min={1} required className={`${contactEmailError ? 'contactFormEmailError' : 'contactFormEmail'}`} type='text' name='email' placeholder={`${contactEmailError ? 'Please Enter a Valid Email!' : 'Email'}`}/>
                     <textarea minLength={1} required className='contactFormBody' type='text' name='body' placeholder='Hey There!' />
                     <button type='submit' 
-                    // onClick={flipContactForm}
+                    onClick={flipContactForm}
                      id='submitContactForm' 
                      className='contactFormButton'>Send!</button>
                   </form>

@@ -57,6 +57,7 @@
 	color: white;
 	position: fixed;
 	top: 0%;
+	z-index: 100;
  }
 
  /* @keyframes headerAlter {
@@ -203,24 +204,25 @@
 
  .hamburgerOptions {
 	position: absolute;
-    width: 0px;
+    width: 500px;
     height: 1.5vh;
     margin-right: 650px;
     display: flex;
     align-items: center;
     justify-content: center;
 	z-index: -1;
-	opacity: 0;
-	
+	/* opacity: 0; */
+	transition: all .5s;
+	overflow: hidden;
  }
 
- .showHamburgerOptions {
+ /* .showHamburgerOptions {
 	opacity: 1;	
 	transition: all .5s;
 	width: 600px;
- }
+ } */
 
- .hamburgerOptions ul {
+ .hamburgerOptionsHide {
 	width: 100%;
     display: flex;
     flex-direction: row;
@@ -228,6 +230,14 @@
     justify-content: space-evenly;
 	text-decoration: none;
 	list-style: none;
+	position: absolute;
+	margin-left: 900px;
+	transition: all .3s;
+ }
+
+ .hamburgerOptionsSlide {
+	margin-left: 0px;
+	transition: all .5s;
  }
 
  .headerOptions button {
@@ -646,14 +656,59 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	padding: 15vh 0 15vh 0;
  }
 
- .info1, .info2 {
+.infoSectionLine {
+	position: absolute;
+	width: 1px;
+	height: 55vh;
+	background-color: #21D4FD;
+	background-image: linear-gradient(180deg, #21D4FD 0%, #B721FF 100%);
+	top: 570vh;
+    left: 50%;
+    /* transform: translate(-50%, -50%); */
+}
+
+@keyframes slideLine {
+	0% {
+		transform: translateY(0%);
+	}
+	100% {
+		transform: translateY(100%);
+	}
+}
+
+.infoSectionLine::before {
+	content: "";
+	width: 100%;
 	height: 100%;
+	background-color: #131417;
+	position: absolute;
+	animation-name: slideLine;
+	animation-duration: .51s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-play-state: paused;
+	animation-delay: calc(var(--scroll) * -2.4s);
+	animation-fill-mode: both;
+}
+
+ .info1, .info2 {
     width: 100%;
     display: flex;
     align-items: center;
 	overflow: hidden;
+ }
+
+ .info1 {
+	height: 600vh;
+	padding: 15vh 0 15vh 0;
+ }
+
+ .info2 {
+	height: 100%;
+	margin-top: 90vh;
  }
 
  .info1Meta {
@@ -677,6 +732,61 @@
  .info2 h3 {
 	font-size: 35px;
     font-weight: 100;
+	position: relative;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	background: #131417;
+	padding: 45px;
+ }
+
+ @keyframes cornerBorder {
+	0% {
+		opacity: 0;
+		transform: scale(80%);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(100%);
+	}
+ }
+
+ .info2 h3::before {
+	content: "";
+	background-color: #21D4FD;
+	background-image: linear-gradient(111deg, #21D4FD 0%, #B721FF 100%);
+	width: 10%;
+	height: 45%;
+	position: absolute;
+	z-index: -1;
+	top: -3%;
+	left: -.5%;
+	animation-name: cornerBorder;
+	animation-duration: .75s;
+	/* animation-timing-function: linear; */
+	animation-iteration-count: infinite;
+	animation-play-state: paused;
+	animation-delay: calc(var(--scroll) * -3s);
+	animation-fill-mode: both;
+ }
+
+ .info2 h3::after {
+	content: "";
+	background-color: #21D4FD;
+	background-image: linear-gradient(295deg, #21D4FD 0%, #B721FF 100%);
+	width: 10%;
+	height: 45%;
+	position: absolute;
+	z-index: -1;
+	bottom: -2%;
+	right: -.43%;
+	animation-name: cornerBorder;
+	animation-duration: .75s;
+	/* animation-timing-function: linear; */
+	animation-iteration-count: infinite;
+	animation-play-state: paused;
+	animation-delay: calc(var(--scroll) * -3s);
+	animation-fill-mode: both;
  }
 
  @keyframes pulseBubble {
@@ -1045,13 +1155,14 @@
 
 .contactSection {
 	width: 100%;
-	height: 900px;
+	height: 110vh;
 	/* background-color: #0093E9;
 	background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%); */
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-evenly;
+	margin-top: 50vh;
 }
 
 .contactMeForm {
@@ -1076,6 +1187,21 @@
 	-webkit-transform-origin: 100% 200px;
 	-webkit-transform-style: preserve-3d;
 	box-shadow: rgba(50, 107, 236, 0.25) 100px 54px 700px, rgba(50, 107, 236, 0.12) 0px -12px 360px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(144, 184, 248, 0.09) 0px -3px 5px;
+}
+
+
+.contactContainer::after {
+	content: "";
+    z-index: -1;
+    width: 78.2%;
+    height: 78%;
+    background-color: #21D4FD;
+    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+    border-radius: 16px;
+    padding: 60px;
+    position: absolute;
+    padding: 60px 60px;
+    border-radius: 20px;
 }
 
 .contactMeForm form {
@@ -1280,6 +1406,7 @@
 	width: 1500px;
 	height: 250vh;
 	margin: auto;
+	margin-top: 60vh;
  }
 
  .screenshotCards .card {
@@ -1290,7 +1417,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-	box-shadow: rgba(50, 107, 236, 0.25) 0px 54px 500px, rgba(50, 107, 236, 0.12) 0px -12px 60px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(144, 184, 248, 0.09) 0px -3px 5px;
+	box-shadow: rgba(183, 33, 225, 0.25) -100px 25px 200px, rgba(50, 107, 236, 0.52) 70px -60px 200px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(144, 184, 248, 0.09) 0px -3px 5px;
  }
 
  .cardImage {
@@ -1300,7 +1427,8 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-	background: #5F85DB;
+	background-color: #21D4FD;
+	background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
  }
