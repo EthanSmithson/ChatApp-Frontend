@@ -39,6 +39,27 @@ const LoginPage = () => {
       .catch(error => console.error('Error:', error));
   }
 
+  const registerUser = (formData) => {
+    data = {}
+    data.firstName = formData.get("firstName");
+    data.lastName = formData.get("lastName");
+    data.email = formData.get("email");
+    data.username = formData.get("username");
+    data.password = formData.get("password");
+    data.confirmPassword = formData.get("confirmPassword");
+
+    fetch('http://localhost:8080/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+  }
+
   return (
     <div className='loginContainer'>
       <div id='loginSide' className='loginSide loginActive'>
@@ -69,49 +90,51 @@ const LoginPage = () => {
         <h1 className='panelHeader'>Chat App</h1>
       </div>
       <div id='registerSide' className='registerSide'>
+        <form action={registerUser} className='registerForm'>
         <h3>Register</h3>
           <div className='loginInputs'>
             <div className="input-group">
-              <input type="text" required></input>
+              <input name='firstName' type="text" required></input>
               <span className="highlight"></span>
               <span className="bar"></span>
               <label>First Name</label>
             </div>
             <div className="input-group">
-              <input type="text" required></input>
+              <input name='lastName' type="text" required></input>
               <span className="highlight"></span>
               <span className="bar"></span>
               <label>Last Name</label>
             </div>
             <div className="input-group">
-              <input type="text" required></input>
+              <input name='email' type="text" required></input>
               <span className="highlight"></span>
               <span className="bar"></span>
               <label>Email</label>
             </div>
             <div className="input-group">
-              <input type="text" required></input>
+              <input name='username' type="text" required></input>
               <span className="highlight"></span>
               <span className="bar"></span>
               <label>Username</label>
             </div>
             <div className="input-group">
-              <input type="text" required></input>
+              <input name='password' type="text" required></input>
               <span className="highlight"></span>
               <span className="bar"></span>
               <label>Password</label>
             </div>
             <div className="input-group">
-              <input type="text" required></input>
+              <input name='confirmPassword' type="text" required></input>
               <span className="highlight"></span>
               <span className="bar"></span>
               <label>Confirm Password</label>
             </div>
           </div>
           <div className='loginLinks'>
-            <div><button className='loginBtn'>Register</button></div>
+            <div><button type='submit' className='loginBtn'>Register</button></div>
             <div><button onClick={activateLogin} className='registerBtn'>Login</button></div>
-          </div>
+          </div>  
+        </form>
       </div>
     </div>
   );
