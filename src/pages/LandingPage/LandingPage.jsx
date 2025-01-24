@@ -15,6 +15,7 @@ const LandingPage = (props) => {
   var [contactEmailError, setContactEmailError] = useState(false);
   var [contactBodyError, setContactBodyError] = useState(false);
   var [showHamOptions, setShowHamOptions] = useState(false);
+  var [showMobileHamOptions, setShowMobileHamOptions] = useState(false);
 
 
   setTimeout(() => {
@@ -348,6 +349,15 @@ const LandingPage = (props) => {
     }
   }
 
+
+  const openMobileHam = () => {
+    if (showMobileHamOptions === true) {
+      setShowMobileHamOptions(false);
+    } else {
+      setShowMobileHamOptions(true);
+    }
+  }
+
   return (
     <div>
       {/* <LoginComponent />   */}
@@ -380,6 +390,22 @@ const LandingPage = (props) => {
               </ul>
             </div>
           <NavLink to="/login"><button>Login</button></NavLink>
+        </div>
+        <div className='headerOptionsMobile'>
+          <div id='hamBtn' onClick={openMobileHam} className={headerLinksAlter ? 'hamMenu showHamMenu' : 'hamMenu showHamMenu'}>
+            <div className='hamMenuLine'></div>
+            <div className='hamMenuLine'></div>
+            <div className='hamMenuLine'></div>
+          </div>
+          <div className={showMobileHamOptions ? 'mobileHamburgerOptions' : 'mobileHamburgerOptions'}>
+              <ul className={showMobileHamOptions ? 'mobileHamburgerOptionsHide mobileHamburgerOptionsShow' : 'mobileHamburgerOptionsHide'}>
+                <li onClick={() => scrollToHome()}>Home</li>
+                <li onClick={() => scrollToAbout()} id='aboutBtn'>About</li>
+                <li onClick={() => scrollToWork()}>My Work</li>
+                <li onClick={() => scrollToContact()}>Contact Me</li>
+                <li><NavLink to="/login"><button>Login</button></NavLink></li>
+              </ul>
+            </div>
         </div>
       </header>
       <img className='asteroidImage' alt='ateroid' src={asteroid}></img>
@@ -544,6 +570,14 @@ const LandingPage = (props) => {
               </div>
               <div className='cardDescription'>
                 Find where you fit in
+              </div>
+            </div>
+            <div className='card'>
+              <div className='cardImage'>
+                this is an image
+              </div>
+              <div className='cardDescription'>
+                Network like never before
               </div>
             </div>
             <div className='card'>

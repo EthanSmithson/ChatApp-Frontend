@@ -1397,16 +1397,26 @@
 	z-index: -1;
 	text-decoration: none;
  }
-
+ 
+ @keyframes cardSlider {
+	0% {
+		transform: translateX(0px);
+		box-shadow: rgba(183, 33, 225, 0.25) -100px 25px 50px, rgba(50, 107, 236, 0.52) 70px -60px 50px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(144, 184, 248, 0.09) 0px -3px 5px;
+	}
+	100% {
+		transform: translateX(-300px);
+		box-shadow: rgba(194, 3, 247, 0.25) -100px 25px 250px, rgba(37, 103, 255, 0.52) 70px -60px 250px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(144, 184, 248, 0.09) 0px -3px 5px;
+	}
+ }
  .screenshotCards {
 	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-evenly;
-	width: 1500px;
-	height: 250vh;
-	margin: auto;
-	margin-top: 60vh;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 110%;
+    height: 250vh;
+	/* margin-left: 150px; */
+    margin: 60vh -25px 55px 55px;
  }
 
  .screenshotCards .card {
@@ -1417,7 +1427,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-	box-shadow: rgba(183, 33, 225, 0.25) -100px 25px 200px, rgba(50, 107, 236, 0.52) 70px -60px 200px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(144, 184, 248, 0.09) 0px -3px 5px;
+	animation-name: cardSlider;
+	animation-duration: .8s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-play-state: paused;
+	animation-delay: calc(var(--scroll) * -1.8s);
+	animation-fill-mode: both;
  }
 
  .cardImage {
@@ -1445,6 +1461,107 @@
 	background: #26282B;
 	font-size: 18px;
     font-weight: 100;
+ }
+
+ .headerOptionsMobile {
+	display: none;
+ }
+
+ @media (max-width: 1238px) {
+	
+	.headerLinks {
+		display: none;
+	}
+
+	.headerOptions {
+		display: none;
+	}
+
+	.headerOptionsMobile {
+		text-decoration: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+	}
+
+	.hamMenu {
+		height: 11px;
+		width: 25px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+		cursor: pointer;
+		transition: all .3s;
+	}
+	
+	.hamMenuLine {
+		width: 20px;
+		height: .5px;
+		background: white;
+	 }
+
+	 .mobileHamburgerOptions {
+		position: absolute;
+		top: 65%;
+		margin-left: 2%;
+	 }
+
+	 .mobileHamburgerOptionsHide {
+		opacity: 0;
+		transition: all .3s;
+		list-style: none;
+	 }
+
+	 .mobileHamburgerOptionsHide li {
+		padding: .5rem;
+	 }
+
+	 .mobileHamburgerOptionsHide button {
+		height: 30px;
+		width: 70px;
+		border: none;
+		border-radius: 6px;
+		background: #26282B;
+		color: white;
+		cursor: pointer;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-decoration: none;
+		margin-top: 5px;
+	 }
+
+	 .mobileHamburgerOptionsShow {
+		opacity: 1;
+		transition: all .3s;
+	 }
+
+	 .landingSection1 {
+		width: 100%;
+		height: fit-content;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin-top: 200px;
+		color: rgb(233, 233, 233);	
+	 }
+
+ }
+
+ @media (max-width: 1486px) {
+	
+	.screenshotCards {
+		display: grid;
+		width: 100%;
+		height: 250vh;
+		row-gap: 70px;
+		grid-template-columns: auto auto;
+	 }
+	 	
  }
 
 /*
