@@ -6,6 +6,7 @@ import personOnComputer from './personOnComputer.png'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+
 const LandingPage = (props) => {
   var cursorBlock;
   var [cursorStationary, setCursorStationary] = useState(false);
@@ -293,23 +294,23 @@ const LandingPage = (props) => {
     opacity: 1
   })
 
-  const contactMeForm = document.getElementById("contactMeForm")
-  gsap.set(contactMeForm, {
-    yPercent: 40,
-    // opacity: 0
-  });
+  // const contactMeForm = document.getElementById("contactMeForm")
+  // gsap.set(contactMeForm, {
+  //   yPercent: 40,
+  //   // opacity: 0
+  // });
 
-  gsap.to(contactMeForm, {
-    scrollTrigger: {
-      trigger: contactMeForm,
-      start: "top 100%",
-      end: "bottom 0%",
-      // markers: true,
-      scrub: true
-    },
-    yPercent: 0,
-    opacity: 1
-  })
+  // gsap.to(contactMeForm, {
+  //   scrollTrigger: {
+  //     trigger: contactMeForm,
+  //     start: "top 100%",
+  //     end: "bottom 0%",
+  //     // markers: true,
+  //     scrub: true
+  //   },
+  //   yPercent: 0,
+  //   opacity: 1
+  // })
 
   function submitContactForm(formData) {
 
@@ -597,32 +598,37 @@ const LandingPage = (props) => {
           </div>
         </section>
         <section className='contactSection'>
-          <div id='contactMeForm' className='contactContainer'>
-            <div className={'contactMeForm'}>
-              <div className={contactFlip ? 'flipper contactFormFlip' : 'flipper notContactFormFlip'}>
-                  <form action={submitContactForm} className='contactForm'>
-                    <div className='contactMeHeader'>Contact Me Here!</div>
-                    <input min={1} required className='contactFormName' type='text' name='name' placeholder='Name' />
-                    <input min={1} required className={`${contactEmailError ? 'contactFormEmailError' : 'contactFormEmail'}`} type='text' name='email' placeholder={`${contactEmailError ? 'Please Enter a Valid Email!' : 'Email'}`}/>
-                    <textarea minLength={1} required className='contactFormBody' type='text' name='body' placeholder='Hey There!' />
-                    <button type='submit' 
-                    onClick={flipContactForm}
-                     id='submitContactForm' 
-                     className='contactFormButton'>Send!</button>
-                  </form>
-                </div>
-                <div className={contactFlip ? 'contactBack checkShow' : 'contactBack'}>
-                    <svg className='contactEmailSent' width="166" height="154" viewBox="0 0 166 154" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="77" cy="77" r="74" stroke="#107C10" stroke-width="6"/>
-                    <path d="M39 81L70.6938 104.353C74.0561 106.831 78.8214 105.845 81.0476 102.311C94.971 80.2087 125.019 40.187 161 15" stroke="#107C10" stroke-width="15"/>
-                    </svg>
-                </div>
-            </div>
-          </div>
           <div>
             <img className='personOnComputer' id='personOnComputer' alt='person on Computer' src={personOnComputer}></img>
           </div>
         </section>
+        <div className='messageMeContainer'>
+          <div className='messageMeIcon'>
+            <i class="fa-regular fa-message fa-lg"></i>
+          </div>
+          <div id='contactMeForm' className='contactContainer'>
+              <div className={'contactMeForm'}>
+                <div className={contactFlip ? 'flipper contactFormFlip' : 'flipper notContactFormFlip'}>
+                    <form action={submitContactForm} className='contactForm'>
+                      <div className='contactMeHeader'>Contact Me Here!</div>
+                      <input min={1} required className='contactFormName' type='text' name='name' placeholder='Name' />
+                      <input min={1} required className={`${contactEmailError ? 'contactFormEmailError' : 'contactFormEmail'}`} type='text' name='email' placeholder={`${contactEmailError ? 'Please Enter a Valid Email!' : 'Email'}`}/>
+                      <textarea minLength={1} required className='contactFormBody' type='text' name='body' placeholder='Hey There!' />
+                      <button type='submit' 
+                      onClick={flipContactForm}
+                      id='submitContactForm' 
+                      className='contactFormButton'>Send!</button>
+                    </form>
+                  </div>
+                  <div className={contactFlip ? 'contactBack checkShow' : 'contactBack'}>
+                      <svg className='contactEmailSent' width="166" height="154" viewBox="0 0 166 154" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="77" cy="77" r="74" stroke="#107C10" stroke-width="6"/>
+                      <path d="M39 81L70.6938 104.353C74.0561 106.831 78.8214 105.845 81.0476 102.311C94.971 80.2087 125.019 40.187 161 15" stroke="#107C10" stroke-width="15"/>
+                      </svg>
+                  </div>
+              </div>
+            </div>
+        </div>
     </div>
   );
 }

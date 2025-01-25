@@ -462,6 +462,7 @@
 	flex-direction: column;
 	width: 500px;
 	align-items: flex-start;
+	padding: 30px;
  }
 
  .mainSub {
@@ -736,7 +737,7 @@
 	display: flex;
 	align-items: center;
 	text-align: center;
-	background: #121417;
+	background: #121316;
 	padding: 45px;
  }
 
@@ -1228,12 +1229,49 @@
 	padding: 15px;
 } */
 
+.messageMeContainer {
+	height: fit-content;
+	width: fit-content;
+	position: fixed;
+	bottom: 5%;
+	right: 4%;
+ }
+
+ .messageMeContainer i {
+	color:  white;
+ }
+
+ .messageMeIcon {
+	width: 50px;
+    height: 50px;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 40%, #80D0C7 100%);
+    border-radius: 50%;
+    float: right;
+    position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+ }
+
+ .messageMeIcon::after {
+	content: "";
+	position: absolute;
+	width: 106%;
+    height: 106%;
+    background-color: #21D4FD;
+    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+    border-radius: 50%;
+	z-index: -1;
+ }
+
 .contactContainer {
 	height: fit-content;
 	width: fit-content;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	display: none;
 }
 
 .contactForm, .contactBack {
@@ -1479,6 +1517,10 @@
 		margin: 0 auto;
 	 }
 
+	 .infoSectionLine {
+		display: none;
+	 }
+
 	 .screenshotCards .card {
 		height: 450px;
 		width: 400px;
@@ -1503,6 +1545,16 @@
 
 	 .personOnComputer {
 		display: none;
+	 }
+
+	 .contactSection {
+		width: 100%;
+		height: 110vh;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		margin-top: 50vh;
 	 }
 	 	
  }
@@ -1658,7 +1710,7 @@
 
  }
 
- @media (max-width: 939px) {
+ @media (max-width: 1000px) {
 
 	.landingSection1 {
 		width: 100%;
@@ -1670,6 +1722,34 @@
 		margin-top: 200px;
 		color: rgb(233, 233, 233);	
 	 }	
+
+	 .info1 {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		overflow: hidden;
+	 }
+
+	.info2 {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		height: 200vh;
+		margin-top: 90vh;
+		overflow: visible;
+	}
+
+	 .infoSection {
+		height: 450vh;
+		width: 100%;
+		margin-top: 40vh;
+		color: white;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 15vh 0 15vh 0;
+	 }
 	 
  }
 
