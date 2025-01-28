@@ -64,7 +64,7 @@
         const body = document.body
 
         window.addEventListener('scroll', () => {
-          const y = 1 + (window.scrollY || window.pageYOffset) / 3000
+          const y = 1 + (window.scrollY || window.pageYOffset) / 5000
           const [r, g, b] = [red/y, green/y, blue/y].map(Math.round)
           body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
         })

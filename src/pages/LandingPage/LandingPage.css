@@ -200,6 +200,7 @@
  .showHamMenu {
 	opacity: 1;
 	transition: all .3s;
+	padding: 1rem;
  }
 
  .hamburgerOptions {
@@ -699,11 +700,11 @@
     width: 100%;
     display: flex;
     align-items: center;
-	overflow: hidden;
+	/* overflow: hidden; */
  }
 
  .info1 {
-	height: 600vh;
+	height: 400vh;
 	padding: 15vh 0 15vh 0;
  }
 
@@ -737,7 +738,7 @@
 	display: flex;
 	align-items: center;
 	text-align: center;
-	background: #121316;
+	background: #17191d;
 	padding: 45px;
  }
 
@@ -930,6 +931,39 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  .stickyWrapper {
+	width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .imageColumn {
+	width: 66%;
+    height: fit-content;
+  }
+
+  .mainImage1 {
+	width: 100%;
+    height: 70vh;
+    background: aliceblue;
+    margin: 0 10rem 0 -5rem;
+	background: rgba(53, 57, 65, 0.87);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(14.6px);
+    -webkit-backdrop-filter: blur(14.6px);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  }
+
+  .mainImage1Stuck {
+	position: fixed;
+	top: 18%;
+    left: -36%;
   }
 
   @keyframes messageBubbleLeft {
@@ -1144,7 +1178,7 @@
 	/* background-color: #0093E9; */
 	margin-left: 465px;
 	animation-name: heartBeat;
-	animation-duration: 1.2s;
+	animation-duration: 2s;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 	animation-fill-mode: both;
@@ -1156,14 +1190,26 @@
 
 .contactSection {
 	width: 100%;
-	height: 110vh;
-	/* background-color: #0093E9;
-	background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%); */
+	height: 90vh;
+	background-color: #8BC6EC;
+	background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-evenly;
 	margin-top: 50vh;
+	position: relative;
+}
+
+.contactSection::before {
+	content: "";
+	width: 102%;
+	height: 25vh;
+	position: absolute;
+	/* background-color: #0093E9; */
+	top: -7%;
+	background-color: #15171a;
+	border-radius: 10000000px;
 }
 
 .contactMeForm {
@@ -1235,6 +1281,24 @@
 	position: fixed;
 	bottom: 5%;
 	right: 4%;
+	z-index: 2;
+ }
+
+ .messageMeBackdrop {
+	height: 100vh;
+	width: 100%;
+	background-color: black;
+	top: 0%;
+	position: absolute;
+	opacity: 0%;
+	z-index: -1;
+	transition: all 1s;
+ }
+
+ .messageMeBackdropShow {
+	opacity: 40%;
+	z-index: 1;
+	position: fixed;
  }
 
  .messageMeContainer i {
@@ -1252,9 +1316,11 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	transition: all .5s;
+	overflow: hidden;
  }
 
- .messageMeIcon::after {
+ /* .messageMeIcon::after {
 	content: "";
 	position: absolute;
 	width: 106%;
@@ -1263,6 +1329,28 @@
     background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
     border-radius: 50%;
 	z-index: -1;
+ } */
+
+ .messageDialogMorph {
+	width: 400px;
+    height: 400px;
+    background: rgba(39, 39, 39, 0.94);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.1px);
+    -webkit-backdrop-filter: blur(7.1px);
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 60px 60px;
+    border-radius: 20px;
+    transition: 0.6s;
+    -webkit-transform-origin: 100% 200px;
+    -webkit-transform-style: preserve-3d;
+    box-shadow: rgba(194, 3, 247, 0.25) -100px 25px 250px, rgba(37, 103, 255, 0.52) 70px -60px 250px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(144, 184, 248, 0.09) 0px -3px 5px;
  }
 
 .contactContainer {
@@ -1272,6 +1360,10 @@
 	align-items: center;
 	justify-content: center;
 	display: none;
+}
+
+.showContactContainer {
+	display: initial;
 }
 
 .contactForm, .contactBack {
@@ -1459,7 +1551,7 @@
 
  .screenshotCards .card {
 	height: 450px;
-    width: 400px;
+    width: 480px;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -1523,7 +1615,7 @@
 
 	 .screenshotCards .card {
 		height: 450px;
-		width: 400px;
+		width: 480px;
 		border-radius: 15px;
 		display: flex;
 		flex-direction: column;
@@ -1555,6 +1647,10 @@
 		align-items: center;
 		justify-content: center;
 		margin-top: 50vh;
+	 }
+
+	 .info1 {
+		padding: 15vh 0 117vh 0;
 	 }
 	 	
  }
@@ -1728,7 +1824,8 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		overflow: hidden;
+		height: 100vh;
+		/* overflow: hidden; */
 	 }
 
 	.info2 {
@@ -1750,7 +1847,16 @@
 		justify-content: space-between;
 		padding: 15vh 0 15vh 0;
 	 }
-	 
+
+	 .screenshotCards {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		height: 250vh;
+		margin: 60vh -25px 55px 55px;
+	 }
  }
 
 /*

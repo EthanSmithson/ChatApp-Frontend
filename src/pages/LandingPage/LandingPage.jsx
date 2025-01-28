@@ -17,6 +17,7 @@ const LandingPage = (props) => {
   var [contactBodyError, setContactBodyError] = useState(false);
   var [showHamOptions, setShowHamOptions] = useState(false);
   var [showMobileHamOptions, setShowMobileHamOptions] = useState(false);
+  var [morphDialog, setMorphDialog] = useState(false);
 
 
   setTimeout(() => {
@@ -24,7 +25,27 @@ const LandingPage = (props) => {
     if (cursorBlock) {
       cursorBlock.addEventListener('animationend', cursorEnd);
     }    
+
+    const hamburgerOptionsSlide = document.getElementById("hamBtn");
+    const contactMeForm = document.getElementById("messageMeContainer")
+    document.addEventListener('click', (event) => {
+      if (event.target !== hamburgerOptionsSlide) {
+        setShowHamOptions(false);
+      }
+    })
   }, 1000);
+
+  const openMessageDialog = (event) => {
+    if (morphDialog === true && event.target === document.getElementById("messageMeContainer")) {
+      setMorphDialog(false);
+    } else {
+      setMorphDialog(true);
+    }
+  }
+
+  const closeMessageMe = () => {
+    setMorphDialog(false);
+  }
 
   function cursorEnd() {
     setCursorStationary(true);
@@ -278,39 +299,23 @@ const LandingPage = (props) => {
 
   const animatedHeart = document.getElementById("animatedHeart")
   gsap.set(animatedHeart, {
-    yPercent: 0,
-    opacity: 0
+    xPercent: 0,
+    opacity: 0,
+    scale: .5
   });
 
   gsap.to(animatedHeart, {
     scrollTrigger: {
       trigger: animatedHeart,
-      start: "top 80%",
-      end: "bottom 5%",
-      // markers: true,s
+      start: "top 90%",
+      end: "bottom 7%",
+      markers: true,
       scrub: true
     },
-    yPercent: -200,
-    opacity: 1
+    xPercent: 300,
+    opacity: 1,
+    scale: 1.7
   })
-
-  // const contactMeForm = document.getElementById("contactMeForm")
-  // gsap.set(contactMeForm, {
-  //   yPercent: 40,
-  //   // opacity: 0
-  // });
-
-  // gsap.to(contactMeForm, {
-  //   scrollTrigger: {
-  //     trigger: contactMeForm,
-  //     start: "top 100%",
-  //     end: "bottom 0%",
-  //     // markers: true,
-  //     scrub: true
-  //   },
-  //   yPercent: 0,
-  //   opacity: 1
-  // })
 
   function submitContactForm(formData) {
 
@@ -438,7 +443,22 @@ const LandingPage = (props) => {
             <figure id='ball3' className="ball"><span className="shadow"></span></figure>
           </div>
           <div className='messagesAnimated'>
-            <div id='messageBubbleLeftAnimate' className='messageBubbleLeftAnimate'>
+            <div className='stickyWrapper'>
+              <div className='imageColumn'>
+                <div className='mainImage1'>
+
+                </div>
+              </div>
+              <div className='mainText'>
+                <div className='mainText1'>
+                  test 1
+                </div>
+                <div className='mainText1'>
+                  test 2
+                </div>
+              </div>
+            </div>
+            {/* <div id='messageBubbleLeftAnimate' className='messageBubbleLeftAnimate'>
               <figure id='messageBox1' className="messageBox1">
                 Sign Up For Free!
                 <div className='messageTri'></div>
@@ -455,56 +475,7 @@ const LandingPage = (props) => {
                 Connect with Friends and Family!
                 <div className='messageTri3'></div>
               </figure>
-            </div>
-            <div id='beatingHeart' className='beatingHeart'>
-            <svg id='animatedHeart' className='animatedHeart' width="268" height="119" viewBox="0 0 718 669" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M45 266V132H90V88H135V44H268V88H313V132H402V88H447V44H582V88H627V132H673V310H628V403H583V447H538V491H493V535H448V579H403V623H313V578H269V533H225V488H181V443H137V398V311H89V266H45Z" fill="#ED2124"/>
-<rect x="313" y="623" width="90" height="46" fill="black"/>
-<rect x="269" y="578" width="44" height="45" fill="black"/>
-<rect x="314" y="578" width="44" height="45" fill="#5F0B0B"/>
-<rect x="270" y="533" width="44" height="45" fill="#5F0B0B"/>
-<rect x="226" y="490" width="44" height="45" fill="#5F0B0B"/>
-<rect x="181" y="443" width="44" height="45" fill="#5F0B0B"/>
-<rect x="137" y="398" width="44" height="45" fill="#5F0B0B"/>
-<rect x="93" y="354" width="44" height="45" fill="#5F0B0B"/>
-<rect x="45" y="266" width="44" height="45" fill="#5F0B0B"/>
-<rect x="93" y="311" width="44" height="45" fill="#B44443"/>
-<rect x="182" y="398" width="44" height="45" fill="#B44443"/>
-<rect x="225" y="443" width="44" height="45" fill="#B44443"/>
-<rect x="269" y="488" width="44" height="45" fill="#B44443"/>
-<rect x="314" y="533" width="44" height="45" fill="#B44443"/>
-<rect x="181" y="488" width="44" height="45" fill="black"/>
-<rect x="93" y="398" width="44" height="45" fill="black"/>
-<rect x="45" y="311" width="48" height="87" fill="black"/>
-<rect x="137" y="443" width="44" height="45" fill="black"/>
-<rect x="225" y="533" width="44" height="45" fill="black"/>
-<rect x="448" y="579" width="44" height="45" transform="rotate(90 448 579)" fill="black"/>
-<rect x="538" y="491" width="44" height="45" transform="rotate(90 538 491)" fill="black"/>
-<rect x="628" y="403" width="44" height="45" transform="rotate(90 628 403)" fill="black"/>
-<rect x="672" y="88" width="44" height="45" transform="rotate(90 672 88)" fill="black"/>
-<rect x="627" y="44" width="44" height="45" transform="rotate(90 627 44)" fill="black"/>
-<rect x="447" y="44" width="44" height="45" transform="rotate(90 447 44)" fill="black"/>
-<rect x="313" y="44" width="44" height="45" transform="rotate(90 313 44)" fill="black"/>
-<rect x="135" y="44" width="44" height="45" transform="rotate(90 135 44)" fill="black"/>
-<rect x="90" y="88" width="44" height="45" transform="rotate(90 90 88)" fill="black"/>
-<rect x="45" y="132" width="179" height="45" transform="rotate(90 45 132)" fill="black"/>
-<rect x="268" width="44" height="133" transform="rotate(90 268 0)" fill="black"/>
-<rect x="402" y="88" width="44" height="89" transform="rotate(90 402 88)" fill="black"/>
-<rect x="582" width="44" height="135" transform="rotate(90 582 0)" fill="black"/>
-<rect x="673" y="310" width="93" height="45" transform="rotate(90 673 310)" fill="black"/>
-<rect x="627" y="176" width="93" height="46" transform="rotate(90 627 176)" fill="white"/>
-<rect x="581" y="132" width="46" height="46" transform="rotate(90 581 132)" fill="white"/>
-<rect x="535" y="87" width="46" height="46" transform="rotate(90 535 87)" fill="white"/>
-<rect x="489" y="87" width="46" height="42" transform="rotate(90 489 87)" fill="#F38284"/>
-<rect x="581" y="87" width="46" height="44" transform="rotate(90 581 87)" fill="#F38284"/>
-<rect x="625" y="130" width="46" height="44" transform="rotate(90 625 130)" fill="#F38284"/>
-<rect x="669" y="176" width="46" height="44" transform="rotate(90 669 176)" fill="#F38284"/>
-<rect x="625" y="269" width="43" height="44" transform="rotate(90 625 269)" fill="#F38284"/>
-<rect x="718" y="132" width="178" height="45" transform="rotate(90 718 132)" fill="black"/>
-<rect x="583" y="447" width="44" height="45" transform="rotate(90 583 447)" fill="black"/>
-<rect x="493" y="535" width="44" height="45" transform="rotate(90 493 535)" fill="black"/>
-</svg>
-            </div>
+            </div> */}
           </div>
         </section>
         <section className='infoSection'>
@@ -597,16 +568,66 @@ const LandingPage = (props) => {
             </div>
           </div>
         </section>
+        <section>
+        <div id='beatingHeart' className='beatingHeart'>
+            <svg id='animatedHeart' className='animatedHeart' width="268" height="119" viewBox="0 0 718 669" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M45 266V132H90V88H135V44H268V88H313V132H402V88H447V44H582V88H627V132H673V310H628V403H583V447H538V491H493V535H448V579H403V623H313V578H269V533H225V488H181V443H137V398V311H89V266H45Z" fill="#ED2124"/>
+<rect x="313" y="623" width="90" height="46" fill="black"/>
+<rect x="269" y="578" width="44" height="45" fill="black"/>
+<rect x="314" y="578" width="44" height="45" fill="#5F0B0B"/>
+<rect x="270" y="533" width="44" height="45" fill="#5F0B0B"/>
+<rect x="226" y="490" width="44" height="45" fill="#5F0B0B"/>
+<rect x="181" y="443" width="44" height="45" fill="#5F0B0B"/>
+<rect x="137" y="398" width="44" height="45" fill="#5F0B0B"/>
+<rect x="93" y="354" width="44" height="45" fill="#5F0B0B"/>
+<rect x="45" y="266" width="44" height="45" fill="#5F0B0B"/>
+<rect x="93" y="311" width="44" height="45" fill="#B44443"/>
+<rect x="182" y="398" width="44" height="45" fill="#B44443"/>
+<rect x="225" y="443" width="44" height="45" fill="#B44443"/>
+<rect x="269" y="488" width="44" height="45" fill="#B44443"/>
+<rect x="314" y="533" width="44" height="45" fill="#B44443"/>
+<rect x="181" y="488" width="44" height="45" fill="black"/>
+<rect x="93" y="398" width="44" height="45" fill="black"/>
+<rect x="45" y="311" width="48" height="87" fill="black"/>
+<rect x="137" y="443" width="44" height="45" fill="black"/>
+<rect x="225" y="533" width="44" height="45" fill="black"/>
+<rect x="448" y="579" width="44" height="45" transform="rotate(90 448 579)" fill="black"/>
+<rect x="538" y="491" width="44" height="45" transform="rotate(90 538 491)" fill="black"/>
+<rect x="628" y="403" width="44" height="45" transform="rotate(90 628 403)" fill="black"/>
+<rect x="672" y="88" width="44" height="45" transform="rotate(90 672 88)" fill="black"/>
+<rect x="627" y="44" width="44" height="45" transform="rotate(90 627 44)" fill="black"/>
+<rect x="447" y="44" width="44" height="45" transform="rotate(90 447 44)" fill="black"/>
+<rect x="313" y="44" width="44" height="45" transform="rotate(90 313 44)" fill="black"/>
+<rect x="135" y="44" width="44" height="45" transform="rotate(90 135 44)" fill="black"/>
+<rect x="90" y="88" width="44" height="45" transform="rotate(90 90 88)" fill="black"/>
+<rect x="45" y="132" width="179" height="45" transform="rotate(90 45 132)" fill="black"/>
+<rect x="268" width="44" height="133" transform="rotate(90 268 0)" fill="black"/>
+<rect x="402" y="88" width="44" height="89" transform="rotate(90 402 88)" fill="black"/>
+<rect x="582" width="44" height="135" transform="rotate(90 582 0)" fill="black"/>
+<rect x="673" y="310" width="93" height="45" transform="rotate(90 673 310)" fill="black"/>
+<rect x="627" y="176" width="93" height="46" transform="rotate(90 627 176)" fill="white"/>
+<rect x="581" y="132" width="46" height="46" transform="rotate(90 581 132)" fill="white"/>
+<rect x="535" y="87" width="46" height="46" transform="rotate(90 535 87)" fill="white"/>
+<rect x="489" y="87" width="46" height="42" transform="rotate(90 489 87)" fill="#F38284"/>
+<rect x="581" y="87" width="46" height="44" transform="rotate(90 581 87)" fill="#F38284"/>
+<rect x="625" y="130" width="46" height="44" transform="rotate(90 625 130)" fill="#F38284"/>
+<rect x="669" y="176" width="46" height="44" transform="rotate(90 669 176)" fill="#F38284"/>
+<rect x="625" y="269" width="43" height="44" transform="rotate(90 625 269)" fill="#F38284"/>
+<rect x="718" y="132" width="178" height="45" transform="rotate(90 718 132)" fill="black"/>
+<rect x="583" y="447" width="44" height="45" transform="rotate(90 583 447)" fill="black"/>
+<rect x="493" y="535" width="44" height="45" transform="rotate(90 493 535)" fill="black"/>
+</svg>
+            </div>
+        </section>
         <section className='contactSection'>
           <div>
             <img className='personOnComputer' id='personOnComputer' alt='person on Computer' src={personOnComputer}></img>
           </div>
         </section>
         <div className='messageMeContainer'>
-          <div className='messageMeIcon'>
+          <div id='messageMeContainer' onClick={openMessageDialog} className={morphDialog ? 'messageMeIcon messageDialogMorph' : 'messageMeIcon'}>
             <i class="fa-regular fa-message fa-lg"></i>
-          </div>
-          <div id='contactMeForm' className='contactContainer'>
+            <div id='contactMeForm' className={morphDialog ? 'contactContainer showContactContainer' : 'contactContainer'}>
               <div className={'contactMeForm'}>
                 <div className={contactFlip ? 'flipper contactFormFlip' : 'flipper notContactFormFlip'}>
                     <form action={submitContactForm} className='contactForm'>
@@ -628,7 +649,9 @@ const LandingPage = (props) => {
                   </div>
               </div>
             </div>
+          </div>
         </div>
+        <div onClick={closeMessageMe} className={morphDialog ? 'messageMeBackdrop messageMeBackdropShow' : 'messageMeBackdrop'}></div>
     </div>
   );
 }
