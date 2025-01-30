@@ -870,6 +870,8 @@
     justify-content: center;
 	flex-direction: column;
 	margin-top: 70vh;
+	padding-top: 15rem;
+    padding-bottom: 140rem;
  }
 
  .messagingEllipse {
@@ -925,7 +927,7 @@
   }
 
   .messagesAnimated {
-	height: 250vh;
+	height: fit-content;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -940,6 +942,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
+	margin-top: 50vh;
   }
 
   .imageColumn {
@@ -958,13 +961,82 @@
     backdrop-filter: blur(14.6px);
     -webkit-backdrop-filter: blur(14.6px);
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+	top: 18%;
+    left: -36%;
+	opacity: 1;
+	transition: all .8s;
+  }
+
+  .mainImage1Hide {
+	opacity: 0;
+	transition: all .3s;
   }
 
   .mainImage1Stuck {
 	position: fixed;
+  }
+
+  .mainImage2 {
+	width: 100%;
+    height: 70vh;
+    background: aliceblue;
+    margin: 0 10rem 0 -5rem;
+	background: rgba(53, 57, 65, 0.87);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(14.6px);
+    -webkit-backdrop-filter: blur(14.6px);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 	top: 18%;
     left: -36%;
   }
+
+  @keyframes slidingWords {
+	0% {
+		transform: translateY(0px);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(-28vh);
+		opacity: 0;
+	}
+  }
+
+  .mainText {
+	font-family: "Fira Sans", serif;
+    font-style: normal;
+	font-size: 30px;
+    font-weight: 100;
+  }
+
+  .mainText1 {
+    width: 100%;
+    height: 100%;
+	/* animation-name: slidingWords;
+	animation-duration: .2s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-play-state: paused;
+	animation-delay: calc(var(--scroll) * -1s);
+	animation-fill-mode: both; */
+	margin-top: 90vh;
+  }
+
+  .mainText2 {
+	width: 100%;
+	height: 100%;
+	margin-top: 90vh;
+  }
+
+  /* .mainText2 {
+	animation-name: slidingWords;
+	animation-duration: .5s;
+	animation-timing-function: ease-out;
+	animation-iteration-count: infinite;
+	animation-play-state: paused;
+	animation-delay: calc(var(--scroll) * -1s);
+	animation-fill-mode: both;
+  } */
 
   @keyframes messageBubbleLeft {
 	0%{
@@ -1208,7 +1280,7 @@
 	position: absolute;
 	/* background-color: #0093E9; */
 	top: -7%;
-	background-color: #15171a;
+	background-color: #121315;
 	border-radius: 10000000px;
 }
 

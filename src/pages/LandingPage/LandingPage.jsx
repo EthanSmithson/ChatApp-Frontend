@@ -18,6 +18,9 @@ const LandingPage = (props) => {
   var [showHamOptions, setShowHamOptions] = useState(false);
   var [showMobileHamOptions, setShowMobileHamOptions] = useState(false);
   var [morphDialog, setMorphDialog] = useState(false);
+  var [mainImage1Hide, setMainImage1Hide] = useState(false);
+  var [mainImage2Hide, setMainImage2Hide] = useState(false);
+  var [mainImage1Stuck, setMainImage1Stuck] = useState(false);
 
 
   setTimeout(() => {
@@ -309,12 +312,112 @@ const LandingPage = (props) => {
       trigger: animatedHeart,
       start: "top 90%",
       end: "bottom 7%",
-      markers: true,
+      // markers: true,
       scrub: true
     },
     xPercent: 300,
     opacity: 1,
     scale: 1.7
+  })
+
+  const mainText1 = document.getElementById("mainText1");
+  const mainImage1 = document.getElementById("mainImage1");
+  const mainImage2 = document.getElementById("mainImage2");
+  const mainText2 = document.getElementById("mainText2");
+  const mainText3 = document.getElementById("mainText3");
+  const mainText4 = document.getElementById("mainText4");
+  gsap.set(mainText1, {
+    yPercent: 0,
+    opacity: 1,
+  });
+
+  gsap.to(mainText1, {
+    scrollTrigger: {
+      trigger: mainImage1,
+      start: "top 5%",
+      end: "bottom 25%",
+      // markers: true,
+      scrub: true
+    },
+    yPercent: -800,
+    opacity: 0,
+  })
+
+  gsap.set(mainText2, {
+    yPercent: 0,
+    opacity: 1,
+  });
+
+  gsap.to(mainText2, {
+    scrollTrigger: {
+      trigger: mainImage1,
+      start: "top 5%",
+      end: "bottom 25%",
+      // markers: true,
+      scrub: true
+    },
+    yPercent: -800,
+    opacity: 0,
+  })
+
+  gsap.set(mainText3, {
+    yPercent: 0,
+    opacity: 1,
+  });
+
+  gsap.to(mainText3, {
+    scrollTrigger: {
+      trigger: mainImage2,
+      start: "top 5%",
+      end: "bottom 25%",
+      // markers: true,
+      scrub: true
+    },
+    yPercent: -800,
+    opacity: 0,
+  })
+
+  gsap.set(mainText4, {
+    yPercent: 0,
+    opacity: 1,
+  });
+
+  gsap.to(mainText4, {
+    scrollTrigger: {
+      trigger: mainImage2,
+      start: "top 80%",
+      end: "bottom 25%",
+      // markers: true,
+      scrub: true
+    },
+    yPercent: -800,
+    opacity: 0,
+  })
+
+  gsap.to(mainImage1, {
+    scrollTrigger: {
+      trigger: mainImage1,
+      start: "top 18%",
+      end: "bottom 35%",
+      // markers: true,
+      scrub: true
+    },
+    position: 'fixed',
+    top: "18%",
+    left: "-36%" ,
+  })
+
+  gsap.to(mainImage2, {
+    scrollTrigger: {
+      trigger: mainImage2,
+      start: "top 18%",
+      end: "bottom 35%",
+      // markers: true,
+      scrub: true
+    },
+    position: 'fixed',
+    top: "18%",
+    left: "-36%" ,
   })
 
   function submitContactForm(formData) {
@@ -363,6 +466,21 @@ const LandingPage = (props) => {
       setShowMobileHamOptions(true);
     }
   }
+
+  window.addEventListener('scroll', (event) => {
+    if (window.scrollY > 2100) {
+      setMainImage1Hide(true);
+    } else {
+      setMainImage1Hide(false);
+    }
+
+    if (window.scrollY > 4800) {
+      setMainImage2Hide(true);
+    } else {
+      setMainImage2Hide(false);
+    }
+    // console.log(window.scrollY)
+  })
 
   return (
     <div>
@@ -437,23 +555,39 @@ const LandingPage = (props) => {
           </div>
         </section>
         <section id='animatedSection' className='animatedSection'>
-          <div className='balls'>
+          {/* <div className='balls'>
             <figure id='ball1' className="ball"><span className="shadow"></span></figure>
             <figure id='ball2' className="ball"><span className="shadow"></span></figure>
             <figure id='ball3' className="ball"><span className="shadow"></span></figure>
-          </div>
+          </div> */}
           <div className='messagesAnimated'>
-            <div className='stickyWrapper'>
+            <div id='stickyWrapper1' className='stickyWrapper'>
               <div className='imageColumn'>
-                <div className='mainImage1'>
+                <div id='mainImage1' className={`${mainImage1Hide ? 'mainImage1 mainImage1Hide' : 'mainImage1'}`}>
 
                 </div>
               </div>
               <div className='mainText'>
-                <div className='mainText1'>
+                <div id='mainText1' className='mainText1'>
                   test 1
                 </div>
-                <div className='mainText1'>
+                <div id='mainText2' className='mainText2'>
+                  test 2
+                </div>
+              </div>
+            </div>
+
+            <div className='stickyWrapper'>
+              <div className='imageColumn'>
+                <div id='mainImage2' className={`${mainImage2Hide ? 'mainImage1 mainImage1Hide' : 'mainImage1'}`}>
+
+                </div>
+              </div>
+              <div className='mainText'>
+                <div id='mainText3' className='mainText1'>
+                  test 1
+                </div>
+                <div id='mainText4' className='mainText2'>
                   test 2
                 </div>
               </div>
