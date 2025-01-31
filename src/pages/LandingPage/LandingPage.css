@@ -667,7 +667,7 @@
 	height: 55vh;
 	background-color: #21D4FD;
 	background-image: linear-gradient(180deg, #21D4FD 0%, #B721FF 100%);
-	top: 661vh;
+	top: 911vh;
     left: 50%;
     /* transform: translate(-50%, -50%); */
 }
@@ -688,11 +688,11 @@
 	background-color: #131417;
 	position: absolute;
 	animation-name: slideLine;
-	animation-duration: .51s;
+	animation-duration: .39s;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 	animation-play-state: paused;
-	animation-delay: calc(var(--scroll) * -2.4s);
+	animation-delay: calc(var(--scroll) * -2.3s);
 	animation-fill-mode: both;
 }
 
@@ -738,7 +738,7 @@
 	display: flex;
 	align-items: center;
 	text-align: center;
-	background: #17191d;
+	background: #131518;
 	padding: 45px;
  }
 
@@ -768,7 +768,7 @@
 	/* animation-timing-function: linear; */
 	animation-iteration-count: infinite;
 	animation-play-state: paused;
-	animation-delay: calc(var(--scroll) * -3.17s);
+	animation-delay: calc(var(--scroll) * -3s);
 	animation-fill-mode: both;
  }
 
@@ -787,7 +787,7 @@
 	/* animation-timing-function: linear; */
 	animation-iteration-count: infinite;
 	animation-play-state: paused;
-	animation-delay: calc(var(--scroll) * -3.17s);
+	animation-delay: calc(var(--scroll) * -3s);
 	animation-fill-mode: both;
  }
 
@@ -1392,6 +1392,11 @@
 	overflow: hidden;
  }
 
+ .messageMeIconScale:hover {
+	transform: all .5s;
+	transform: scale(115%);
+ }
+
  /* .messageMeIcon::after {
 	content: "";
 	position: absolute;
@@ -1618,7 +1623,7 @@
     width: 110%;
     height: 250vh;
 	/* margin-left: 150px; */
-    margin: 60vh -25px 55px 55px;
+    margin: 15vh -25px 55px 55px;
  }
 
  .screenshotCards .card {
@@ -1669,6 +1674,70 @@
 	display: none;
  }
 
+ .contactProjects {
+	height: 100vh;
+    width: 100%;
+    background: aliceblue;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+ }
+
+ .myContacts {
+	width: 50%;
+    height: 100%;
+    background: aquamarine;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+
+ .myContacts ul {
+	list-style: none;
+ }
+ 
+ @keyframes contactAppear {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: .5;
+		transform: scale(115%);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(100%);
+	}
+ }
+
+ .myContacts ul li {
+	padding: 3rem;
+	font-family: "Anta", serif;
+	font-weight: 500;
+	font-style: normal;
+	font-size: 16px;
+ }
+
+ .animateContacts {
+	animation-name: contactAppear;
+	animation-duration: .5s;
+	animation-timing-function: linear;
+	animation-iteration-count: 1;
+	animation-play-state: running;
+	/* animation-delay: calc(var(--scroll) * -5s); */
+	animation-fill-mode: both;
+ }
+
+ .otherProjects {
+	width: 70%;
+    height: 100%;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #d5d5d5;
+ }
+
  @media (max-width: 1486px) {
 	
 	.screenshotCards {
@@ -1703,7 +1772,7 @@
 		height: 55vh;
 		background-color: #21D4FD;
 		background-image: linear-gradient(180deg, #21D4FD 0%, #B721FF 100%);
-		top: 636vh;
+		top: 911vh;
 		left: 50%;
 	 }
 
@@ -1927,7 +1996,7 @@
 		justify-content: space-between;
 		width: 100%;
 		height: 250vh;
-		margin: 60vh -25px 55px 55px;
+		margin: 15vh -25px 55px 55px;
 	 }
  }
 

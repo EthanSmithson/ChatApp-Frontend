@@ -35,6 +35,9 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet">
   </head>
   <body>
     <div style="overflow-x: hidden;" id="root"></div>
@@ -64,7 +67,7 @@
         const body = document.body
 
         window.addEventListener('scroll', () => {
-          const y = 1 + (window.scrollY || window.pageYOffset) / 5000
+          const y = 1 + (window.scrollY || window.pageYOffset) / 8000
           const [r, g, b] = [red/y, green/y, blue/y].map(Math.round)
           body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
         })

@@ -5,6 +5,8 @@ import { NavLink } from 'react-router-dom';
 import personOnComputer from './personOnComputer.png'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useInView } from "react-intersection-observer"
+
 
 
 const LandingPage = (props) => {
@@ -21,6 +23,9 @@ const LandingPage = (props) => {
   var [mainImage1Hide, setMainImage1Hide] = useState(false);
   var [mainImage2Hide, setMainImage2Hide] = useState(false);
   var [mainImage1Stuck, setMainImage1Stuck] = useState(false);
+  var { ref, inView } = useInView({
+    threshold: 0,
+  });
 
 
   setTimeout(() => {
@@ -31,12 +36,21 @@ const LandingPage = (props) => {
 
     const hamburgerOptionsSlide = document.getElementById("hamBtn");
     const contactMeForm = document.getElementById("messageMeContainer")
+    const messageMeContainer = document.getElementById("messageBtn")
     document.addEventListener('click', (event) => {
       if (event.target !== hamburgerOptionsSlide) {
         setShowHamOptions(false);
       }
     })
-  }, 1000);
+
+    if (morphDialog) {
+      contactMeForm.classList.remove("messageMeIconScale");
+    }
+
+    // messageMeContainer.addEventListener('click', (event) => {
+    //   contactMeForm.classList.remove("messageMeIcon");
+    // })
+  }, 1);
 
   const openMessageDialog = (event) => {
     if (morphDialog === true && event.target === document.getElementById("messageMeContainer")) {
@@ -343,22 +357,22 @@ const LandingPage = (props) => {
     opacity: 0,
   })
 
-  gsap.set(mainText2, {
-    yPercent: 0,
-    opacity: 1,
-  });
+  // gsap.set(mainText2, {
+  //   yPercent: 0,
+  //   opacity: 1,
+  // });
 
-  gsap.to(mainText2, {
-    scrollTrigger: {
-      trigger: mainImage1,
-      start: "top 5%",
-      end: "bottom 25%",
-      // markers: true,
-      scrub: true
-    },
-    yPercent: -800,
-    opacity: 0,
-  })
+  // gsap.to(mainText2, {
+  //   scrollTrigger: {
+  //     trigger: mainImage1,
+  //     start: "top 55%",
+  //     end: "bottom 75%",
+  //     markers: true,
+  //     scrub: true
+  //   },
+  //   yPercent: -800,
+  //   opacity: 0,
+  // })
 
   gsap.set(mainText3, {
     yPercent: 0,
@@ -377,22 +391,22 @@ const LandingPage = (props) => {
     opacity: 0,
   })
 
-  gsap.set(mainText4, {
-    yPercent: 0,
-    opacity: 1,
-  });
+  // gsap.set(mainText4, {
+  //   yPercent: 0,
+  //   opacity: 1,
+  // });
 
-  gsap.to(mainText4, {
-    scrollTrigger: {
-      trigger: mainImage2,
-      start: "top 80%",
-      end: "bottom 25%",
-      // markers: true,
-      scrub: true
-    },
-    yPercent: -800,
-    opacity: 0,
-  })
+  // gsap.to(mainText4, {
+  //   scrollTrigger: {
+  //     trigger: mainImage2,
+  //     start: "top 80%",
+  //     end: "bottom 25%",
+  //     // markers: true,
+  //     scrub: true
+  //   },
+  //   yPercent: -800,
+  //   opacity: 0,
+  // })
 
   gsap.to(mainImage1, {
     scrollTrigger: {
@@ -696,14 +710,34 @@ const LandingPage = (props) => {
             </div>
           </div>
           <div className='info2'>
-          <div className='infoSectionLine'></div>
+          {/* <div className='infoSectionLine'></div> */}
             <div id='info2Meta' className='info2Meta'>
               <h3>Create communities with Chat App, video calls, play games and more with our platform. Chat app combines work and play all in one place!</h3>
             </div>
           </div>
         </section>
-        <section>
-        <div id='beatingHeart' className='beatingHeart'>
+        <section ref={ref} className='contactProjects'>
+          <div className='myContacts'>
+            <ul className={inView ? 'animateContacts' : null}>
+              <li>LinkedIn <i class="fa-brands fa-linkedin fa-2xl"></i></li>
+              <li>GitHub <i class="fa-brands fa-github fa-2xl"></i></li>
+              <li>Resume <i class="fa-regular fa-file fa-2xl"></i></li>
+            </ul>
+          </div>
+          <div className='otherProjects'>
+            <ul>
+              <div className='project1'>
+                
+              </div>
+              <div className='project2'>
+                
+              </div>
+              <div className='project3'>
+                
+              </div>
+            </ul>
+          </div>
+        {/* <div id='beatingHeart' className='beatingHeart'>
             <svg id='animatedHeart' className='animatedHeart' width="268" height="119" viewBox="0 0 718 669" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M45 266V132H90V88H135V44H268V88H313V132H402V88H447V44H582V88H627V132H673V310H628V403H583V447H538V491H493V535H448V579H403V623H313V578H269V533H225V488H181V443H137V398V311H89V266H45Z" fill="#ED2124"/>
 <rect x="313" y="623" width="90" height="46" fill="black"/>
@@ -751,15 +785,15 @@ const LandingPage = (props) => {
 <rect x="583" y="447" width="44" height="45" transform="rotate(90 583 447)" fill="black"/>
 <rect x="493" y="535" width="44" height="45" transform="rotate(90 493 535)" fill="black"/>
 </svg>
-            </div>
+            </div> */}
         </section>
         <section className='contactSection'>
           <div>
             <img className='personOnComputer' id='personOnComputer' alt='person on Computer' src={personOnComputer}></img>
           </div>
         </section>
-        <div className='messageMeContainer'>
-          <div id='messageMeContainer' onClick={openMessageDialog} className={morphDialog ? 'messageMeIcon messageDialogMorph' : 'messageMeIcon'}>
+        <div id='messageBtn' className='messageMeContainer'>
+          <div id='messageMeContainer' onClick={openMessageDialog} className={morphDialog ? 'messageMeIcon messageMeIconScale messageDialogMorph' : 'messageMeIcon messageMeIconScale'}>
             <i class="fa-regular fa-message fa-lg"></i>
             <div id='contactMeForm' className={morphDialog ? 'contactContainer showContactContainer' : 'contactContainer'}>
               <div className={'contactMeForm'}>
