@@ -710,7 +710,7 @@
 
  .info2 {
 	height: 100%;
-	margin-top: 90vh;
+	margin-top: 10vh;
  }
 
  .info1Meta {
@@ -1280,7 +1280,7 @@
 	position: absolute;
 	/* background-color: #0093E9; */
 	top: -7%;
-	background-color: #121315;
+	background-color: #17191c;
 	border-radius: 10000000px;
 }
 
@@ -1616,31 +1616,31 @@
 	}
  }
  .screenshotCards {
-	display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 110%;
-    height: 250vh;
-	/* margin-left: 150px; */
-    margin: 15vh -25px 55px 55px;
+	display: grid;
+	grid-template-columns: auto auto;
+	width: 100%;
+	height: 250vh;
+	align-items: center;
+	justify-content: center;
+	grid-row-gap: 3vh;
+	grid-column-gap: 2vw;
  }
 
  .screenshotCards .card {
-	height: 450px;
-    width: 480px;
-    border-radius: 15px;
+	height: 83vh;
+    width: 700px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-	animation-name: cardSlider;
+	/* animation-name: cardSlider;
 	animation-duration: .8s;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 	animation-play-state: paused;
 	animation-delay: calc(var(--scroll) * -1.8s);
 	animation-fill-mode: both;
+	margin: 1rem; */
  }
 
  .cardImage {
@@ -1677,20 +1677,20 @@
  .contactProjects {
 	height: 100vh;
     width: 100%;
-    background: aliceblue;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+	margin-top: 10vh;
  }
 
  .myContacts {
 	width: 50%;
     height: 100%;
-    background: aquamarine;
     display: flex;
     align-items: center;
     justify-content: center;
+	color: white;
  }
 
  .myContacts ul {
@@ -1719,15 +1719,22 @@
 	font-size: 16px;
  }
 
- .animateContacts {
+ .animateContacts li {
 	animation-name: contactAppear;
 	animation-duration: .5s;
 	animation-timing-function: linear;
 	animation-iteration-count: 1;
 	animation-play-state: running;
-	/* animation-delay: calc(var(--scroll) * -5s); */
 	animation-fill-mode: both;
  }
+
+ .animateContactsStay li {
+	display: block;
+ }
+
+ .myContacts ul li:nth-child(1) { animation-delay: .5s; }
+ .myContacts ul li:nth-child(2) { animation-delay: 1s; }
+ .myContacts ul li:nth-child(3) { animation-delay: 1.5s; }
 
  .otherProjects {
 	width: 70%;
@@ -1764,6 +1771,7 @@
 		align-items: center;
 		animation-name: none;
 		box-shadow: rgba(183, 33, 225, 0.25) -100px 25px 50px, rgba(50, 107, 236, 0.52) 70px -60px 50px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(144, 184, 248, 0.09) 0px -3px 5px;
+		margin: 1rem;
 	 }
 
 	 .infoSectionLine {
@@ -1974,7 +1982,7 @@
 		display: flex;
 		align-items: center;
 		height: 200vh;
-		margin-top: 90vh;
+		margin-top: 10vh;
 		overflow: visible;
 	}
 

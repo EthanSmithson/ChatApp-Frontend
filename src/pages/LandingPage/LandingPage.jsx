@@ -23,6 +23,7 @@ const LandingPage = (props) => {
   var [mainImage1Hide, setMainImage1Hide] = useState(false);
   var [mainImage2Hide, setMainImage2Hide] = useState(false);
   var [mainImage1Stuck, setMainImage1Stuck] = useState(false);
+  var [handleContacts, setHandleContacts] = useState(false);
   var { ref, inView } = useInView({
     threshold: 0,
   });
@@ -35,12 +36,16 @@ const LandingPage = (props) => {
     }    
 
     const hamburgerOptionsSlide = document.getElementById("hamBtn");
+    const hamburgerOptionsSlideMobile = document.getElementById("hamBtnMobile");
+    const mobileHamburgerOptions = document.getElementById("mobileHamburgerOptions");
     const contactMeForm = document.getElementById("messageMeContainer")
     const messageMeContainer = document.getElementById("messageBtn")
     document.addEventListener('click', (event) => {
-      if (event.target !== hamburgerOptionsSlide) {
+      if (event.target !== hamburgerOptionsSlide && event.target !== hamburgerOptionsSlideMobile) {
         setShowHamOptions(false);
+        setShowMobileHamOptions(false);
       }
+
     })
 
     if (morphDialog) {
@@ -496,6 +501,14 @@ const LandingPage = (props) => {
     // console.log(window.scrollY)
   })
 
+  useEffect(() => {
+    if(inView)  {
+      setTimeout(() => {
+        setHandleContacts(true)  
+      }, 2000);
+    }
+ }, [inView])
+
   return (
     <div>
       {/* <LoginComponent />   */}
@@ -529,8 +542,8 @@ const LandingPage = (props) => {
             </div>
           <NavLink to="/login"><button>Login</button></NavLink>
         </div>
-        <div className='headerOptionsMobile'>
-          <div id='hamBtn' onClick={openMobileHam} className={headerLinksAlter ? 'hamMenu showHamMenu' : 'hamMenu showHamMenu'}>
+        <div id='mobileHamburgerOptions' className='headerOptionsMobile'>
+          <div id='hamBtnMobile' onClick={openMobileHam} className={headerLinksAlter ? 'hamMenu showHamMenu' : 'hamMenu showHamMenu'}>
             <div className='hamMenuLine'></div>
             <div className='hamMenuLine'></div>
             <div className='hamMenuLine'></div>
@@ -718,7 +731,7 @@ const LandingPage = (props) => {
         </section>
         <section ref={ref} className='contactProjects'>
           <div className='myContacts'>
-            <ul className={inView ? 'animateContacts' : null}>
+            <ul className={inView && !handleContacts ? 'animateContacts' : 'animateContactsStay'}>
               <li>LinkedIn <i class="fa-brands fa-linkedin fa-2xl"></i></li>
               <li>GitHub <i class="fa-brands fa-github fa-2xl"></i></li>
               <li>Resume <i class="fa-regular fa-file fa-2xl"></i></li>
