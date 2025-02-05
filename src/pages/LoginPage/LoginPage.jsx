@@ -118,13 +118,13 @@ const LoginPage = () => {
               <label>Username</label>
             </div>
             <div className="input-group">
-              <input name='password' type="text" required></input>
+              <input name='password' type="password" required></input>
               <span className="highlight"></span>
               <span className="bar"></span>
               <label>Password</label>
             </div>
             <div className="input-group">
-              <input name='confirmPassword' type="text" required></input>
+              <input name='confirmPassword' type="password" required></input>
               <span className="highlight"></span>
               <span className="bar"></span>
               <label>Confirm Password</label>

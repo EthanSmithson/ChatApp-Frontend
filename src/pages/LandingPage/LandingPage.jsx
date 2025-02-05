@@ -27,6 +27,19 @@ const LandingPage = (props) => {
   var { ref, inView } = useInView({
     threshold: 0,
   });
+  var { ref2, inView2 } = useInView({
+    threshold: 0,
+  });
+  var { ref3, inView3 } = useInView({
+    threshold: 0,
+  });
+  var { ref4, inView4 } = useInView({
+    threshold: 0,
+  });
+  var { ref5, inView5 } = useInView({
+    threshold: 0,
+  });
+  var [card1InView, setCard1InView] = useState(false);
 
 
   setTimeout(() => {
@@ -54,6 +67,47 @@ const LandingPage = (props) => {
 
     // messageMeContainer.addEventListener('click', (event) => {
     //   contactMeForm.classList.remove("messageMeIcon");
+
+
+  let observer = new IntersectionObserver((entries, observer) => {
+    entries.filter(e => e.isIntersecting).forEach(entry => {
+      entry.target.classList.add("card1Display");
+      observer.unobserve(entry.target);
+    })
+  })
+  document.querySelectorAll("#card1").forEach(e => {
+    observer.observe(e)
+  })
+
+  let observer2 = new IntersectionObserver((entries, observer) => {
+    entries.filter(e => e.isIntersecting).forEach(entry => {
+      entry.target.classList.add("card2Display");
+      observer.unobserve(entry.target);
+    })
+  })
+  document.querySelectorAll("#card2").forEach(e => {
+    observer2.observe(e)
+  })
+
+  let observer3 = new IntersectionObserver((entries, observer) => {
+    entries.filter(e => e.isIntersecting).forEach(entry => {
+      entry.target.classList.add("card1Display");
+      observer.unobserve(entry.target);
+    })
+  })
+  document.querySelectorAll("#card3").forEach(e => {
+    observer3.observe(e)
+  })
+
+  let observer4 = new IntersectionObserver((entries, observer) => {
+    entries.filter(e => e.isIntersecting).forEach(entry => {
+      entry.target.classList.add("card2Display");
+      observer.unobserve(entry.target);
+    })
+  })
+  document.querySelectorAll("#card4").forEach(e => {
+    observer4.observe(e)
+  })
     // })
   }, 1);
 
@@ -498,7 +552,12 @@ const LandingPage = (props) => {
     } else {
       setMainImage2Hide(false);
     }
-    // console.log(window.scrollY)
+
+    // if (window.scrollY > 6000) {
+    //   setCard1InView(true);
+    // }
+
+    console.log(window.scrollY)
   })
 
   useEffect(() => {
@@ -689,37 +748,37 @@ const LandingPage = (props) => {
             </div>
           </div>
           <div className='screenshotCards'>
-            <div className='card'>
+            <div id='card1' className={card1InView ? 'card1 card1Display' : 'card1'}>
               <div className='cardImage'>
                 this is an image
               </div>
-              <div className='cardDescription'>
+              {/* <div className='cardDescription'>
                 Chat Instantly with Anyone
-              </div>
+              </div> */}
             </div>
-            <div className='card'>
+            <div id='card2' className={card1InView ? 'card2 card2Display' : 'card2'}>
               <div className='cardImage'>
                 this is an image
               </div>
-              <div className='cardDescription'>
+              {/* <div className='cardDescription'>
                 Find where you fit in
-              </div>
+              </div> */}
             </div>
-            <div className='card'>
+            <div id='card3' className='card3'>
               <div className='cardImage'>
                 this is an image
               </div>
-              <div className='cardDescription'>
+              {/* <div className='cardDescription'>
                 Network like never before
-              </div>
+              </div> */}
             </div>
-            <div className='card'>
+            <div id='card4' className='card4'>
               <div className='cardImage'>
                 this is an image
               </div>
-              <div className='cardDescription'>
+              {/* <div className='cardDescription'>
                 Network like never before
-              </div>
+              </div> */}
             </div>
           </div>
           <div className='info2'>
