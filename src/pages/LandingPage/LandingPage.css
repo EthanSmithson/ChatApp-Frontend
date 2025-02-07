@@ -1263,8 +1263,7 @@
 .contactSection {
 	width: 100%;
 	height: 90vh;
-	background-color: #8BC6EC;
-	background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+	background-color: #26282B;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -1280,7 +1279,7 @@
 	position: absolute;
 	/* background-color: #0093E9; */
 	top: -7%;
-	background-color: #17191c;
+	background-color: #16181b;
 	border-radius: 10000000px;
 }
 
@@ -1619,7 +1618,7 @@
 	display: grid;
 	grid-template-columns: auto auto;
 	width: 100%;
-	height: 250vh;
+	height: 224vh;
 	align-items: center;
 	justify-content: center;
 	grid-row-gap: 3vh;
@@ -1655,7 +1654,7 @@
  }
 
  .card1 {
-	height: 100vh;
+	height: 80vh;
 	grid-row: span 2;
 	width: 884px;
     display: flex;
@@ -1684,7 +1683,7 @@
  }
 
  .card2 {
-	height: 67vh;
+	height: 57vh;
 	grid-row: span 1;
 	width: 884px;
     display: flex;
@@ -1694,7 +1693,7 @@
  }
 
  .card3 {
-	height: 30vh;
+	height: 20vh;
 	width: 884px;
     display: flex;
     flex-direction: column;
@@ -1811,6 +1810,75 @@
     align-items: center;
     justify-content: center;
     background: #d5d5d5;
+ }
+ 
+ @keyframes saturn {
+	0% {
+		transform: translateY(0%);
+		position: absolute;
+	}
+	50% {
+		transform: translateY(-200%);
+		position: absolute;
+	}
+	100% {
+		transform: translateY(0%);
+		position: absolute;
+	}
+ }
+
+ .saturn {
+	position: absolute;
+	z-index: -1;
+	opacity: 50%;
+	right: -10%;
+	top: -30%;
+	animation-name: saturn;
+	animation-duration: .7s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-play-state: paused;
+	animation-delay: calc(var(--scroll) * -2s);
+	animation-fill-mode: both;
+ }
+
+ @keyframes loginErrorShow {
+	0% {
+		width: 0%;
+	}
+	100% {
+		width: fit-content;
+	}
+ }
+
+ @keyframes loginErrorShowHeight {
+	0% {
+		height: 0%;
+	}
+	100% {
+		height: fit-content;
+	}
+ }
+
+ .loginError {
+    background: #2c2c2c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    padding: 7px 24px;
+	border: red 1px solid;
+	transition: 0.5s;
+	animation-name: loginErrorShow, loginErrorShowHeight;
+	animation-duration: 1s, 1s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite, infinite;
+	animation-delay: 0s, 1s;
+ }
+
+ .loginError span {
+	color: white;
+	font-size: smaller;
  }
 
  @media (max-width: 1486px) {
@@ -1953,6 +2021,7 @@
 		justify-content: center;
 		margin-top: 200px;
 		color: rgb(233, 233, 233);	
+		overflow-x: hidden;
 	 }
 
 	 .mainHeading {

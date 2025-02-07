@@ -639,6 +639,14 @@ const LandingPage = (props) => {
             </div>
           </div>
           </div>
+          <svg className='saturn' width="643" height="645" viewBox="0 0 643 645" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="284" cy="298" r="194" fill="#7A748C"/>
+<path d="M113.5 362.5L98 339.5C144.8 319.9 245.167 175.333 289.5 105.5L332.5 112.5C363 135 283 143 263 242C247.98 316.347 164 308 113.5 362.5Z" fill="#4C1E3C"/>
+<path d="M273.5 485L216 472.5C331 443.5 418.667 287.833 463 218L468.5 247C523.5 284 327.183 396.439 423 364.5C453 354.5 324 430.5 273.5 485Z" fill="#4C1E3C"/>
+<path d="M125 409C37.8001 531.4 38.0132 575.596 49.0197 582.394C83.2722 616.544 230.123 524.786 377.02 377.448C523.917 230.109 615.233 82.9836 580.98 48.8338C568.654 38.5558 523.8 46.6 401 141" stroke="#5B5275" stroke-width="18"/>
+<path d="M189.5 376C209.5 344 241.167 323.333 254.5 317C259 325.5 274.9 341.1 302.5 335.5C337 328.5 328 276.5 341.5 245.5C355 214.5 374.5 282.5 362 317C349.5 351.5 233 419 223.5 432.5C214 446 189.5 439 177 432.5C164.5 426 164.5 416 189.5 376Z" fill="#4C1E3C"/>
+</svg>
+
         </section>
         <section id='animatedSection' className='animatedSection'>
           {/* <div className='balls'>
@@ -781,12 +789,12 @@ const LandingPage = (props) => {
               </div> */}
             </div>
           </div>
-          <div className='info2'>
-          {/* <div className='infoSectionLine'></div> */}
+          { /*<div className='info2'>
+          <div className='infoSectionLine'></div>
             <div id='info2Meta' className='info2Meta'>
               <h3>Create communities with Chat App, video calls, play games and more with our platform. Chat app combines work and play all in one place!</h3>
             </div>
-          </div>
+          </div> */}
         </section>
         <section ref={ref} className='contactProjects'>
           <div className='myContacts'>

@@ -1,8 +1,11 @@
 import React from 'react';
 import './LoginPage.css';
 import { data } from 'jquery';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
+
+  const navigate = useNavigate();
 
   const activateRegister = () => {
     let loginSide = document.getElementById("loginSide")
@@ -34,7 +37,14 @@ const LoginPage = () => {
       },
       body: JSON.stringify(data)
     })
-      .then(response => response.json())
+      .then(response => {
+        if (response.ok) {
+          navigate("/home")
+        } else {
+          throw new Error("Error Logging In!");
+        }
+      }
+      )
       .then(data => console.log(data))
       .catch(error => console.error('Error:', error));
   }
@@ -64,6 +74,9 @@ const LoginPage = () => {
     <div className='loginContainer'>
       <div id='loginSide' className='loginSide loginActive'>
         <form className='loginForm' action={loginUser}>
+          <div className='loginError'>
+            <span>Incorrect Credentials!</span>
+          </div>
           <h3>Login</h3>
           <div className='loginInputs'>
             <div className="input-group">
