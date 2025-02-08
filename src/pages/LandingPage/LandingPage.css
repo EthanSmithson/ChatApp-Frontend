@@ -1842,45 +1842,6 @@
 	animation-fill-mode: both;
  }
 
- @keyframes loginErrorShow {
-	0% {
-		width: 0%;
-	}
-	100% {
-		width: fit-content;
-	}
- }
-
- @keyframes loginErrorShowHeight {
-	0% {
-		height: 0%;
-	}
-	100% {
-		height: fit-content;
-	}
- }
-
- .loginError {
-    background: #2c2c2c;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15px;
-    padding: 7px 24px;
-	border: red 1px solid;
-	transition: 0.5s;
-	animation-name: loginErrorShow, loginErrorShowHeight;
-	animation-duration: 1s, 1s;
-	animation-timing-function: linear;
-	animation-iteration-count: infinite, infinite;
-	animation-delay: 0s, 1s;
- }
-
- .loginError span {
-	color: white;
-	font-size: smaller;
- }
-
  @media (max-width: 1486px) {
 	
 	.screenshotCards {

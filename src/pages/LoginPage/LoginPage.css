@@ -302,3 +302,64 @@
     align-items: center;
     justify-content: center;
   }
+
+  @keyframes loginErrorShow {
+    0% {
+      width: 0vw;
+      overflow: hidden;
+      height: 1.5vh;
+    }
+    100% {
+      width: 5vw;
+      height: 1.5vh;
+    }
+   }
+  
+   /* @keyframes loginErrorShowHeight {
+    0% {
+      height: 0%;
+    }
+    100% {
+      height: fit-content;
+    }
+   } */
+  
+   .loginError {
+      background: #2c2c2c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 15px;
+      padding: 7px 24px;
+      border: red 1px solid;
+      animation-name: loginErrorShow, loginErrorShowHeight;
+      animation-duration: .15s, 1s;
+      animation-timing-function: linear;
+      animation-iteration-count: 1, infinite;
+      animation-delay: 0s, 1s;
+   }
+  
+   @keyframes LoginErrorText {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+   }
+  
+   .loginErrorText {
+    color: white;
+    opacity: 1;
+    font-size: smaller;
+    /* animation-name: LoginErrorText;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-delay: .22s; */
+    transition: all .8s;
+   }
+
+   .hideErrorText {
+    display: none;
+   }

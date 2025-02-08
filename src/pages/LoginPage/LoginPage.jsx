@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './LoginPage.css';
 import { data } from 'jquery';
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 const LoginPage = () => {
 
   const navigate = useNavigate();
+   var [showError, setShowError] = useState(false);
+    var [showErrorText, setShowErrorText] = useState(false);
 
   const activateRegister = () => {
     let loginSide = document.getElementById("loginSide")
@@ -46,7 +48,12 @@ const LoginPage = () => {
       }
       )
       .then(data => console.log(data))
-      .catch(error => console.error('Error:', error));
+      .catch(error => {
+        setShowError(true);
+        setTimeout(() => {
+          setShowErrorText(true)
+        }, 180);
+      });
   }
 
   const registerUser = (formData) => {
@@ -74,8 +81,8 @@ const LoginPage = () => {
     <div className='loginContainer'>
       <div id='loginSide' className='loginSide loginActive'>
         <form className='loginForm' action={loginUser}>
-          <div className='loginError'>
-            <span>Incorrect Credentials!</span>
+          <div className={showError ? 'loginError': ''}>
+            <span className={showErrorText ? 'loginErrorText' : 'hideErrorText'}>Incorrect Credentials!</span>
           </div>
           <h3>Login</h3>
           <div className='loginInputs'>
