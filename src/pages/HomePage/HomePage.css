@@ -1,0 +1,49 @@
+.homeContainer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.leftPane {
+    width: 32%;
+    height: 90vh;
+    background-color: aliceblue;
+}
+
+.middlePane {
+    width: 32%;
+    height: 90vh;
+    background-color: aliceblue;
+}
+
+.rightPane {
+    width: 32%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rightPaneCommunities {
+    height: 39.5%;
+    width: 100%;
+    background-color: #26282B;
+}
+
+.rightPaneFriends {
+    height: 59.5%;
+    width: 100%;
+    background-color: #26282B;
+}
+
+/*
+	Color Palette (darker at top)
+	#353941
+	#26282B
+	#5F85DB
+	#90B8F8
+*/

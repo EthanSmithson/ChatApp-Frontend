@@ -333,7 +333,7 @@
       padding: 7px 24px;
       border: red 1px solid;
       animation-name: loginErrorShow, loginErrorShowHeight;
-      animation-duration: .15s, 1s;
+      animation-duration: .1s, 1s;
       animation-timing-function: linear;
       animation-iteration-count: 1, infinite;
       animation-delay: 0s, 1s;

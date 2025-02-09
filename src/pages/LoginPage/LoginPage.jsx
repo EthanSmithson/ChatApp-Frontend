@@ -52,7 +52,7 @@ const LoginPage = () => {
         setShowError(true);
         setTimeout(() => {
           setShowErrorText(true)
-        }, 180);
+        }, 100);
       });
   }
 
