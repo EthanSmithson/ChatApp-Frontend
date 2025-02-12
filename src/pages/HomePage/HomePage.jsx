@@ -27,7 +27,12 @@ const HomePage = () => {
                 <div className='rightPane'>
                     <div className='rightPaneCommunities'>
                         <div className='communitiesHeader'>
-                            Your Communities
+                            <div className='communitiesTab'>
+                                Your Communities
+                            </div>
+                            <div className='findCommunitiesTab'>
+                                Find Communities
+                            </div>
                         </div>
                         <div className='communitiesContent'>
                             <ul>
