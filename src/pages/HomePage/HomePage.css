@@ -10,7 +10,17 @@
 .homeHeader {
     width: 100%;
     height: 6%;
-    background-color: aqua;
+    background-color: #26282b;
+    background-image: linear-gradient(160deg, #26282b 0%, #353941 130%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 999;
+    font-family: "Fira Sans", serif;
+    font-weight: 500;
+    font-style: normal;
+    color: white;
 }
 
 .homeContainer {
@@ -83,7 +93,7 @@
     width: 100%;
     background-color: #26282b;
     background-image: linear-gradient(160deg, #26282b 0%, #353941 100%);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(253, 247, 247, 0.3) 0px 1px 3px -1px;
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(253, 247, 247, 0.3) 0px 1px 3px -1px; */
     border-radius: 15px;
     display: flex;
     align-items: flex-start;
@@ -92,9 +102,38 @@
     padding: 1rem;
     font-family: "Varela Round", serif;
     font-weight: 700;
-    font-size: small;
+    font-size: 15px;
     font-style: normal;
     color: white;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: rgba(50, 107, 236, 0.25) 100px 54px 700px, rgba(50, 107, 236, 0.12) 0px -12px 360px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(144, 184, 248, 0.09) 0px -3px 5px;
+    overflow: hidden;
+    transition: all .3s;
+}
+
+.rightPaneCommunitiesExpand {
+    height: 90%;
+    width: 100%;
+    background-color: #26282b;
+    background-image: linear-gradient(160deg, #26282b 0%, #353941 100%);
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(253, 247, 247, 0.3) 0px 1px 3px -1px; */
+    border-radius: 15px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 1rem;
+    font-family: "Varela Round", serif;
+    font-weight: 700;
+    font-size: 15px;
+    font-style: normal;
+    color: white;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: rgba(50, 107, 236, 0.25) 100px 54px 700px, rgba(50, 107, 236, 0.12) 0px -12px 360px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(144, 184, 248, 0.09) 0px -3px 5px;
+    overflow: hidden;
+    transition: all .3s;
 }
 
 .communitiesHeader {
@@ -105,16 +144,40 @@
 }
 
 .communitiesHeader .communitiesTab {
-    height: fit-content;
-    width: fit-content;
     padding: .5rem;
     margin: 0 .3vw 0 .3vw;
-    transition: all 1s;
     position: relative;
+    text-align:center;
+    color:#191335;
+    background-image:linear-gradient(to top, #191335, #191335 13.33333%, #26afce 72.66666%, #f021ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 500% 450%;
+    background-position: bottom;
+    transition: all .22s linear;
+}
+
+.communitiesHeader .communitiesTab:hover {
+    background-position: top left 100%;
+  }
+
+.communitiesTabActive {
+    padding: .5rem;
+    margin: 0 .3vw 0 .3vw;
+    position: relative;
+    text-align:center;
+    color:#191335;
+    background-image:linear-gradient(to top, #191335, #191335 13.33333%, #26afce 72.66666%, #f021ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 500% 450%;
+    background-position: bottom;
+    transition: all .22s linear;
+    background-position: top left 100%;
 }
 /* background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%); */
 
-.communitiesHeader .communitiesTab:hover::before {
+/* .communitiesHeader .communitiesTab:hover::before {
     content: "";
     height: fit-content;
     width: 102%;
@@ -122,14 +185,136 @@
     margin: 0 .3vw 0 .3vw;
     transition: all 1s;
     position: absolute;
-}
+} */
 
 .communitiesHeader .findCommunitiesTab {
-    height: fit-content;
-    width: fit-content;
     padding: .5rem;
     margin: 0 .3vw 0 .3vw;
+    position: relative;
+    text-align:center;
+    color:#191335;
+    background-image:linear-gradient(to top, #191335, #191335 13.33333%, #26afce 72.66666%, #f021ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 500% 450%;
+    background-position: bottom;
+    transition: all .25s linear;
 }
+
+.communitiesHeader div {
+    cursor: pointer;
+}
+
+.communitiesControl {
+    width: 100%;
+    height: fit-content;
+    padding: 0 .5rem .7rem 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.communitiesControl i {
+    color: #757575;
+    cursor: pointer;
+    margin: .3rem .5rem .3rem .5rem;
+}
+
+.hideHeaderOption {
+    display: none;
+}
+
+.hidePane {
+    height: 1%;
+    transition: all .3s;
+}
+
+.bothCommunities {
+    display: flex;
+    flex-direction: row;
+    width: 128%;
+}
+
+.communitiesBody {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.findCommunititesBody {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.communitiesContent {
+    width: 100%;
+    display: flex;
+    height: fit-content;
+    height: 100%;
+    border-radius: 15px;
+    transform: translateX(0);
+    transition: all .5s;
+}
+
+.communitiesContentHide {
+    transform: translateX(-250px);
+    transition: all .5s;
+}
+
+.communitiesContent ul {
+    list-style: none;
+}
+
+.communitiesContent ul li {
+    display: flex;
+    align-items: center;
+    font-size: 13.5px;
+}
+
+.findCommunitiesContent {
+    width: 100%;
+    display: flex;
+    height: fit-content;
+    height: 100%;
+    border-radius: 15px;
+    transform: translateX(-250px);
+    transition: all .5s;
+}
+
+.findCommunitiesContentHide {
+    transform: translateX(250px);
+    transition: all .5s;
+}
+
+.findCommunitiesContent ul {
+    list-style: none;
+}
+
+.findCommunitiesContent ul li {
+    display: flex;
+    align-items: center;
+}
+
+.communityImage {
+    width: 40px;
+    height: 40px;
+    background-color: aliceblue;
+    border-radius: 25px;
+    display: inline-flex;
+    margin-right: .8vw;
+}
+
+.communitiesHeader .findCommunitiesTab:hover {
+    background-position: top left 100%;
+  }
 
 .rightPaneFriends {
     height: 55%;
@@ -143,6 +328,157 @@
     justify-content: flex-start;
     flex-direction: column;
     padding: 1rem;
+    font-family: "Varela Round", serif;
+    font-weight: 700;
+    font-size: 15px;
+    font-style: normal;
+    overflow: hidden;
+    transition: all .3s;
+}
+
+.rightPaneFriendsExpand {
+    height: 90%;
+    width: 100%;
+    background-color: #26282b;
+    background-image: linear-gradient(160deg, #26282b 0%, #353941 100%);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(253, 247, 247, 0.3) 0px 1px 3px -1px;
+    border-radius: 15px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 1rem;
+    font-family: "Varela Round", serif;
+    font-weight: 700;
+    font-size: 15px;
+    font-style: normal;
+    overflow: hidden;
+    transition: all .45s;
+}
+
+.rightPaneFriendsCollapse {
+    height: 1%;
+    width: 100%;
+    background-color: #26282b;
+    background-image: linear-gradient(160deg, #26282b 0%, #353941 100%);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(253, 247, 247, 0.3) 0px 1px 3px -1px;
+    border-radius: 15px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 1rem;
+    font-family: "Varela Round", serif;
+    font-weight: 700;
+    font-size: 15px;
+    font-style: normal;
+    overflow: hidden;
+    transition: all .3s;
+}
+
+.communitiesSearhbar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.communitiesSearhbar input {
+        font-size: 14px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        width: 300px;
+        border: none;
+        background: transparent;
+        border-bottom: 1px solid #757575;
+        color: #ffffff;
+        font-family: "Varela Round", serif;
+        font-weight: 500;
+        font-size: 13px;
+        font-style: normal;
+}
+
+.communitiesSearhbar input::placeholder{
+    font-family: "Varela Round", serif;
+    font-weight: 600;
+    font-size: 15px;
+    font-style: normal;
+}
+
+.friendsBody {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.allFriendsTabs {
+    display: flex;
+    flex-direction: row;
+    width: 190%;
+}
+
+.friendsContent {
+    width: 100%;
+    display: flex;
+    height: fit-content;
+    height: 100%;
+    border-radius: 15px;
+    transform: translateX(0);
+    transition: all .5s;
+}
+
+.allFriendsContent {
+    width: 100%;
+    display: flex;
+    height: fit-content;
+    height: 100%;
+    border-radius: 15px;
+    transform: translateX(-223px);
+    transition: all .5s;
+}
+
+.findFriendsContent {
+    width: 100%;
+    display: flex;
+    height: fit-content;
+    height: 100%;
+    border-radius: 15px;
+    transform: translateX(-446px);
+    transition: all .5s;
+}
+
+.activeFriendsContentHide {
+    transform: translateX(-250px);
+    transition: all .5s;
+}
+
+.allFriendsContentRightHide {
+    transform: translateX(250px);
+    transition: all .5s;
+}
+
+.allFriendsContentLeftHide {
+    transform: translateX(-473px);
+    transition: all .5s;
+}
+
+.findFriendsContentHide {
+    transform: translateX(400px);
+    transition: all .5s;
+}
+
+.friendsContent ul, .allFriendsContent ul, .findFriendsContent ul {
+    list-style: none;
+}
+
+.friendsContent ul li, .allFriendsContent ul li, .findFriendsContent ul li {
+    display: flex;
+    align-items: center;
+    font-size: 13.5px;
 }
 
 /*
