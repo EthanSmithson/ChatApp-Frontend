@@ -49,6 +49,7 @@
 .middlePane {
     width: 55%;
     height: 88vh;
+    z-index: 999;
 }
 
 .rightPane {
@@ -107,7 +108,7 @@
     color: white;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    box-shadow: rgba(50, 107, 236, 0.25) 100px 54px 700px, rgba(50, 107, 236, 0.12) 0px -12px 360px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(144, 184, 248, 0.09) 0px -3px 5px;
+    box-shadow: rgba(50, 107, 236, 0.25) 100px 54px 700px, rgba(50, 107, 236, 0.12) 0px -12px 60px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(144, 184, 248, 0.09) 0px -3px 5px;
     overflow: hidden;
     transition: all .3s;
 }
@@ -334,6 +335,7 @@
     font-style: normal;
     overflow: hidden;
     transition: all .3s;
+    box-shadow: rgba(183, 33, 255, 0.25) 100px 54px 700px, rgba(50, 107, 236, 0.12) 0px -12px 360px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(144, 184, 248, 0.09) 0px -3px 5px;
 }
 
 .rightPaneFriendsExpand {
@@ -354,6 +356,7 @@
     font-style: normal;
     overflow: hidden;
     transition: all .45s;
+    box-shadow: rgba(183, 33, 255, 0.25) 100px 54px 700px, rgba(50, 107, 236, 0.12) 0px -12px 360px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(144, 184, 248, 0.09) 0px -3px 5px;
 }
 
 .rightPaneFriendsCollapse {

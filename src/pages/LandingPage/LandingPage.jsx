@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './LandingPage.css'
 import asteroid from './asteroid.png'
+import bigAsteroid from './bigAsteroid.png'
 import { NavLink } from 'react-router-dom';
 import personOnComputer from './personOnComputer.png'
 import { gsap } from "gsap";
@@ -619,8 +620,8 @@ const LandingPage = (props) => {
         </div>
       </header>
       <img className='asteroidImage' alt='ateroid' src={asteroid}></img>
-        <img className='asteroidImage1' alt='ateroid' src={asteroid}></img>
-        <img className='asteroidImage2' alt='ateroid' src={asteroid}></img>
+        <img className='asteroidImage1' alt='ateroid' src={bigAsteroid}></img>
+        <img className='asteroidImage2' alt='ateroid' src={bigAsteroid}></img>
         <img className='asteroidImage3' alt='ateroid' src={asteroid}></img>
         {/* <img className='asteroidImage4' alt='ateroid' src={asteroid}></img> */}
         <img className='asteroidImage5' alt='ateroid' src={asteroid}></img>
@@ -868,6 +869,35 @@ const LandingPage = (props) => {
             </div> */}
         </section>
         <section className='contactSection'>
+        <div className='footerContent'>
+              <div className='innerFooterContent'>
+                <div className='footerCount'>
+                  1
+                </div>
+                <h2 className='footerContentHeader' >Check me out!</h2>
+                <span>
+                  Check out my work on git hub! Or visit my live sites hosted on Digital ocean!
+                </span>
+              </div>
+              <div className='innerFooterContent'>
+              <div className='footerCount'>
+                  2
+                </div>
+                <h2 className='footerContentHeader'>Lets get connected.</h2>
+                <span>
+                  Contact me with the message bubble in the bottom right of the screen!
+                </span>
+              </div>
+              <div className='innerFooterContent'>
+              <div className='footerCount'>
+                  3
+                </div>
+                <h2 className='footerContentHeader'>Thank you!</h2>
+                <span>
+                  Thank you for viewing my work! I hope to hear from you soon!
+                </span>
+              </div>
+            </div>
           <div>
             <img className='personOnComputer' id='personOnComputer' alt='person on Computer' src={personOnComputer}></img>
           </div>
