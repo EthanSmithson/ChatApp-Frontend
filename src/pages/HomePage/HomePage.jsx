@@ -7,6 +7,7 @@ const HomePage = () => {
     var [activeFriendsActive, setActiveFriendsActive] = useState(1);
     var [minimizeCommunities, setMinimizeCommunities] = useState(false);
     var [minimizeFriends, setMinimizeFriends] = useState(false);
+    var [communitiesDialog, setCommunitiesDialog] = useState(false);
 
     const communitiesSetTrue = () => {
         setCommunitiesActive(true);
@@ -47,8 +48,19 @@ const HomePage = () => {
         }
     }
 
+    const createCommunitiesDialog = () => {
+        if (communitiesDialog) {
+            setCommunitiesDialog(false);
+        } else {
+            setCommunitiesDialog(true);
+        }
+    }
+
     return (
         <div className='home'>
+            <div onClick={createCommunitiesDialog} className={communitiesDialog ? 'bufferShow' : ''}>
+                            
+            </div>
             <div className='homeHeader'>
                 <div className='headerLogo'>
                     <img alt='myLogo'></img>
@@ -73,6 +85,10 @@ const HomePage = () => {
                     <div className='mainPane'>
                         
                     </div>
+                </div>
+                <div className={communitiesDialog ? 'createCommunitiesPopup communitiesDialogBorder' : 'createCommunitiesPopup'}></div>
+                <div className={communitiesDialog ? 'createCommunitiesPopup createCommunitiesPopupShow' : 'createCommunitiesPopup'}>
+                    
                 </div>
                 <div className='rightPane'>
                     <div className={minimizeCommunities ? "rightPaneCommunities hidePane" : minimizeFriends ? "rightPaneCommunitiesExpand" : 'rightPaneCommunities'}>
@@ -119,7 +135,9 @@ const HomePage = () => {
                             </div>
                         </div>
                         </div>
-                        
+                        <div onClick={createCommunitiesDialog} className='createCommunitiesBtn'>
+                            <i className="fa-solid fa-plus fa-lg"></i>
+                        </div>
                     </div>
                     <div className={minimizeCommunities ? "rightPaneFriendsExpand" : minimizeFriends ? "rightPaneFriendsCollapse" : 'rightPaneFriends'}>
                         <div className='communitiesControl'>

@@ -23,6 +23,11 @@
     color: white;
 }
 
+.headerSearchBar input {
+    width: 36vw;
+    color: white;
+}
+
 .homeContainer {
     width: 94%;
     margin-left: 5%;
@@ -34,7 +39,8 @@
 }
 
 .leftSidebar {
-    background-color: red;
+    background-color: #26282b;
+    background-image: linear-gradient(160deg, #26282b 0%, #353941 200%);
     height: 100vh;
     width: 5%;
     position: absolute;
@@ -111,6 +117,98 @@
     box-shadow: rgba(50, 107, 236, 0.25) 100px 54px 700px, rgba(50, 107, 236, 0.12) 0px -12px 60px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(144, 184, 248, 0.09) 0px -3px 5px;
     overflow: hidden;
     transition: all .3s;
+}
+
+.createCommunitiesBtn {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    background-color: #21D4FD;
+    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+    position: absolute;
+    right: 3%;
+    bottom: 3%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 60%;
+    transition: all .3s;
+}
+
+.createCommunitiesPopup {
+    width: 40%;
+    height: 50vh;
+    transform: scale(0%);
+    background-color: #26282b;
+    background-image: linear-gradient(160deg, #26282b 0%, #353941 100%);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(253, 247, 247, 0.3) 0px 1px 3px -1px;
+    border-radius: 15px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 1rem;
+    position: absolute;
+    margin: 0 auto;
+    z-index: 999;
+}
+
+.createCommunitiesPopupShow {
+    width: 40%;
+    height: 50vh;
+    background-color: #26282b;
+    background-image: linear-gradient(160deg, #26282b 0%, #353941 100%);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(253, 247, 247, 0.3) 0px 1px 3px -1px;
+    border-radius: 15px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 1rem;
+    position: absolute;
+    margin: 0 auto;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(100%);
+    transition: all .35s;
+}
+
+.communitiesDialogBorder {
+    width: 40.5%;
+    height: 51vh;
+    background-color: #21D4FD;
+    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+    border-radius: 15px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 1rem;
+    position: absolute;
+    margin: 0 auto;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(100%);
+    transition: all .35s;
+}
+
+.bufferShow {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    position: absolute;
+    z-index: 1000;
+    opacity: 30%;
+}
+
+.createCommunitiesBtn:hover {
+    transform: scale(103%);
+    transition: all .3s;
+    cursor: pointer;
+    box-shadow: rgba(183, 33, 255, 0.25) 100px 54px 700px, rgba(50, 107, 236, 0.12) 0px -12px 360px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(144, 184, 248, 0.09) 0px -3px 5px;
 }
 
 .rightPaneCommunitiesExpand {
@@ -416,6 +514,7 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
+    color: white;
 }
 
 .allFriendsTabs {
