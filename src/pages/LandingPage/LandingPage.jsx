@@ -600,7 +600,7 @@ const LandingPage = (props) => {
                 <li onClick={() => scrollToContact()}>Contact Me</li>
               </ul>
             </div>
-          <NavLink to="/login"><button>Login</button></NavLink>
+          <NavLink to="/login" style={{ textDecoration: 'none', color: 'inherit' }}><button>Login</button></NavLink>
         </div>
         <div id='mobileHamburgerOptions' className='headerOptionsMobile'>
           <div id='hamBtnMobile' onClick={openMobileHam} className={headerLinksAlter ? 'hamMenu showHamMenu' : 'hamMenu showHamMenu'}>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './HomePage.css';
+import { NavLink } from 'react-router-dom';
 
 const HomePage = () => {
 
@@ -69,7 +70,9 @@ const HomePage = () => {
                     <input placeholder='Search'/>
                 </div>
                 <div className='logout'>
-                    Logout
+                    <NavLink to={"/"} style={{ textDecoration: 'none', color: 'inherit' }}>
+                        Logout
+                    </NavLink>
                 </div>
             </div>
             <div className='leftSidebar'>
@@ -88,11 +91,29 @@ const HomePage = () => {
                 </div>
                 <div className={communitiesDialog ? 'createCommunitiesPopup communitiesDialogBorder' : 'createCommunitiesPopup'}></div>
                 <div className={communitiesDialog ? 'createCommunitiesPopup createCommunitiesPopupShow' : 'createCommunitiesPopup'}>
-                    
+                    <div className='createCommunitiesContainer'>
+                        <div className='createCommunityTitle'>
+                            <input placeholder='Community Name' />
+                        </div>
+                        <div className='createCommunityDescription'>
+                            <textarea placeholder='What is this community about?'></textarea>
+                        </div>
+                        <div className='createCommunityMembers'>
+                            <input placeholder="Add Members" /> 
+                            <div className='addedMembers'>test</div>
+                        </div>
+                        <div className='createCommunityButtons'>
+                            <button className='createCommunityButtonsCncl'>Cancel</button>
+                            <button className='createCommunityButtonsCrt'>Create</button>
+                        </div>
+                    </div>
                 </div>
                 <div className='rightPane'>
                     <div className={minimizeCommunities ? "rightPaneCommunities hidePane" : minimizeFriends ? "rightPaneCommunitiesExpand" : 'rightPaneCommunities'}>
-                        <div className='communitiesControl'>
+                        <div className={minimizeCommunities ? "communitiesControlMinimize" : 'communitiesControl'}>
+                            <div className={minimizeCommunities ? "minimizeCommunitierHeader" : "hideMinimizeCommunitierHeader"}>
+                                Communities
+                            </div>
                             <i onClick={minimizeCommunitiesFunc} class={!minimizeCommunities ? "hideHeaderOption" : "fa-solid fa-plus fa-sm"}></i>
                             <i onClick={minimizeCommunitiesFunc} class={minimizeCommunities ? "hideHeaderOption" : "fa-solid fa-minus fa-sm"}></i>
                         </div>
@@ -135,12 +156,15 @@ const HomePage = () => {
                             </div>
                         </div>
                         </div>
-                        <div onClick={createCommunitiesDialog} className='createCommunitiesBtn'>
+                        <div onClick={createCommunitiesDialog} className={minimizeCommunities ? "createCommunitiesbtnHide" : 'createCommunitiesBtn'}>
                             <i className="fa-solid fa-plus fa-lg"></i>
                         </div>
                     </div>
                     <div className={minimizeCommunities ? "rightPaneFriendsExpand" : minimizeFriends ? "rightPaneFriendsCollapse" : 'rightPaneFriends'}>
-                        <div className='communitiesControl'>
+                        <div className={minimizeFriends ? "communitiesControlMinimize" : 'communitiesControl'}>
+                            <div className={minimizeFriends ? "minimizeCommunitierHeader" : "hideMinimizeCommunitierHeader"}>
+                                Friends
+                            </div>
                             <i onClick={minimizeFriendsFunc} class={!minimizeFriends ? "hideHeaderOption" : "fa-solid fa-plus fa-sm"}></i>
                             <i onClick={minimizeFriendsFunc} class={minimizeFriends ? "hideHeaderOption" : "fa-solid fa-minus fa-sm"}></i>
                         </div>
