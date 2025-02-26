@@ -95,15 +95,36 @@ const HomePage = () => {
                         <div className='createCommunityTitle'>
                             <input placeholder='Community Name' />
                         </div>
-                        <div className='createCommunityDescription'>
-                            <textarea placeholder='What is this community about?'></textarea>
-                        </div>
-                        <div className='createCommunityMembers'>
-                            <input placeholder="Add Members" /> 
-                            <div className='addedMembers'>test</div>
+                        <div className='communityDescriptionMembers'>
+                            <div className='createCommunityDescription'>
+                                <textarea placeholder='What is this community about?'></textarea>
+                            </div>
+                            <div className='communityMembers'>
+                                <div className='createCommunityMembers'>
+                                    <input placeholder="Add Members" /> 
+                                </div>
+                                <div className='addedMembers'>
+                                    test<br></br>
+                                    test<br></br>
+                                    test<br></br>
+                                    test<br></br>
+                                    test<br></br>
+                                    test<br></br>
+                                    test<br></br>
+                                    test<br></br>
+                                    test<br></br>
+                                    test<br></br>
+                                    test<br></br>
+                                    test<br></br>
+                                    test<br></br>
+                                    test<br></br>
+                                    test<br></br>
+                                    test<br></br>
+                                </div>
+                            </div>
                         </div>
                         <div className='createCommunityButtons'>
-                            <button className='createCommunityButtonsCncl'>Cancel</button>
+                            <button onClick={createCommunitiesDialog} className='createCommunityButtonsCncl'>Cancel</button>
                             <button className='createCommunityButtonsCrt'>Create</button>
                         </div>
                     </div>
