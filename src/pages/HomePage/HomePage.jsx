@@ -123,6 +123,28 @@ const HomePage = () => {
                                 </div>
                             </div>
                         </div>
+                        <div className='communitySettings'>
+                            <div className='communitySettingsSection'>
+                            <span>Privacy Setting</span>
+                            <select>
+                                <option>Public</option>
+                                <option>Private</option>
+                            </select>    
+                            </div>
+                            <div className='communitySettingsSection'>
+                                <span>Add Your Tag's</span>
+                                <div className='tagOptions'>
+                                    <div><span>Sports</span></div>
+                                    <div><span>Gaming</span></div>
+                                    <div><span>Fitness</span></div>
+                                    <div><span>Foodies</span></div>
+                                    <div><span>Tech</span></div>
+                                    <div><span>Trending</span></div>
+                                    <div><span>Music</span></div>
+                                    <div><span>Concerts</span></div>
+                                </div>
+                            </div>
+                        </div>
                         <div className='createCommunityButtons'>
                             <button onClick={createCommunitiesDialog} className='createCommunityButtonsCncl'>Cancel</button>
                             <button className='createCommunityButtonsCrt'>Create</button>

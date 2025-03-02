@@ -807,6 +807,27 @@
     font-size: 13.5px;
 }
 
+.communitySettings {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.communitySettingsSection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.tagOptions {
+    height: 8vh;
+    width: fit-content;
+    background-color: #21D4FD;
+}
+
 /*
 	Color Palette (darker at top)
 	#353941
