@@ -9,6 +9,7 @@ const HomePage = () => {
     var [minimizeCommunities, setMinimizeCommunities] = useState(false);
     var [minimizeFriends, setMinimizeFriends] = useState(false);
     var [communitiesDialog, setCommunitiesDialog] = useState(false);
+    var [tagOptionsHide, setTagOptionsHide] = useState(false);
 
     const communitiesSetTrue = () => {
         setCommunitiesActive(true);
@@ -54,6 +55,14 @@ const HomePage = () => {
             setCommunitiesDialog(false);
         } else {
             setCommunitiesDialog(true);
+        }
+    }
+
+    const tagOptionsHideFunc = () => {
+        if (tagOptionsHide) {
+            setTagOptionsHide(false);
+        } else {
+            setTagOptionsHide(true);
         }
     }
 
@@ -126,22 +135,32 @@ const HomePage = () => {
                         <div className='communitySettings'>
                             <div className='communitySettingsSection'>
                             <span>Privacy Setting</span>
-                            <select>
+                            <select className='communityPrivacy'>
                                 <option>Public</option>
                                 <option>Private</option>
                             </select>    
                             </div>
-                            <div className='communitySettingsSection'>
-                                <span>Add Your Tag's</span>
-                                <div className='tagOptions'>
-                                    <div><span>Sports</span></div>
-                                    <div><span>Gaming</span></div>
-                                    <div><span>Fitness</span></div>
-                                    <div><span>Foodies</span></div>
-                                    <div><span>Tech</span></div>
-                                    <div><span>Trending</span></div>
-                                    <div><span>Music</span></div>
-                                    <div><span>Concerts</span></div>
+                            <div className='communitySettingsSectionTags'>
+                                <div className='selectTags'>
+                                    <div className='selectTagsContainer'>
+                                        <div onClick={tagOptionsHideFunc} className='tagDropDown'>
+                                            <span>Add Your Tag's</span>
+                                            <i class="fa-solid fa-angle-down"></i>
+                                        </div>
+                                        <div className={tagOptionsHide ? "tagOptions" : 'tagOptionsHide'}>
+                                            <div><span>Sports</span></div>
+                                            <div><span>Gaming</span></div>
+                                            <div><span>Fitness</span></div>
+                                            <div><span>Foodies</span></div>
+                                            <div><span>Tech</span></div>
+                                            <div><span>Trending</span></div>
+                                            <div><span>Music</span></div>
+                                            <div><span>Concerts</span></div>
+                                        </div>
+                                    </div>
+                                    <div className='activeTags'>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>

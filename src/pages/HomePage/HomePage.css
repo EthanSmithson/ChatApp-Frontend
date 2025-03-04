@@ -396,6 +396,14 @@
     margin-bottom: 1vh;
 }
 
+.communityPrivacy {
+    color: white;
+    background-color: #26282b;
+    border: none;
+    padding: .2rem;
+    border-radius: 5px;
+}
+
 .addedMembers {
     width: 81%;
     color: white;
@@ -406,7 +414,7 @@
     align-items: flex-start;
     overflow-y: scroll;
     background: rgba(69, 71, 73, 0.58);
-    border-radius: 16px;
+    border-radius: 4px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(11.4px);
     -webkit-backdrop-filter: blur(11.4px);
@@ -813,6 +821,11 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+    font-family: "Varela Round", serif;
+    font-weight: 700;
+    font-size: 13px;
+    font-style: normal;
+    color: white;
 }
 
 .communitySettingsSection {
@@ -822,10 +835,110 @@
     justify-content: center;
 }
 
+.communitySettingsSectionTags {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.tagDropDown {
+    width: 100%;
+    height: fit-content;
+    padding: 0.55rem 1.2rem 0.55rem 1.2rem;
+    border-radius: 10px;
+    background-color: #26282b;
+    border: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: #757575;
+    cursor: pointer;
+    font-family: "Varela Round", serif;
+    font-weight: 700;
+    font-size: 12px;
+    font-style: normal;
+}
+
+.selectTagsContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #B721FF;
+}
+
 .tagOptions {
-    height: 8vh;
-    width: fit-content;
+    height: 10vh;
+    position: absolute;
+    top: 100%;
+    overflow: auto;
+    width: 100%;
+    padding: .5rem;
+    border-radius: 4px;
+    z-index: 99999;
+    background: rgba(69, 71, 73, 0.58);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11.4px);
+    -webkit-backdrop-filter: blur(11.4px);
+    border: 1px solid rgba(69, 71, 73, 1);
+    box-shadow: rgb(50, 50, 50) 3px 3px 6px 0px inset, rgba(50, 50, 50, 0.5) -3px -3px 6px 1px inset;
+    font-family: "Varela Round", serif;
+    font-weight: 700;
+    font-size: 13px;
+    font-style: normal;
+    color: white;
+}
+
+.tagOptionsHide {
+    display: none;
+}
+
+.tagDropDown::before {
+    content: "";
     background-color: #21D4FD;
+    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+    z-index: -1;
+    width: 102%;
+    height: 105%;
+    background-color: #B721FF;
+    position: absolute;
+    border-radius: 10px;
+    border: none;
+    margin: 0 auto;
+    padding: .01rem .02rem .01rem 0.02rem;
+}
+
+.activeTags {
+    width: 60%;
+    color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    overflow-x: scroll;
+    background: rgba(69, 71, 73, 0.58);
+    border-radius: 4px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11.4px);
+    -webkit-backdrop-filter: blur(11.4px);
+    border: 1px solid rgba(69, 71, 73, 1);
+    box-shadow: rgb(50, 50, 50) 3px 3px 6px 0px inset, rgba(50, 50, 50, 0.5) -3px -3px 6px 1px inset;
+    font-family: "Varela Round", serif;
+    font-weight: 700;
+    font-size: 15px;
+    font-style: normal;
+    margin-left: 2vw;
+}
+
+.selectTags {
+    width: 20vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 /*
