@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './HomePage.css';
 import { NavLink } from 'react-router-dom';
 
@@ -9,7 +9,21 @@ const HomePage = () => {
     var [minimizeCommunities, setMinimizeCommunities] = useState(false);
     var [minimizeFriends, setMinimizeFriends] = useState(false);
     var [communitiesDialog, setCommunitiesDialog] = useState(false);
-    var [tagOptionsHide, setTagOptionsHide] = useState(false);
+    var [tagOptionsShow, setTagOptionsShow] = useState(false);
+    const myRef = useRef();
+
+    const handleClickOutside = e => {
+        if (!myRef.current.contains(e.target) && !document.getElementById("tagDropDown").contains(e.target)) {
+            setTagOptionsShow(false);
+        }
+    };
+
+    const handleClickInside = () => setTagOptionsShow(true);
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    });
 
     const communitiesSetTrue = () => {
         setCommunitiesActive(true);
@@ -39,12 +53,12 @@ const HomePage = () => {
             setMinimizeCommunities(false);
         }
     }
-    
+
     const minimizeFriendsFunc = () => {
         setMinimizeCommunities(false);
         if (!minimizeFriends) {
             setMinimizeFriends(true);
-            
+
         } else {
             setMinimizeFriends(false);
         }
@@ -58,25 +72,42 @@ const HomePage = () => {
         }
     }
 
-    const tagOptionsHideFunc = () => {
-        if (tagOptionsHide) {
-            setTagOptionsHide(false);
+    const tagOptionsHideFunc = (event) => {
+        if (tagOptionsShow) {
+            setTagOptionsShow(false);
         } else {
-            setTagOptionsHide(true);
+            setTagOptionsShow(true);
         }
+    }
+
+    const communityTags = {
+        1 : `<div><input type='checkbox'/>🏈<span>Sports</span></div>`,
+        2 : `<div><input type='checkbox'/>🎮<span>Gaming</span></div>`,
+        3 : `<div><input type='checkbox'/>🏃<span>Fitness</span></div>`,
+        4 : `<div><input type='checkbox'/>🍔<span>Foodies</span></div>`,
+        5 : `<div><input type='checkbox'/>💻<span>Tech</span></div>`,
+        6 : `<div><input type='checkbox'/>📈<span>Trending</span></div>`,
+        7 : `<div><input type='checkbox'/>🎶<span>Music</span></div>`,
+        8 : `<div><input type='checkbox'/>🎤<span>Concerts</span></div>`
+    }
+
+    const activateTag = (val) => {
+        let activeTagEl = document.getElementById("activeTags");
+        // document.getElementById("activeTags").append(communityTags[val])
+        console.log(communityTags[val])
     }
 
     return (
         <div className='home'>
             <div onClick={createCommunitiesDialog} className={communitiesDialog ? 'bufferShow' : ''}>
-                            
+
             </div>
             <div className='homeHeader'>
                 <div className='headerLogo'>
                     <img alt='myLogo'></img>
                 </div>
                 <div className='headerSearchBar'>
-                    <input placeholder='Search'/>
+                    <input placeholder='Search' />
                 </div>
                 <div className='logout'>
                     <NavLink to={"/"} style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -85,7 +116,7 @@ const HomePage = () => {
                 </div>
             </div>
             <div className='leftSidebar'>
-    
+
             </div>
             <div className='homeContainer'>
                 <div className='leftPane'>
@@ -95,7 +126,7 @@ const HomePage = () => {
                 </div>
                 <div className='middlePane'>
                     <div className='mainPane'>
-                        
+
                     </div>
                 </div>
                 <div className={communitiesDialog ? 'createCommunitiesPopup communitiesDialogBorder' : 'createCommunitiesPopup'}></div>
@@ -110,7 +141,7 @@ const HomePage = () => {
                             </div>
                             <div className='communityMembers'>
                                 <div className='createCommunityMembers'>
-                                    <input placeholder="Add Members" /> 
+                                    <input placeholder="Add Members" />
                                 </div>
                                 <div className='addedMembers'>
                                     test<br></br>
@@ -134,31 +165,31 @@ const HomePage = () => {
                         </div>
                         <div className='communitySettings'>
                             <div className='communitySettingsSection'>
-                            <span>Privacy Setting</span>
-                            <select className='communityPrivacy'>
-                                <option>Public</option>
-                                <option>Private</option>
-                            </select>    
+                                <span>Privacy Setting</span>
+                                <select className='communityPrivacy'>
+                                    <option>Public</option>
+                                    <option>Private</option>
+                                </select>
                             </div>
                             <div className='communitySettingsSectionTags'>
                                 <div className='selectTags'>
                                     <div className='selectTagsContainer'>
-                                        <div onClick={tagOptionsHideFunc} className='tagDropDown'>
+                                        <div onClick={tagOptionsHideFunc} id='tagDropDown' className='tagDropDown'>
                                             <span>Add Your Tag's</span>
                                             <i class="fa-solid fa-angle-down"></i>
                                         </div>
-                                        <div className={tagOptionsHide ? "tagOptions" : 'tagOptionsHide'}>
-                                            <div><span>Sports</span></div>
-                                            <div><span>Gaming</span></div>
-                                            <div><span>Fitness</span></div>
-                                            <div><span>Foodies</span></div>
-                                            <div><span>Tech</span></div>
-                                            <div><span>Trending</span></div>
-                                            <div><span>Music</span></div>
-                                            <div><span>Concerts</span></div>
+                                        <div id='tagOptions' ref={myRef} onClick={handleClickInside} className={tagOptionsShow ? "tagOptions" : 'tagOptionsHide'}>
+                                            <div onClick={activateTag(1)}><input type='checkbox'/>🏈<span>Sports</span></div>
+                                            <div><input type='checkbox'/>🎮<span>Gaming</span></div>
+                                            <div><input type='checkbox'/>🏃<span>Fitness</span></div>
+                                            <div><input type='checkbox'/>🍔<span>Foodies</span></div>
+                                            <div><input type='checkbox'/>💻<span>Tech</span></div>
+                                            <div><input type='checkbox'/>📈<span>Trending</span></div>
+                                            <div><input type='checkbox'/>🎶<span>Music</span></div>
+                                            <div><input type='checkbox'/>🎤<span>Concerts</span></div>
                                         </div>
                                     </div>
-                                    <div className='activeTags'>
+                                    <div id='activeTags' className='activeTags'>
 
                                     </div>
                                 </div>
@@ -189,34 +220,34 @@ const HomePage = () => {
                         </div>
                         <div className='communitiesSearhbar'>
                             <div className='searchbar'>
-                                <input placeholder='search communities'/>
+                                <input placeholder='search communities' />
                             </div>
                         </div>
                         <div className='bothCommunities'>
-                        <div className='communitiesBody'>
-                            <div id='communitiesContent' className={communitiesActive ? 'communitiesContent' : 'communitiesContent communitiesContentHide'}>
-                                <ul>
-                                    <li>
-                                        <div className='communityImage'>
-                                            
-                                        </div>
-                                        <span>Community Name</span>
-                                    </li>
-                                </ul>
+                            <div className='communitiesBody'>
+                                <div id='communitiesContent' className={communitiesActive ? 'communitiesContent' : 'communitiesContent communitiesContentHide'}>
+                                    <ul>
+                                        <li>
+                                            <div className='communityImage'>
+
+                                            </div>
+                                            <span>Community Name</span>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div className='findCommunititesBody'>
-                            <div className={!communitiesActive ? 'findCommunitiesContent' : 'findCommunitiesContent findCommunitiesContentHide'}>
-                                <ul>
-                                    <li>
-                                        <div className='communityImage'>
-                                            
-                                        </div>
-                                        <span>Community Name</span>
-                                    </li>
-                                </ul>
+                            <div className='findCommunititesBody'>
+                                <div className={!communitiesActive ? 'findCommunitiesContent' : 'findCommunitiesContent findCommunitiesContentHide'}>
+                                    <ul>
+                                        <li>
+                                            <div className='communityImage'>
+
+                                            </div>
+                                            <span>Community Name</span>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
                         </div>
                         <div onClick={createCommunitiesDialog} className={minimizeCommunities ? "createCommunitiesbtnHide" : 'createCommunitiesBtn'}>
                             <i className="fa-solid fa-plus fa-lg"></i>
@@ -243,7 +274,7 @@ const HomePage = () => {
                         </div>
                         <div className='communitiesSearhbar'>
                             <div className='searchbar'>
-                                <input placeholder='search friends'/>
+                                <input placeholder='search friends' />
                             </div>
                         </div>
                         <div className='allFriendsTabs'>
@@ -252,7 +283,7 @@ const HomePage = () => {
                                     <ul>
                                         <li>
                                             <div className='communityImage'>
-                                                
+
                                             </div>
                                             <span>Community Name</span>
                                         </li>
@@ -260,11 +291,11 @@ const HomePage = () => {
                                 </div>
                             </div>
                             <div className='friendsBody'>
-                                <div className={activeFriendsActive === 2 ? 'allFriendsContent' :  activeFriendsActive === 3 ? 'friendsContent allFriendsContentLeftHide' : 'friendsContent allFriendsContentRightHide'}>
+                                <div className={activeFriendsActive === 2 ? 'allFriendsContent' : activeFriendsActive === 3 ? 'friendsContent allFriendsContentLeftHide' : 'friendsContent allFriendsContentRightHide'}>
                                     <ul>
                                         <li>
                                             <div className='communityImage'>
-                                                
+
                                             </div>
                                             <span>Community Name</span>
                                         </li>
@@ -276,7 +307,7 @@ const HomePage = () => {
                                     <ul>
                                         <li>
                                             <div className='communityImage'>
-                                                
+
                                             </div>
                                             <span>Community Name</span>
                                         </li>

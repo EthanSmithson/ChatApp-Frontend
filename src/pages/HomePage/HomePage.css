@@ -871,7 +871,7 @@
 }
 
 .tagOptions {
-    height: 10vh;
+    height: 15vh;
     position: absolute;
     top: 100%;
     overflow: auto;
@@ -890,6 +890,21 @@
     font-size: 13px;
     font-style: normal;
     color: white;
+}
+
+.tagOptions div {
+    width: fit-content;
+    padding: .5rem 0rem .2rem .1rem;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.tagOptions input {
+    width: fit-content;
+    margin-right: .5rem;
 }
 
 .tagOptionsHide {
