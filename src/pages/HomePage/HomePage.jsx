@@ -81,20 +81,32 @@ const HomePage = () => {
     }
 
     const communityTags = {
-        1 : `<div><input type='checkbox'/>🏈<span>Sports</span></div>`,
-        2 : `<div><input type='checkbox'/>🎮<span>Gaming</span></div>`,
-        3 : `<div><input type='checkbox'/>🏃<span>Fitness</span></div>`,
-        4 : `<div><input type='checkbox'/>🍔<span>Foodies</span></div>`,
-        5 : `<div><input type='checkbox'/>💻<span>Tech</span></div>`,
-        6 : `<div><input type='checkbox'/>📈<span>Trending</span></div>`,
-        7 : `<div><input type='checkbox'/>🎶<span>Music</span></div>`,
-        8 : `<div><input type='checkbox'/>🎤<span>Concerts</span></div>`
+        1 : <div><input type='checkbox'/>🏈<span>Sports</span></div>,
+        2 : <div><input type='checkbox'/>🎮<span>Gaming</span></div>,
+        3 : <div><input type='checkbox'/>🏃<span>Fitness</span></div>,
+        4 : <div><input type='checkbox'/>🍔<span>Foodies</span></div>,
+        5 : <div><input type='checkbox'/>💻<span>Tech</span></div>,
+        6 : <div><input type='checkbox'/>📈<span>Trending</span></div>,
+        7 : <div><input type='checkbox'/>🎶<span>Music</span></div>,
+        8 : <div><input type='checkbox'/>🎤<span>Concerts</span></div>
     }
 
+    var tempActiveTags = [];
+    var tempActiveNums = [];
+
     const activateTag = (val) => {
-        let activeTagEl = document.getElementById("activeTags");
-        // document.getElementById("activeTags").append(communityTags[val])
-        console.log(communityTags[val])
+        if (!tempActiveTags.includes(communityTags[val])) {
+            tempActiveTags.push(communityTags[val]);
+            tempActiveNums.push(val);
+            document.getElementById("tag" + val).checked = true;
+        } else {
+            tempActiveTags = tempActiveTags.filter(item => item !== communityTags[val]);
+            tempActiveNums = tempActiveNums.filter(item => item !== val);
+            document.getElementById("tag" + val).checked = false;
+        }
+        console.log(tempActiveTags)
+        document.getElementById("activeTags").innerHTML = "";
+        document.getElementById("activeTags").append(tempActiveTags);
     }
 
     return (
@@ -179,18 +191,22 @@ const HomePage = () => {
                                             <i class="fa-solid fa-angle-down"></i>
                                         </div>
                                         <div id='tagOptions' ref={myRef} onClick={handleClickInside} className={tagOptionsShow ? "tagOptions" : 'tagOptionsHide'}>
-                                            <div onClick={activateTag(1)}><input type='checkbox'/>🏈<span>Sports</span></div>
-                                            <div><input type='checkbox'/>🎮<span>Gaming</span></div>
-                                            <div><input type='checkbox'/>🏃<span>Fitness</span></div>
-                                            <div><input type='checkbox'/>🍔<span>Foodies</span></div>
-                                            <div><input type='checkbox'/>💻<span>Tech</span></div>
-                                            <div><input type='checkbox'/>📈<span>Trending</span></div>
-                                            <div><input type='checkbox'/>🎶<span>Music</span></div>
-                                            <div><input type='checkbox'/>🎤<span>Concerts</span></div>
+                                            <div onClick={() => activateTag(1)}><input id='tag1' type='checkbox'/>🏈<span>Sports</span></div>
+                                            <div onClick={() => activateTag(2)}><input id='tag2' type='checkbox'/>🎮<span>Gaming</span></div>
+                                            <div onClick={() => activateTag(3)}><input id='tag3' type='checkbox'/>🏃<span>Fitness</span></div>
+                                            <div onClick={() => activateTag(4)}><input id='tag4' type='checkbox'/>🍔<span>Foodies</span></div>
+                                            <div onClick={() => activateTag(5)}><input id='tag5' type='checkbox'/>💻<span>Tech</span></div>
+                                            <div onClick={() => activateTag(6)}><input id='tag6' type='checkbox'/>📈<span>Trending</span></div>
+                                            <div onClick={() => activateTag(7)}><input id='tag7' type='checkbox'/>🎶<span>Music</span></div>
+                                            <div onClick={() => activateTag(8)}><input id='tag8' type='checkbox'/>🎤<span>Concerts</span></div>
                                         </div>
                                     </div>
                                     <div id='activeTags' className='activeTags'>
-
+                                        <ul>
+                                            {
+                                                tempActiveTags
+                                            }
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
