@@ -358,6 +358,11 @@
     resize: none;
     padding: 18px 20px;
     box-sizing: border-box;
+    font-family: "Varela Round", serif;
+    font-weight: 400;
+    font-size: 15px;
+    font-style: normal;
+    color: white;
 }
 
 .createCommunityMembers {
@@ -400,7 +405,7 @@
     color: white;
     background-color: #26282b;
     border: none;
-    padding: .2rem;
+    padding: .1rem;
     border-radius: 5px;
 }
 
@@ -823,7 +828,7 @@
     justify-content: space-evenly;
     font-family: "Varela Round", serif;
     font-weight: 700;
-    font-size: 13px;
+    font-size: 14px;
     font-style: normal;
     color: white;
 }
@@ -832,7 +837,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    width: 9.5vw;
 }
 
 .communitySettingsSectionTags {
@@ -892,6 +898,10 @@
     color: white;
 }
 
+.tagOptions input {
+    accent-color: #7e04b7;
+}
+
 .tagOptions div {
     width: fit-content;
     padding: .5rem 0rem .2rem .1rem;
@@ -928,8 +938,8 @@
 
 .activeTags {
     width: 60%;
+    height: 5vh;
     color: white;
-    height: 100%;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -943,7 +953,7 @@
     box-shadow: rgb(50, 50, 50) 3px 3px 6px 0px inset, rgba(50, 50, 50, 0.5) -3px -3px 6px 1px inset;
     font-family: "Varela Round", serif;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 12.5px;
     font-style: normal;
     margin-left: 2vw;
 }
@@ -955,6 +965,25 @@
     align-items: center;
     justify-content: center;
 }
+
+.activeTags ul {
+    display: inline-flex;
+    list-style: none;
+}
+
+.activeTags ul li {
+    width: 4vw;
+}
+
+
+.createCommunityForm {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
 
 /*
 	Color Palette (darker at top)

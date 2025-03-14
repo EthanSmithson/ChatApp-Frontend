@@ -10,6 +10,8 @@ const HomePage = () => {
     var [minimizeFriends, setMinimizeFriends] = useState(false);
     var [communitiesDialog, setCommunitiesDialog] = useState(false);
     var [tagOptionsShow, setTagOptionsShow] = useState(false);
+    var [activeTags, setActiveTags] = useState([]);
+    var [returnedUsers, setReturnedUsers] = useState([]);
     const myRef = useRef();
 
     const handleClickOutside = e => {
@@ -72,6 +74,20 @@ const HomePage = () => {
         }
     }
 
+    const cancelCommunitiesDialog = () => {
+        setCommunitiesDialog(false);
+        var dialogInputs = document.getElementsByClassName("dialogInput");
+        for (var i=0; i<dialogInputs.length; i++) {
+            dialogInputs[i].value = ""
+        }
+        setActiveTags([]);
+        var dropDown = document.getElementsByClassName("communityPrivacy");
+        dropDown[0][0].selected = true;
+        for (var j=1; j<9; j++) {
+            document.getElementById("tag" + j).checked = false;
+        }
+    }
+
     const tagOptionsHideFunc = (event) => {
         if (tagOptionsShow) {
             setTagOptionsShow(false);
@@ -81,37 +97,55 @@ const HomePage = () => {
     }
 
     const communityTags = {
-        1 : <div><input type='checkbox'/>🏈<span>Sports</span></div>,
-        2 : <div><input type='checkbox'/>🎮<span>Gaming</span></div>,
-        3 : <div><input type='checkbox'/>🏃<span>Fitness</span></div>,
-        4 : <div><input type='checkbox'/>🍔<span>Foodies</span></div>,
-        5 : <div><input type='checkbox'/>💻<span>Tech</span></div>,
-        6 : <div><input type='checkbox'/>📈<span>Trending</span></div>,
-        7 : <div><input type='checkbox'/>🎶<span>Music</span></div>,
-        8 : <div><input type='checkbox'/>🎤<span>Concerts</span></div>
+        1 : `🏈 Sports`,
+        2 : `🎮 Gaming`,
+        3 : `🏃 Fitness`,
+        4 : `🍔 Foodies`,
+        5 : `💻 Tech`,
+        6 : `📈 Trending`,
+        7 : `🎶 Music`,
+        8 : `🎤 Concerts`
     }
 
     var tempActiveTags = [];
     var tempActiveNums = [];
+    var listItemTags;
 
     const activateTag = (val) => {
-        if (!tempActiveTags.includes(communityTags[val])) {
-            tempActiveTags.push(communityTags[val]);
+        if (!activeTags.includes(communityTags[val])) {
+            setActiveTags([...activeTags, communityTags[val]]);
             tempActiveNums.push(val);
             document.getElementById("tag" + val).checked = true;
         } else {
-            tempActiveTags = tempActiveTags.filter(item => item !== communityTags[val]);
+            setActiveTags(activeTags.filter((_, i) => i !== activeTags.indexOf(communityTags[val])));
             tempActiveNums = tempActiveNums.filter(item => item !== val);
             document.getElementById("tag" + val).checked = false;
         }
-        console.log(tempActiveTags)
-        document.getElementById("activeTags").innerHTML = "";
-        document.getElementById("activeTags").append(tempActiveTags);
+    }
+
+    const postCommunity = () => {
+        
+    }
+
+    const fetchUsers = (e) => {
+        console.log(e.target.value)
+        fetch(`http://localhost:8080/searchUser?user=${e.target.value}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        })
+          .then(response => response.json())
+          .then(data => {
+            console.log(data)
+            setReturnedUsers(data)
+          })
+          .catch(error => console.error('Error:', error));
     }
 
     return (
         <div className='home'>
-            <div onClick={createCommunitiesDialog} className={communitiesDialog ? 'bufferShow' : ''}>
+            <div onClick={cancelCommunitiesDialog} className={communitiesDialog ? 'bufferShow' : ''}>
 
             </div>
             <div className='homeHeader'>
@@ -143,78 +177,75 @@ const HomePage = () => {
                 </div>
                 <div className={communitiesDialog ? 'createCommunitiesPopup communitiesDialogBorder' : 'createCommunitiesPopup'}></div>
                 <div className={communitiesDialog ? 'createCommunitiesPopup createCommunitiesPopupShow' : 'createCommunitiesPopup'}>
-                    <div className='createCommunitiesContainer'>
-                        <div className='createCommunityTitle'>
-                            <input placeholder='Community Name' />
-                        </div>
-                        <div className='communityDescriptionMembers'>
-                            <div className='createCommunityDescription'>
-                                <textarea placeholder='What is this community about?'></textarea>
+                    <div id='createCommunitiesContainer' className='createCommunitiesContainer'>
+                        <form className='createCommunityForm' action={postCommunity}>
+                            <div className='createCommunityTitle'>
+                                <input className='dialogInput' placeholder='Community Name' />
                             </div>
-                            <div className='communityMembers'>
-                                <div className='createCommunityMembers'>
-                                    <input placeholder="Add Members" />
+                            <div className='communityDescriptionMembers'>
+                                <div className='createCommunityDescription'>
+                                    <textarea className='dialogInput' placeholder='What is this community about?'></textarea>
                                 </div>
-                                <div className='addedMembers'>
-                                    test<br></br>
-                                    test<br></br>
-                                    test<br></br>
-                                    test<br></br>
-                                    test<br></br>
-                                    test<br></br>
-                                    test<br></br>
-                                    test<br></br>
-                                    test<br></br>
-                                    test<br></br>
-                                    test<br></br>
-                                    test<br></br>
-                                    test<br></br>
-                                    test<br></br>
-                                    test<br></br>
-                                    test<br></br>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='communitySettings'>
-                            <div className='communitySettingsSection'>
-                                <span>Privacy Setting</span>
-                                <select className='communityPrivacy'>
-                                    <option>Public</option>
-                                    <option>Private</option>
-                                </select>
-                            </div>
-                            <div className='communitySettingsSectionTags'>
-                                <div className='selectTags'>
-                                    <div className='selectTagsContainer'>
-                                        <div onClick={tagOptionsHideFunc} id='tagDropDown' className='tagDropDown'>
-                                            <span>Add Your Tag's</span>
-                                            <i class="fa-solid fa-angle-down"></i>
-                                        </div>
-                                        <div id='tagOptions' ref={myRef} onClick={handleClickInside} className={tagOptionsShow ? "tagOptions" : 'tagOptionsHide'}>
-                                            <div onClick={() => activateTag(1)}><input id='tag1' type='checkbox'/>🏈<span>Sports</span></div>
-                                            <div onClick={() => activateTag(2)}><input id='tag2' type='checkbox'/>🎮<span>Gaming</span></div>
-                                            <div onClick={() => activateTag(3)}><input id='tag3' type='checkbox'/>🏃<span>Fitness</span></div>
-                                            <div onClick={() => activateTag(4)}><input id='tag4' type='checkbox'/>🍔<span>Foodies</span></div>
-                                            <div onClick={() => activateTag(5)}><input id='tag5' type='checkbox'/>💻<span>Tech</span></div>
-                                            <div onClick={() => activateTag(6)}><input id='tag6' type='checkbox'/>📈<span>Trending</span></div>
-                                            <div onClick={() => activateTag(7)}><input id='tag7' type='checkbox'/>🎶<span>Music</span></div>
-                                            <div onClick={() => activateTag(8)}><input id='tag8' type='checkbox'/>🎤<span>Concerts</span></div>
-                                        </div>
+                                <div className='communityMembers'>
+                                    <div className='createCommunityMembers'>
+                                        <input onKeyUp={fetchUsers} className='dialogInput' placeholder="Add Members" />
                                     </div>
-                                    <div id='activeTags' className='activeTags'>
+                                    <div className='foundMember'>
                                         <ul>
                                             {
-                                                tempActiveTags
+                                                returnedUsers.map(user => (
+                                                    <li>{user}</li>
+                                                ))
                                             }
                                         </ul>
                                     </div>
+                                    <div className='addedMembers'>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className='createCommunityButtons'>
-                            <button onClick={createCommunitiesDialog} className='createCommunityButtonsCncl'>Cancel</button>
-                            <button className='createCommunityButtonsCrt'>Create</button>
-                        </div>
+                            <div className='communitySettings'>
+                                <div className='communitySettingsSection'>
+                                    <span>Privacy Setting</span>
+                                    <select className='communityPrivacy'>
+                                        <option value="1">Public</option>
+                                        <option value="2">Private</option>
+                                    </select>
+                                </div>
+                                <div className='communitySettingsSectionTags'>
+                                    <div className='selectTags'>
+                                        <div className='selectTagsContainer'>
+                                            <div onClick={tagOptionsHideFunc} id='tagDropDown' className='tagDropDown'>
+                                                <span>Add Your Tag's</span>
+                                                <i class="fa-solid fa-angle-down"></i>
+                                            </div>
+                                            <div id='tagOptions' ref={myRef} onClick={handleClickInside} className={tagOptionsShow ? "tagOptions" : 'tagOptionsHide'}>
+                                                <div onClick={() => activateTag(1)}><input id='tag1' type='checkbox'/>🏈<span>Sports</span></div>
+                                                <div onClick={() => activateTag(2)}><input id='tag2' type='checkbox'/>🎮<span>Gaming</span></div>
+                                                <div onClick={() => activateTag(3)}><input id='tag3' type='checkbox'/>🏃<span>Fitness</span></div>
+                                                <div onClick={() => activateTag(4)}><input id='tag4' type='checkbox'/>🍔<span>Foodies</span></div>
+                                                <div onClick={() => activateTag(5)}><input id='tag5' type='checkbox'/>💻<span>Tech</span></div>
+                                                <div onClick={() => activateTag(6)}><input id='tag6' type='checkbox'/>📈<span>Trending</span></div>
+                                                <div onClick={() => activateTag(7)}><input id='tag7' type='checkbox'/>🎶<span>Music</span></div>
+                                                <div onClick={() => activateTag(8)}><input id='tag8' type='checkbox'/>🎤<span>Concerts</span></div>
+                                            </div>
+                                        </div>
+                                        <div id='activeTags' className='activeTags'>
+                                            <ul>
+                                                {
+                                                    activeTags.map(tag => (
+                                                        <li>{tag}</li>
+                                                    ))
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='createCommunityButtons'>
+                                <button onClick={cancelCommunitiesDialog} className='createCommunityButtonsCncl'>Cancel</button>
+                                <button className='createCommunityButtonsCrt'>Create</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div className='rightPane'>

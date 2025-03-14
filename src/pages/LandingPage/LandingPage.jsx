@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import './LandingPage.css'
-import asteroid from './asteroid.png'
-import bigAsteroid from './bigAsteroid.png'
+import './LandingPage.css';
+import asteroid from './asteroid.png';
+import bigAsteroid from './bigAsteroid.png';
 import { NavLink } from 'react-router-dom';
-import personOnComputer from './personOnComputer.png'
+import personOnComputer from './personOnComputer.png';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useInView } from "react-intersection-observer"
+import { useInView } from "react-intersection-observer";
 
 
 
