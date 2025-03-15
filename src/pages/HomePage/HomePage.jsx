@@ -129,18 +129,25 @@ const HomePage = () => {
 
     const fetchUsers = (e) => {
         console.log(e.target.value)
-        fetch(`http://localhost:8080/searchUser?user=${e.target.value}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-        })
-          .then(response => response.json())
-          .then(data => {
-            console.log(data)
-            setReturnedUsers(data)
-          })
-          .catch(error => console.error('Error:', error));
+        if (e.target.value !== "") {
+            fetch(`http://localhost:8080/searchUser?user=${e.target.value}`, {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+              })
+                .then(response => response.json())
+                .then(data => {
+                  console.log(data)
+                  setReturnedUsers(data)
+                })
+                .catch(error => {console.error('Error:', error)
+                  setReturnedUsers(["No User Found!"])
+                });
+        } else {
+            setReturnedUsers([])
+        }
+        
     }
 
     return (

@@ -538,6 +538,7 @@
 
 .communitiesHeader div {
     cursor: pointer;
+    min-width: fit-content;
 }
 
 .communitiesControl {
@@ -597,6 +598,10 @@
     border-radius: 15px;
     transform: translateX(0);
     transition: all .5s;
+}
+
+.rightPane span {
+    min-width: fit-content;
 }
 
 .communitiesContentHide {
@@ -841,6 +846,10 @@
     width: 9.5vw;
 }
 
+.communitySettingsSection span {
+    min-width: fit-content;
+}
+
 .communitySettingsSectionTags {
     display: flex;
     flex-direction: column;
@@ -956,6 +965,11 @@
     font-size: 12.5px;
     font-style: normal;
     margin-left: 2vw;
+    overflow-y: hidden;
+}
+
+.activeTags li {
+    min-width: fit-content;
 }
 
 .selectTags {
@@ -983,6 +997,31 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+  }
+
+  .foundMember {
+    width: fit-content;
+    height: fit-content;
+    background: aliceblue;
+    position: absolute;
+    padding: 0rem 1rem 0rem 1rem;
+    bottom: 61%;
+    z-index: 1000;
+  }
+
+  @media (min-width: 1000px) {
+    .communityImage {
+        width: 5vw;
+        height: 3.9vh;
+        background-color: aliceblue;
+        border-radius: 25px;
+        display: inline-flex;
+        margin-right: .8vw;
+    }
+
+    .rightPaneCommunities, .rightPaneCommunitiesExpand, .rightPaneFriends, .rightPaneFriendsExpand {
+        font-size: 13px;
+    }
   }
 
 /*
