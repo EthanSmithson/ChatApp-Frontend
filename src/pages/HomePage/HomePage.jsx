@@ -197,11 +197,15 @@ const HomePage = () => {
                                     <div className='createCommunityMembers'>
                                         <input onKeyUp={fetchUsers} className='dialogInput' placeholder="Add Members" />
                                     </div>
-                                    <div className='foundMember'>
-                                        <ul>
+                                    <div className={returnedUsers.length === 0  ? 'foundMemberHide' :'foundMember'}>
+                                        <ul className='searchUserList'>
                                             {
                                                 returnedUsers.map(user => (
-                                                    <li>{user}</li>
+                                                    <li>
+                                                        <div className='searchUserImg'>
+                                                        </div>
+                                                        {user}
+                                                    </li>
                                                 ))
                                             }
                                         </ul>
