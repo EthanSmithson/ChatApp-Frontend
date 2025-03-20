@@ -1004,11 +1004,11 @@
   }
 
   .foundMember {
-    height: fit-content;
+    min-height: fit-content;
     background: aliceblue;
     position: absolute;
     padding: 0rem 1rem 0rem 1rem;
-    bottom: 49%;
+    top: 35%;
     display: flex;
     padding: 0rem 1rem 0rem 1rem;
     z-index: 1000;
@@ -1037,6 +1037,17 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
+    padding: .3rem 0rem .3rem 0rem;
+  }
+
+  .addMemberBtn {
+    margin-left: 5vw;
+    height: fit-content;
+    width: fit-content;
+  }
+
+  .addMemberBtn i {
+    padding-left: 1rem;
   }
 
   .searchUserImg {

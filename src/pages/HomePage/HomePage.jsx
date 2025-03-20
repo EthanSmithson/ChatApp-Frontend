@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './HomePage.css';
 import { NavLink } from 'react-router-dom';
+import { data } from 'jquery';
 
 const HomePage = () => {
 
@@ -11,7 +12,9 @@ const HomePage = () => {
     var [communitiesDialog, setCommunitiesDialog] = useState(false);
     var [tagOptionsShow, setTagOptionsShow] = useState(false);
     var [activeTags, setActiveTags] = useState([]);
+    var [activeTagsVals, setActiveTagsVals] = useState([]);
     var [returnedUsers, setReturnedUsers] = useState([]);
+    var [communityUsers, setCommunityUsers] = useState([]);
     const myRef = useRef();
 
     const handleClickOutside = e => {
@@ -114,17 +117,25 @@ const HomePage = () => {
     const activateTag = (val) => {
         if (!activeTags.includes(communityTags[val])) {
             setActiveTags([...activeTags, communityTags[val]]);
+            setActiveTagsVals([...activeTagsVals, val]);
             tempActiveNums.push(val);
             document.getElementById("tag" + val).checked = true;
         } else {
             setActiveTags(activeTags.filter((_, i) => i !== activeTags.indexOf(communityTags[val])));
+            setActiveTagsVals(activeTagsVals.filter((_, i) => i !== activeTagsVals.indexOf(val)));
             tempActiveNums = tempActiveNums.filter(item => item !== val);
             document.getElementById("tag" + val).checked = false;
         }
+        // console.log(activeTagsVals)
     }
 
-    const postCommunity = () => {
-        
+    const postCommunity = (formData) => {
+        data = {}
+        data.title = formData.get("communityName");
+        data.description = formData.get("communityDesc");
+        data.privacy = formData.get("communityPriv");
+        data.members = activeTagsVals;
+        console.log(data)
     }
 
     const fetchUsers = (e) => {
@@ -142,7 +153,7 @@ const HomePage = () => {
                   setReturnedUsers(data)
                 })
                 .catch(error => {console.error('Error:', error)
-                  setReturnedUsers(["No User Found!"])
+                  setReturnedUsers(["No User's Found!"])
                 });
         } else {
             setReturnedUsers([])
@@ -187,11 +198,11 @@ const HomePage = () => {
                     <div id='createCommunitiesContainer' className='createCommunitiesContainer'>
                         <form className='createCommunityForm' action={postCommunity}>
                             <div className='createCommunityTitle'>
-                                <input className='dialogInput' placeholder='Community Name' />
+                                <input name='communityName' className='dialogInput' placeholder='Community Name' />
                             </div>
                             <div className='communityDescriptionMembers'>
                                 <div className='createCommunityDescription'>
-                                    <textarea className='dialogInput' placeholder='What is this community about?'></textarea>
+                                    <textarea name='communityDesc' className='dialogInput' placeholder='What is this community about?'></textarea>
                                 </div>
                                 <div className='communityMembers'>
                                     <div className='createCommunityMembers'>
@@ -202,9 +213,13 @@ const HomePage = () => {
                                             {
                                                 returnedUsers.map(user => (
                                                     <li>
-                                                        <div className='searchUserImg'>
+                                                        <div className={returnedUsers[0] === "No User's Found!"  ? 'foundMemberHide' :'searchUserImg'}>
                                                         </div>
                                                         {user}
+                                                        <div className={returnedUsers[0] === "No User's Found!"  ? 'foundMemberHide' :'addMemberBtn'}>
+                                                            <i class="fa-solid fa-plus"></i>
+                                                            <i class="fa-solid fa-ellipsis"></i>
+                                                        </div>
                                                     </li>
                                                 ))
                                             }
@@ -217,7 +232,7 @@ const HomePage = () => {
                             <div className='communitySettings'>
                                 <div className='communitySettingsSection'>
                                     <span>Privacy Setting</span>
-                                    <select className='communityPrivacy'>
+                                    <select name='communityPriv' className='communityPrivacy'>
                                         <option value="1">Public</option>
                                         <option value="2">Private</option>
                                     </select>
@@ -254,7 +269,7 @@ const HomePage = () => {
                             </div>
                             <div className='createCommunityButtons'>
                                 <button onClick={cancelCommunitiesDialog} className='createCommunityButtonsCncl'>Cancel</button>
-                                <button className='createCommunityButtonsCrt'>Create</button>
+                                <button type="submit" className='createCommunityButtonsCrt'>Create</button>
                             </div>
                         </form>
                     </div>
