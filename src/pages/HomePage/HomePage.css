@@ -90,9 +90,75 @@
     border-radius: 15px;
     display: flex;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: flex-end;
     flex-direction: column;
     padding: 1rem;
+}
+
+.mainPaneMessageBar {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end
+
+}
+
+.messageBarSection {
+    width: 100%;
+    height: 9vh;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.optionsMessageBar {
+    height: 3.5vh ;
+    width: 100%;
+    border-radius: 20px;
+    background-color: #21D4FD;
+}
+
+.messageBar {
+    height: fit-content;
+    width: 100%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.messageBar i {
+    position: absolute;
+    margin-left: 45vw;
+    color: white;
+    border-left: white 1px solid;
+    width: 1vw;
+    padding-left: 1vw;
+    cursor: pointer;
+}
+
+.messageBar input {
+    width: 100%;
+    height: 20px;
+    background: rgba(69, 71, 73, 0.58);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11.4px);
+    -webkit-backdrop-filter: blur(11.4px);
+    border: 1px solid rgba(69, 71, 73, 1);
+    box-shadow: rgb(50, 50, 50) 3px 3px 6px 0px inset, rgba(50, 50, 50, 0.5) -3px -3px 6px 1px inset;
+    padding: 18px 20px;
+    box-sizing: border-box;
+    color: white;
+    font-family: "Varela Round", serif;
+    font-weight: 700;
+    font-size: 13px;
+    font-style: normal;
 }
 
 .rightPaneCommunities {
@@ -1071,6 +1137,52 @@
     .rightPaneCommunities, .rightPaneCommunitiesExpand, .rightPaneFriends, .rightPaneFriendsExpand {
         font-size: 13px;
     }
+
+    .communitiesContent ul li, .findCommunitiesContent ul li {
+        display: flex;
+        align-items: center;
+        font-size: 11.5px;
+        width: 10vw;
+    }
+
+    .friendsContent ul li, .allFriendsContent ul li, .findFriendsContent ul li {
+        display: flex;
+        align-items: center;
+        font-size: 11.5px;
+        width: 10vw;
+    }
+
+    .communitySettingsSection {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 9.5vw;
+    }
+
+    .communitySettings {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        font-family: "Varela Round", serif;
+        font-weight: 700;
+        font-size: 11px;
+        font-style: normal;
+        color: white;
+    }
+
+    .addMemberBtn {
+        margin-left: 2vw;
+        height: fit-content;
+        width: fit-content;
+      }
+    
+      .addMemberBtn i {
+        padding-left: 1rem;
+      }
+
   }
 
 /*

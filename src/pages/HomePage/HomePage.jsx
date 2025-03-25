@@ -190,7 +190,20 @@ const HomePage = () => {
                 </div>
                 <div className='middlePane'>
                     <div className='mainPane'>
+                        <div className='mainPaneConversation'>
 
+                        </div>
+                        <div className='mainPaneMessageBar'>
+                            <div className='messageBarSection'>
+                            <div className='messageBar'>
+                                <input placeholder="What's on your mind?"  type='text'/>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </div>
+                            <div className='optionsMessageBar'>
+                                
+                            </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className={communitiesDialog ? 'createCommunitiesPopup communitiesDialogBorder' : 'createCommunitiesPopup'}></div>
