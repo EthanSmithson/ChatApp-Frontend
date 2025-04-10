@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './HomePage.css';
 import { NavLink } from 'react-router-dom';
 import { data } from 'jquery';
+import $ from 'jquery';
 
 const HomePage = () => {
 
@@ -15,6 +16,7 @@ const HomePage = () => {
     var [activeTagsVals, setActiveTagsVals] = useState([]);
     var [returnedUsers, setReturnedUsers] = useState([]);
     var [communityUsers, setCommunityUsers] = useState([]);
+    var [communityMembersList, setCommunityMembersList] = useState([]);
     const myRef = useRef();
 
     const handleClickOutside = e => {
@@ -84,6 +86,7 @@ const HomePage = () => {
             dialogInputs[i].value = ""
         }
         setActiveTags([]);
+        // communityMembersList = [];
         var dropDown = document.getElementsByClassName("communityPrivacy");
         dropDown[0][0].selected = true;
         for (var j=1; j<9; j++) {
@@ -129,12 +132,24 @@ const HomePage = () => {
         // console.log(activeTagsVals)
     }
 
+    // var communityMembersList = []
+
+    const addMembertoCommunity = (id) => {
+        console.log(id)
+        if(!communityMembersList.includes(id)) {
+            setCommunityMembersList([...communityMembersList, id]);
+        } else {
+            setCommunityMembersList(communityMembersList.filter((_, i) => i !== communityMembersList.indexOf(id)));
+        }
+    }
+
     const postCommunity = (formData) => {
         data = {}
         data.title = formData.get("communityName");
         data.description = formData.get("communityDesc");
         data.privacy = formData.get("communityPriv");
-        data.members = activeTagsVals;
+        data.tags = activeTagsVals;
+        data.members = communityMembersList;
         console.log(data)
     }
 
@@ -160,6 +175,16 @@ const HomePage = () => {
         }
         
     }
+
+    $('body').on('keydown input', 'textarea[data-expandable]', function() {
+        //Auto-expanding textarea
+        this.style.removeProperty('height');
+        this.style.height = (this.scrollHeight+2) + 'px';
+      }).on('mousedown focus', 'textarea[data-expandable]', function() {
+        //Do this on focus, to allow textarea to animate to height...
+        this.style.removeProperty('height');
+        this.style.height = (this.scrollHeight+2) + 'px';
+      });
 
     return (
         <div className='home'>
@@ -196,7 +221,8 @@ const HomePage = () => {
                         <div className='mainPaneMessageBar'>
                             <div className='messageBarSection'>
                             <div className='messageBar'>
-                                <input placeholder="What's on your mind?"  type='text'/>
+                                {/* <input placeholder="What's on your mind?"  type='text'/> */}
+                                <textarea data-expandable placeholder="What's on your mind?"  type='text'></textarea>
                                 <i class="fa-solid fa-paper-plane"></i>
                             </div>
                             <div className='optionsMessageBar'>
@@ -228,9 +254,10 @@ const HomePage = () => {
                                                     <li>
                                                         <div className={returnedUsers[0] === "No User's Found!"  ? 'foundMemberHide' :'searchUserImg'}>
                                                         </div>
-                                                        {user}
+                                                        {user[0]}
+                                                        <input type='hidden' value={user[1]} />
                                                         <div className={returnedUsers[0] === "No User's Found!"  ? 'foundMemberHide' :'addMemberBtn'}>
-                                                            <i class="fa-solid fa-plus"></i>
+                                                            <i onClick={() => addMembertoCommunity(user[1])} class="fa-solid fa-plus"></i>
                                                             <i class="fa-solid fa-ellipsis"></i>
                                                         </div>
                                                     </li>
