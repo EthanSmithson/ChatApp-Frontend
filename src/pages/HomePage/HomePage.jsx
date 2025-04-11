@@ -17,7 +17,9 @@ const HomePage = () => {
     var [returnedUsers, setReturnedUsers] = useState([]);
     var [communityUsers, setCommunityUsers] = useState([]);
     var [communityMembersList, setCommunityMembersList] = useState([]);
+    var [membersList, setMembersList] = useState(false);
     const myRef = useRef();
+    const myRef2 = useRef();
 
     const handleClickOutside = e => {
         if (!myRef.current.contains(e.target) && !document.getElementById("tagDropDown").contains(e.target)) {
@@ -25,11 +27,23 @@ const HomePage = () => {
         }
     };
 
+    const handleClickOutside2 = e => {
+        if (!myRef2.current.contains(e.target) && !document.getElementById("membersList").contains(e.target)) {
+            setReturnedUsers([]);
+        }
+    };
+
     const handleClickInside = () => setTagOptionsShow(true);
+    const handleClickInside2 = () => setMembersList(true);
 
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
+    });
+    
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside2);
+        return () => document.removeEventListener('mousedown', handleClickOutside2);
     });
 
     const communitiesSetTrue = () => {
@@ -86,12 +100,15 @@ const HomePage = () => {
             dialogInputs[i].value = ""
         }
         setActiveTags([]);
+        setCommunityMembersList([]);
         // communityMembersList = [];
         var dropDown = document.getElementsByClassName("communityPrivacy");
         dropDown[0][0].selected = true;
         for (var j=1; j<9; j++) {
             document.getElementById("tag" + j).checked = false;
         }
+
+        setReturnedUsers([]);
     }
 
     const tagOptionsHideFunc = (event) => {
@@ -129,10 +146,7 @@ const HomePage = () => {
             tempActiveNums = tempActiveNums.filter(item => item !== val);
             document.getElementById("tag" + val).checked = false;
         }
-        // console.log(activeTagsVals)
     }
-
-    // var communityMembersList = []
 
     const addMembertoCommunity = (id) => {
         console.log(id)
@@ -151,6 +165,21 @@ const HomePage = () => {
         data.tags = activeTagsVals;
         data.members = communityMembersList;
         console.log(data)
+
+        fetch('http://localhost:8080/createCommunity', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+
+        setActiveTagsVals([]);
+        setCommunityMembersList([]);
+        setReturnedUsers([]);
     }
 
     const fetchUsers = (e) => {
@@ -247,7 +276,7 @@ const HomePage = () => {
                                     <div className='createCommunityMembers'>
                                         <input onKeyUp={fetchUsers} className='dialogInput' placeholder="Add Members" />
                                     </div>
-                                    <div className={returnedUsers.length === 0  ? 'foundMemberHide' :'foundMember'}>
+                                    <div ref={myRef2} id='membersList' onClick={handleClickInside2} className={returnedUsers.length === 0  ? 'foundMemberHide' :'foundMember'}>
                                         <ul className='searchUserList'>
                                             {
                                                 returnedUsers.map(user => (
