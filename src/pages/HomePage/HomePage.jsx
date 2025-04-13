@@ -159,10 +159,10 @@ const HomePage = () => {
 
     const postCommunity = (formData) => {
         data = {}
-        data.title = formData.get("communityName");
-        data.description = formData.get("communityDesc");
-        data.privacy = formData.get("communityPriv");
-        data.tags = activeTagsVals;
+        data.communityTitle = formData.get("communityName");
+        data.communityDescription = formData.get("communityDesc");
+        data.communityPrivacy = formData.get("communityPriv");
+        data.communityTags = activeTagsVals;
         data.members = communityMembersList;
         console.log(data)
 
