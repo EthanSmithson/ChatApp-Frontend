@@ -163,7 +163,7 @@ const HomePage = () => {
         data.communityDescription = formData.get("communityDesc");
         data.communityPrivacy = formData.get("communityPriv");
         data.communityTags = activeTagsVals;
-        data.members = communityMembersList;
+        data.communityMembers = communityMembersList;
         console.log(data)
 
         fetch('http://localhost:8080/createCommunity', {
@@ -178,6 +178,7 @@ const HomePage = () => {
             .catch(error => console.error('Error:', error));
 
         setActiveTagsVals([]);
+        setActiveTags([]);
         setCommunityMembersList([]);
         setReturnedUsers([]);
     }
