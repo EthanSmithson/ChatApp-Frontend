@@ -181,6 +181,7 @@ const HomePage = () => {
         setActiveTags([]);
         setCommunityMembersList([]);
         setReturnedUsers([]);
+        setCommunitiesDialog(false);
     }
 
     const fetchUsers = (e) => {
@@ -215,6 +216,19 @@ const HomePage = () => {
         this.style.removeProperty('height');
         this.style.height = (this.scrollHeight+2) + 'px';
       });
+
+      const sendMessage = (data) => {
+        fetch('http://localhost:8080/sendMessage', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+      }
 
     return (
         <div className='home'>
@@ -252,8 +266,8 @@ const HomePage = () => {
                             <div className='messageBarSection'>
                             <div className='messageBar'>
                                 {/* <input placeholder="What's on your mind?"  type='text'/> */}
-                                <textarea data-expandable placeholder="What's on your mind?"  type='text'></textarea>
-                                <i class="fa-solid fa-paper-plane"></i>
+                                <textarea data-expandable placeholder="What's on your mind?" id='messageTextArea'  type='text'></textarea>
+                                <i onClick={() =>  sendMessage(document.getElementById("messageTextArea").value)} class="fa-solid fa-paper-plane"></i>
                             </div>
                             <div className='optionsMessageBar'>
                                 
